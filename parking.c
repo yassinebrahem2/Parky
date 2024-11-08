@@ -68,7 +68,7 @@ void printParking(Parking parking) {
         n++;
     }
   "%s %d %s %s %f %s %d %d\n"*/
-    printf("ID: %s\nNSpots: %d\nAddress: %s\nMunic: %s\nPrice: %f\nAgent: %d\nElect: %d\n",
+    printf("ID: %s\nNSpots: %d\nAddress: %s\nMunic: %s\nPrice: %f\nAgent: %s\nElect: %d\n",
         parking.ID, parking.numberOfSpots,
         parking.address, parking.municipality,
         parking.price, parking.agentCIN,
