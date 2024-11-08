@@ -7,7 +7,7 @@
 void getParkingNumber(char dir[], int* n) {
     Parking parking;
     FILE* file = fopen(dir, "r");
-    while (fscanf(file, "%s %d %s %s %f %s %d %d",
+    while (fscanf(file, "%s %d %s %s %f %s %d %d\n",
     parking.ID, &parking.numberOfSpots,
     parking.address, parking.municipality,
     &parking.price, parking.agentCIN,
@@ -93,7 +93,6 @@ char *getVehiculesCode(char *vehicules[4]) {
 }
 */
 
-/*
 void addParking(char dir[], Parking newParking) {
     FILE* parkingFile = fopen(dir, "a");
 
@@ -105,6 +104,7 @@ void addParking(char dir[], Parking newParking) {
             );
     fclose(parkingFile);
 }
+/*
 void deleteParking(int IDparking) {
     FILE* parkingFile1 = fopen("parking1.txt", "w");
     FILE* parkingFile = fopen("parking.txt", "r");
