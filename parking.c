@@ -100,7 +100,7 @@ void addParking(char dir[], Parking newParking) {
             newParking.ID, newParking.numberOfSpots,
             newParking.address, newParking.municipality,
             newParking.price, newParking.agentCIN,
-            newParking.vehicules, newParking.hasElectricCharger
+            *newParking.vehicules, newParking.hasElectricCharger
             );
     fclose(parkingFile);
 }
