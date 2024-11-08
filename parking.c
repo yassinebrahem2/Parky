@@ -67,7 +67,7 @@ void printParking(Parking parking) {
         parking.vehicules[n] = "Velo";
         n++;
     }
-*/
+*/  "%s %d %s %s %f %s %d %d\n"
     printf("ID: %s\nNSpots: %d\nAddress: %s\nMunic: %s\nPrice: %f\nAgent: %d\nElect: %d\n",
         parking.ID, parking.numberOfSpots,
         parking.address, parking.municipality,
@@ -75,7 +75,7 @@ void printParking(Parking parking) {
         parking.hasElectricCharger);
     printf("Vehicules: \n");
     for (i = 0; i < n; i++) {
-        printf("  %s\n", parking.vehicules[i]);
+        printf("  %d\n", parking.vehicules[i]);
     }
 
 }
