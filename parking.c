@@ -11,7 +11,7 @@ void getParkingNumber(char dir[], int* n) {
     parking.ID, &parking.numberOfSpots,
     parking.address, parking.municipality,
     &parking.price, parking.agentCIN,
-    &parking.vehicules, &parking.hasElectricCharger) != EOF) {
+    parking.vehicules, &parking.hasElectricCharger) != EOF) {
         *n += 1;
     }
 }
