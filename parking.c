@@ -3,15 +3,19 @@
 
 
 
-/*
+
 void getParkingNumber(char dir[], int* n) {
-    int ID;
+    Parking parking;
     FILE* file = fopen(dir, "r");
-    while (fscanf(file, "%c %d %c %c %f %d %c %d", &ID) != EOF) {
+    while (fscanf(file, "%s %d %s %s %f %d %d %d",
+    &parking.ID, &parking.numberOfSpots,
+    parking.address, parking.municipality,
+    parking.price, &parking.agentCIN,
+    &parking.vehicules, &parking.hasElectricCharger) != EOF) {
         *n += 1;
     }
 }
-*/
+
 void print() {
     printf("HelloWorld!");
 }
