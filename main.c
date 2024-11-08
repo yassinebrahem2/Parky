@@ -6,8 +6,9 @@
 
 void main() {
     print();
+    Parking parking;
+    printParking(parking);
     //int userInput;
-    //Parking parking;
     //getParking(&parking);
     //printParking(p);
     //addParking("parking.txt", parking);
