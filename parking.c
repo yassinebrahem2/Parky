@@ -7,8 +7,8 @@
 void getParkingNumber(char dir[], int* n) {
     Parking parking;
     FILE* file = fopen(dir, "r");
-    while (fscanf(file, "%s %d %s %s %f %d %d %d",
-    &parking.ID, &parking.numberOfSpots,
+    while (fscanf(file, "%s %d %s %s %f %s %d %d",
+    parking.ID, &parking.numberOfSpots,
     parking.address, parking.municipality,
     parking.price, &parking.agentCIN,
     &parking.vehicules, &parking.hasElectricCharger) != EOF) {
