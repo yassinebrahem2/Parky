@@ -37,6 +37,7 @@ void getParking(Parking *parking) {
 */
 
 void printParking(Parking parking) {
+/*
     int n, i = 0;
     strcpy("123", parking.ID);
     parking.numberOfSpots = 10;
@@ -50,7 +51,6 @@ void printParking(Parking parking) {
     parking.vehicules[2] = 1;
     parking.vehicules[3] = 1;
 
-/*
     if (vehiculeCode[0] == "1") {
         parking.vehicules[n] = "Voiture";
         n++;
