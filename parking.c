@@ -58,7 +58,7 @@ void printParking(Parking parking) {
     printf("Vehicules: \n");
     for (i = 0; i < 4; i++) {
         if (parking.vehicules[i] == 1) {
-            printf("  %d\n", vehiculeNames[i]);
+            printf("  %s\n", vehiculeNames[i]);
         }
     }
 }
