@@ -38,7 +38,7 @@ void getParking(Parking *parking) {
 
 void printParking(Parking parking) {
     int n, i = 0;
-    strcpy("123", parking.ID);
+    parking.ID = "123";
 /*
     parking.numberOfSpots = 10;
     strcpy("adres", parking.address);
