@@ -80,11 +80,13 @@ char *getVehiculesCode(char *vehicules[4]) {
 void addParking(char dir[], Parking newParking) {
     FILE* parkingFile = fopen(dir, "a");
 
-    fprintf(parkingFile, "%s %d %s %s %f %s %d %d\n",
+    fprintf(parkingFile, "%s %d %s %s %f %s %d%d%d%d %d\n",
             newParking.ID, newParking.numberOfSpots,
             newParking.address, newParking.municipality,
             newParking.price, newParking.agentCIN,
-            *newParking.vehicules, newParking.hasElectricCharger
+            newParking.vehicules[0], newParking.vehicules[1],
+            newParking.vehicules[2], newParking.vehicules[3],
+            newParking.hasElectricCharger
             );
     fclose(parkingFile);
 }
