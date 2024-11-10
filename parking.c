@@ -2,8 +2,6 @@
 #include "parking.h"
 
 
-
-
 void getParkingNumber(char dir[], int* n) {
     Parking parking;
     FILE* file = fopen(dir, "r");
@@ -16,7 +14,6 @@ void getParkingNumber(char dir[], int* n) {
     }
 }
 
-/*
 void getParking(Parking *parking) {
     int i;
     printf("INPUT:");
@@ -25,13 +22,12 @@ void getParking(Parking *parking) {
     scanf("%s", parking->address);
     scanf("%s", parking->municipality);
     scanf("%f", &parking->price);
-    scanf("%d", &parking->agentCIN);
+    scanf("%s", &parking->agentCIN);
     scanf("%d", &parking->hasElectricCharger);
     for (i = 0; i < 4; i++) {
         scanf("%d", &parking->vehicules[i]);
     }
 }
-*/
 
 void printParking(Parking parking) {
     int n, i;
@@ -49,33 +45,6 @@ void printParking(Parking parking) {
         }
     }
 }
-/*
-char *getVehiculesCode(char *vehicules[4]) {
-    int i, voiture, camion, moto, velo;
-    voiture = camion = moto = velo = 0;
-    for(i = 0; i < 4; i++) {
-        if (vehicules[i] == "Voiture") {
-            voiture = 1;
-        }
-        if (vehicules[i] == "Camion") {
-            camion = 1;
-        }
-        if (vehicules[i] == "Moto") {
-            moto = 1;
-        }
-        if (vehicules[i] == "Velo") {
-            velo = 1;
-        }
-    }
-    char *code = (char *)calloc(5, sizeof(char)); // 4 digits + 1 for null terminator
-    if (code == NULL) {
-        return NULL; // Handle allocation failure
-    }
-
-    sprintf(code, "%d%d%d%d", voiture, camion, moto, velo);
-    return code;
-}
-*/
 
 void addParking(char dir[], Parking newParking) {
     FILE* parkingFile = fopen(dir, "a");
