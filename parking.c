@@ -38,7 +38,7 @@ void getParking(Parking *parking) {
 
 void printParking(Parking parking) {
     int n, i;
-    char vehiculeNames[3][10] = {"Voiture", "Camion", "Moto", "Velo"};
+    char vehiculeNames[4][10] = {"Voiture", "Camion", "Moto", "Velo"};
     strcpy(parking.ID, "123");
     parking.numberOfSpots = 10;
     strcpy(parking.address, "adres");
