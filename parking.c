@@ -2,13 +2,14 @@
 #include "parking.h"
 
 
-int getParkingNumber(char *dir, int* n) {
+int getParkingNumber(char dir[], int* n) {
     Parking parking;
     FILE* parkingFile = fopen(dir, "r");
     if (parkingFile == NULL) {
         perror("Error opening file");
-        return 1; // Or handle the error appropriately
+        return 1;
     }
+
     while (scanParking(parkingFile, &parking) != EOF) {
         *n += 1;
     }
