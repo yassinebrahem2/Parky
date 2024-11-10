@@ -87,7 +87,6 @@ void getVehicules(int vehicules[4], char vehiculeCode[4]) {
 void deleteParking(char *dir, char IDparking[8]) {
     Parking parking;
     char vehiculeCode[4];
-    FILE* tempFile = fopen("temp.txt", "w");
     FILE* parkingFile = fopen(dir, "r");
     while(fscanf(parkingFile, "%s %d %s %s %f %s %s %d\n",
         parking.ID, &parking.numberOfSpots,
@@ -96,10 +95,9 @@ void deleteParking(char *dir, char IDparking[8]) {
         vehiculeCode, &parking.hasElectricCharger) != EOF) {
             if (strcmp(parking.ID, IDparking) != 0) {
                 getVehicules(parking.vehicules, vehiculeCode);
-                addParking("parking1.txt", parking);
+                addParking("temp.txt", parking);
             }
     }
-    fclose(tempFile);
     fclose(parkingFile);
     remove(dir);
     rename("temp.txt", dir);
