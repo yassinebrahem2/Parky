@@ -18,13 +18,14 @@ typedef struct {
 } Parking;
 
 
-void getParkingNumber(char dir[], int* n);
+void getParkingNumber(char *dir, int* n);
 void getParking(Parking *parking);
 void printParking(Parking parking);
-void printParkings(char dir[]);
+void printParkings(char *dir);
 void getVehicules(int vehicules[4], char vehiculeCode[4]);
-void addParking(char dir[], Parking newParking);
-void deleteParking(char IDparking[8]);
-void modifyParking(Parking modifiedParking);
+void addParking(char *dir, Parking newParking);
+void deleteParking(char *dir, char IDparking[8]);
+void modifyParking(char *dir, Parking modifiedParking);
 void sortParking(char attribute);
+
 #endif
