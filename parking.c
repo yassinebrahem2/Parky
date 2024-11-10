@@ -87,7 +87,7 @@ void getVehicules(int vehicules[4], char vehiculeCode[4]) {
 void deleteParking(char *dir, char IDparking[8]) {
     Parking parking;
     char vehiculeCode[4];
-    FILE* parkingFile1 = fopen("temp.txt", "w");
+    FILE* tempFile = fopen("temp.txt", "w");
     FILE* parkingFile = fopen(dir, "r");
     while(fscanf(parkingFile, "%s %d %s %s %f %s %s %d\n",
         parking.ID, &parking.numberOfSpots,
@@ -99,14 +99,14 @@ void deleteParking(char *dir, char IDparking[8]) {
                 addParking("parking1.txt", parking);
             }
     }
-    fclose(parkingFile1);
+    fclose(tempFile);
     fclose(parkingFile);
     rename("temp.txt", dir);
 }
 
 void modifyParking(char *dir, Parking modifiedParking) {
-    FILE* parkingFile1 = fopen("parking1.txt", "w");
-    FILE* parkingFile = fopen("parking.txt", "r");
+    FILE* tempFile = fopen("temp.txt", "w");
+    FILE* parkingFile = fopen(dir, "r");
     Parking parking;
     char vehiculeCode[4];
     while(fscanf(parkingFile, "%s %d %s %s %f %s %s %d\n",
@@ -120,10 +120,10 @@ void modifyParking(char *dir, Parking modifiedParking) {
                 addParking("parking1.txt", modifiedParking);
             }
         }
-    fclose(parkingFile1);
+    fclose(tempFile);
     fclose(parkingFile);
-    remove("parking.txt");
-    rename("parking1.txt", "parking.txt");
+    remove(dir);
+    rename("temp.txt", dir);
 }
 /*
 void sortParking(char attribute) {
