@@ -24,8 +24,8 @@ void main() {
     //int userInput;
     getParkingNumber("Parking.txt", &n);
     printf("\n\n%d\n\n", n);
-    
-    addParking("Parking.txt", parking);
+
+    addParking(dir, parking);
     // printParkings(dir);
     deleteParking(dir, "3");
     // //modifyParking(dir, parking);
