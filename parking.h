@@ -18,7 +18,7 @@ typedef struct {
 } Parking;
 
 int scanParking(FILE *parkingFile, Parking *parking);
-void getParkingNumber(char *dir, int* n);
+int getParkingNumber(char *dir, int* n);
 void getParking(Parking *parking);
 void printParking(Parking parking);
 void printParkings(char *dir);
