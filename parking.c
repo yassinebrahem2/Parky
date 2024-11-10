@@ -31,7 +31,7 @@ void getParking(Parking *parking) {
     }
 }
 
-void printParking(Parking parking) {
+void displayParking(Parking parking) {
     int n, i;
     char vehiculeNames[4][10] = {"Voiture", "Camion", "Moto", "Velo"};
     
@@ -48,18 +48,24 @@ void printParking(Parking parking) {
     }
 }
 
-void addParking(FILE *parkingFile, Parking newParking) {
+void addParking(char *dir, Parking parking) {
+    FILE *parkingFile = fopen(dir, "a");
+    printParking(parkingFile, parking);
+    fclose(parkingFile);
+}
+
+void printParking(FILE *parkingFile, Parking parking) {
     fprintf(parkingFile, "%s %d %s %s %f %s %d%d%d%d %d\n",
-            newParking.ID, newParking.numberOfSpots,
-            newParking.address, newParking.municipality,
-            newParking.price, newParking.agentCIN,
-            newParking.vehicules[0], newParking.vehicules[1],
-            newParking.vehicules[2], newParking.vehicules[3],
-            newParking.hasElectricCharger
+            parking.ID, parking.numberOfSpots,
+            parking.address, parking.municipality,
+            parking.price, parking.agentCIN,
+            parking.vehicules[0], parking.vehicules[1],
+            parking.vehicules[2], parking.vehicules[3],
+            parking.hasElectricCharger
             );
 }
 
-void printParkings(char *dir) {
+void displayParkings(char *dir) {
     int i;
     Parking parking;
     char vehiculeCode[4];
@@ -70,7 +76,7 @@ void printParkings(char *dir) {
         parking.address, parking.municipality,
         &parking.price, parking.agentCIN,
         vehiculeCode, &parking.hasElectricCharger) != EOF) {
-        printParking(parking);
+        displayParking(parking);
     }
     fclose(parkingFile);
 }
