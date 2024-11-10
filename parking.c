@@ -102,6 +102,7 @@ void printParkings(char dir[]) {
         parking.address, parking.municipality,
         &parking.price, parking.agentCIN,
         vehiculeCode, &parking.hasElectricCharger) != EOF) {
+        printf("VEHICULE CODE:%s\n", vehiculeCode);
         getVehicules(parking.vehicules, vehiculeCode);
         printParking(parking);
     }
