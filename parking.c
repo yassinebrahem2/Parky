@@ -38,18 +38,18 @@ void getParking(Parking *parking) {
 
 void printParking(Parking parking) {
     int n, i = 0;
-    parking.ID = "123";
-/*
+    strcpy(parking.ID, "123");
     parking.numberOfSpots = 10;
-    strcpy("adres", parking.address);
-    strcpy("munic", parking.municipality);
+    strcpy(parking.address, "adres");
+    strcpy(parking.address, "munic");
     parking.price = 100;
-    strcpy("idagent69", parking.agentCIN);
+    strcpy( parking.agentCIN, "idagent69");
     parking.hasElectricCharger = 1;
     parking.vehicules[0] = 1;
     parking.vehicules[1] = 1;
     parking.vehicules[2] = 1;
     parking.vehicules[3] = 1;
+/*
 
     if (vehiculeCode[0] == "1") {
         parking.vehicules[n] = "Voiture";
