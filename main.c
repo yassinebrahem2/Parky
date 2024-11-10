@@ -21,7 +21,7 @@ void main() {
     //int userInput;
     //getParking(&parking);
     printParking(parking);
-    addParking("parking.txt", parking);
+    //addParking("parking.txt", parking);
     printParkings("parking.txt");
 
 }
