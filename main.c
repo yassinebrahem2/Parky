@@ -21,7 +21,7 @@ void main() {
 
     //int userInput;
     getParkingNumber("parking.txt", &n);
-    printf("%d", n);
+    printf("\n\n%d\n\n", n);
     printParking(parking);
     //addParking("parking.txt", parking);
     printParkings("parking.txt");
