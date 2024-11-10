@@ -168,7 +168,7 @@ int scanParking(FILE *parkingFile, Parking *parking) {
     &parking->price, parking->agentCIN,
     vehiculeCode, &parking->hasElectricCharger);
     if (val > 0) {
-        getVehicules(&parking->vehicules, vehiculeNames);
+        getVehicules(parking->vehicules, vehiculeNames);
     }
     return val;
 
