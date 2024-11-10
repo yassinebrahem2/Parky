@@ -66,13 +66,7 @@ void printParkings(char *dir) {
     char vehiculeCode[4];
     FILE* parkingFile = fopen(dir, "r");
 
-    while (fscanf(parkingFile, "%s %d %s %s %f %s %s %d\n",
-        parking.ID, &parking.numberOfSpots,
-        parking.address, parking.municipality,
-        &parking.price, parking.agentCIN,
-        vehiculeCode, &parking.hasElectricCharger) != EOF) {
-        printf("VEHICULE CODE:%s\n", vehiculeCode);
-        getVehicules(parking.vehicules, vehiculeCode);
+    while (scanParking(parkingFile, &parking) != EOF) {
         printParking(parking);
     }
     fclose(parkingFile);
@@ -91,7 +85,6 @@ void deleteParking(char *dir, char IDparking[8]) {
     printf("DELETING...");
     while(scanParking(parkingFile, &parking) != EOF) {
             if (strcmp(parking.ID, IDparking) != 0) {
-                getVehicules(parking.vehicules, vehiculeCode);
                 addParking("temp.txt", parking);
             }
     }
