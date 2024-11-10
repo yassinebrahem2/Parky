@@ -22,7 +22,7 @@ void getParkingNumber(char dir[], int* n);
 void getParking(Parking *parking);
 void printParking(Parking parking);
 void printParkings(char dir[]);
-char *getVehiculesCode(char *vehicules[4]);
+void getVehicules(int vehicules[4], char vehiculeCode[4]);
 void addParking(char dir[], Parking newParking);
 void deleteParking(int IDparking);
 void modifyParking(Parking modifiedParking);
