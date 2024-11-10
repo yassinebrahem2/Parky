@@ -104,7 +104,6 @@ void deleteParking(char *dir, char IDparking[8]) {
 }
 
 void modifyParking(char *dir, Parking modifiedParking) {
-    FILE* tempFile = fopen("temp.txt", "w");
     FILE* parkingFile = fopen(dir, "r");
     Parking parking;
     char vehiculeCode[4];
@@ -114,12 +113,11 @@ void modifyParking(char *dir, Parking modifiedParking) {
         &parking.price, parking.agentCIN,
         vehiculeCode, &parking.hasElectricCharger) != EOF) {
             if (strcmp(parking.ID, modifiedParking.ID) != 0) {
-                addParking("parking1.txt", parking);
+                addParking("temp.txt", parking);
             } else {
-                addParking("parking1.txt", modifiedParking);
+                addParking("temp.txt", modifiedParking);
             }
         }
-    fclose(tempFile);
     fclose(parkingFile);
     remove(dir);
     rename("temp.txt", dir);
