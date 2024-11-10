@@ -25,7 +25,7 @@ void main() {
     //printParking(parking);
     //addParking("parking.txt", parking);
     printParkings("parking.txt");
-    deleteParking("69F");
+    deleteParking("3C");
 
 }
 
