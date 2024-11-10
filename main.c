@@ -22,7 +22,7 @@ void main() {
     parking.vehicules[3] = 1;
 
     //int userInput;
-    getParkingNumber(dir, &n);
+    getParkingNumber("Parking.txt", &n);
     printf("\n\n%d\n\n", n);
     //addParking("parking.txt", parking);
     // printParkings(dir);
