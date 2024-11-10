@@ -25,7 +25,7 @@ void main() {
     printf("\n\n%d\n\n", n);
     //printParking(parking);
     //addParking("parking.txt", parking);
-    printParkings(dir);
+    //printParkings(dir);
     deleteParking(dir, "3C");
 
 }
