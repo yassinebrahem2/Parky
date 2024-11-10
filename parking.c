@@ -2,8 +2,9 @@
 #include "parking.h"
 
 
-int getParkingNumber(char dir[], int* n) {
+int getParkingNumber(char *dir, int* n) {
     Parking parking;
+    printf("%s", dir);
     FILE* parkingFile = fopen(dir, "r");
     if (parkingFile == NULL) {
         perror("Error opening file");
