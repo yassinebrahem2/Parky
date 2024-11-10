@@ -66,7 +66,7 @@ void printParking(Parking parking) {
     if (vehiculeCode[3] == "1") {
         parking.vehicules[n] = "Velo";
         n++;
-    }
+    }*/
     printf("ID: %s\nNSpots: %d\nAddress: %s\nMunic: %s\nPrice: %f\nAgent: %s\nElect: %d\n",
         parking.ID, parking.numberOfSpots,
         parking.address, parking.municipality,
@@ -76,8 +76,6 @@ void printParking(Parking parking) {
     for (i = 0; i < n; i++) {
         printf("  %d\n", parking.vehicules[i]);
     }
-
-  "%s %d %s %s %f %s %d %d\n"*/
 }
 /*
 char *getVehiculesCode(char *vehicules[4]) {
