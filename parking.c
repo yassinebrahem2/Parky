@@ -17,12 +17,12 @@ void getParkingNumber(char dir[], int* n) {
 void getParking(Parking *parking) {
     int i;
     printf("INPUT:");
-    scanf("%s", &parking->ID);
+    scanf("%s", parking->ID);
     scanf("%d", &parking->numberOfSpots);
     scanf("%s", parking->address);
     scanf("%s", parking->municipality);
     scanf("%f", &parking->price);
-    scanf("%s", &parking->agentCIN);
+    scanf("%s", parking->agentCIN);
     scanf("%d", &parking->hasElectricCharger);
     for (i = 0; i < 4; i++) {
         scanf("%d", &parking->vehicules[i]);
