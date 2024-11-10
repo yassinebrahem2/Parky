@@ -88,12 +88,14 @@ void deleteParking(char *dir, char IDparking[8]) {
     Parking parking;
     char vehiculeCode[4];
     FILE* parkingFile = fopen(dir, "r");
+    printf("DELETING...");
     while(scanParking(parkingFile, &parking) != EOF) {
             if (strcmp(parking.ID, IDparking) != 0) {
                 getVehicules(parking.vehicules, vehiculeCode);
                 addParking("temp.txt", parking);
             }
     }
+    printf("DONE...");
     fclose(parkingFile);
     remove(dir);
     rename("temp.txt", dir);
