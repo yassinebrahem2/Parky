@@ -37,11 +37,11 @@ void getParking(Parking *parking) {
 */
 
 void printParking(Parking parking) {
-    int n, i = 0;
+    int n, i;
     strcpy(parking.ID, "123");
     parking.numberOfSpots = 10;
     strcpy(parking.address, "adres");
-    strcpy(parking.address, "munic");
+    strcpy(parking.municipality, "munic");
     parking.price = 100;
     strcpy( parking.agentCIN, "idagent69");
     parking.hasElectricCharger = 1;
@@ -73,7 +73,7 @@ void printParking(Parking parking) {
         parking.price, parking.agentCIN,
         parking.hasElectricCharger);
     printf("Vehicules: \n");
-    for (i = 0; i < n; i++) {
+    for (i = 0; i < 4; i++) {
         printf("  %d\n", parking.vehicules[i]);
     }
 }
