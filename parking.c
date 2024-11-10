@@ -94,18 +94,27 @@ void addParking(char dir[], Parking newParking) {
 void printParkings(char dir[]) {
     int i;
     Parking parking;
+    char vehiculeCode[4];
     FILE* parkingFile = fopen(dir, "r");
 
-    while (fscanf(parkingFile, "%s %d %s %s %f %s %d%d%d%d %d\n",
+    while (fscanf(parkingFile, "%s %d %s %s %f %s %s %d\n",
         parking.ID, &parking.numberOfSpots,
         parking.address, parking.municipality,
         &parking.price, parking.agentCIN,
-        &parking.vehicules[0], &parking.vehicules[1],
-        &parking.vehicules[2], &parking.vehicules[3],
-        &parking.hasElectricCharger) != EOF) {
+        vehiculeCode, &parking.hasElectricCharger) != EOF) {
+        getVehicules(parking.vehicules, vehiculeCode);
         printParking(parking);
     }
     fclose(parkingFile);
+}
+
+void getVehicules(int vehicules[4], char vehiculeCode[4]) {
+    int i;
+    for(i = 0; i < 4; i++) {
+        if (strcmp(vehiculeCode[i], "1")) {
+            vehicules[i] = 1;
+        }
+    }
 }
 /*
 void deleteParking(int IDparking) {
