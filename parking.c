@@ -84,19 +84,19 @@ void getVehicules(int vehicules[4], char vehiculeCode[4]) {
         vehicules[i] = vehiculeCode[i] - '0';
     }
 }
-/*
-void deleteParking(int IDparking) {
+void deleteParking(char IDparking[8]) {
+    Parking parking;
+    char vehiculeCode[4];
     FILE* parkingFile1 = fopen("parking1.txt", "w");
     FILE* parkingFile = fopen("parking.txt", "r");
-    Parking currentParking;
-    while(fscanf(parkingFile, "%c %d %c %c %f %d %c %d\n",
-        &currentParking.ID, &currentParking.numberOfSpots,
-        currentParking.address, currentParking.municipality,
-        &currentParking.price, &currentParking.agentCIN,
-        currentParking.vehicules, &currentParking.hasElectricCharger
-        ) != EOF) {
-            if (*currentParking.ID != IDparking) {
-                addParking("parking1.txt", currentParking);
+    while(fscanf(parkingFile, "%s %d %s %s %f %s %s %d\n",
+        parking.ID, &parking.numberOfSpots,
+        parking.address, parking.municipality,
+        &parking.price, parking.agentCIN,
+        vehiculeCode, &parking.hasElectricCharger) != EOF) {
+            if (*parking.ID != IDparking) {
+                getVehicules(parking.vehicules, vehiculeCode);
+                addParking("parking1.txt", parking);
             }
         }
     fclose(parkingFile1);
@@ -104,6 +104,7 @@ void deleteParking(int IDparking) {
     rename("parking1.txt", "parking.txt");
 }
 
+/*
 void modifyParking(Parking modifiedParking) {
     FILE* parkingFile1 = fopen("parking1.txt", "w");
     FILE* parkingFile = fopen("parking.txt", "r");
