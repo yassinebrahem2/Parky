@@ -38,6 +38,7 @@ void getParking(Parking *parking) {
 
 void printParking(Parking parking) {
     int n, i;
+    char vehiculeNames[3][10] = {"Voiture", "Camion", "Moto", "Velo"};
     strcpy(parking.ID, "123");
     parking.numberOfSpots = 10;
     strcpy(parking.address, "adres");
@@ -49,24 +50,6 @@ void printParking(Parking parking) {
     parking.vehicules[1] = 1;
     parking.vehicules[2] = 1;
     parking.vehicules[3] = 1;
-/*
-
-    if (vehiculeCode[0] == "1") {
-        parking.vehicules[n] = "Voiture";
-        n++;
-    }
-    if (vehiculeCode[1] == "1") {
-        parking.vehicules[n] = "Camion";
-        n++;
-    }
-    if (vehiculeCode[2] == "1") {
-        parking.vehicules[n] = "Moto";
-        n++;
-    }
-    if (vehiculeCode[3] == "1") {
-        parking.vehicules[n] = "Velo";
-        n++;
-    }*/
     printf("ID: %s\nNSpots: %d\nAddress: %s\nMunic: %s\nPrice: %f\nAgent: %s\nElect: %d\n",
         parking.ID, parking.numberOfSpots,
         parking.address, parking.municipality,
@@ -74,7 +57,9 @@ void printParking(Parking parking) {
         parking.hasElectricCharger);
     printf("Vehicules: \n");
     for (i = 0; i < 4; i++) {
-        printf("  %d\n", parking.vehicules[i]);
+        if (parking.vehicules[i] == 1) {
+            printf("  %d\n", vehiculeNames[i]);
+        }
     }
 }
 /*
