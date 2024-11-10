@@ -2,7 +2,7 @@
 #include "parking.h"
 
 
-void getParkingNumber(char dir[], int* n) {
+void getParkingNumber(char *dir, int* n) {
     Parking parking;
     FILE* file = fopen(dir, "r");
     while (fscanf(file, "%s %d %s %s %f %s %d %d\n",
@@ -46,7 +46,7 @@ void printParking(Parking parking) {
     }
 }
 
-void addParking(char dir[], Parking newParking) {
+void addParking(char *dir, Parking newParking) {
     FILE* parkingFile = fopen(dir, "a");
 
     fprintf(parkingFile, "%s %d %s %s %f %s %d%d%d%d %d\n",
@@ -60,7 +60,7 @@ void addParking(char dir[], Parking newParking) {
     fclose(parkingFile);
 }
 
-void printParkings(char dir[]) {
+void printParkings(char *dir) {
     int i;
     Parking parking;
     char vehiculeCode[4];
@@ -84,11 +84,11 @@ void getVehicules(int vehicules[4], char vehiculeCode[4]) {
         vehicules[i] = vehiculeCode[i] - '0';
     }
 }
-void deleteParking(char IDparking[8]) {
+void deleteParking(char *dir, char IDparking[8]) {
     Parking parking;
     char vehiculeCode[4];
-    FILE* parkingFile1 = fopen("parking1.txt", "w");
-    FILE* parkingFile = fopen("parking.txt", "r");
+    FILE* parkingFile1 = fopen("temp.txt", "w");
+    FILE* parkingFile = fopen(dir, "r");
     while(fscanf(parkingFile, "%s %d %s %s %f %s %s %d\n",
         parking.ID, &parking.numberOfSpots,
         parking.address, parking.municipality,
@@ -98,33 +98,34 @@ void deleteParking(char IDparking[8]) {
                 getVehicules(parking.vehicules, vehiculeCode);
                 addParking("parking1.txt", parking);
             }
-        }
+    }
     fclose(parkingFile1);
     fclose(parkingFile);
-    rename("parking1.txt", "parking.txt");
+    rename("temp.txt", dir);
 }
 
-/*
-void modifyParking(Parking modifiedParking) {
+void modifyParking(char *dir, Parking modifiedParking) {
     FILE* parkingFile1 = fopen("parking1.txt", "w");
     FILE* parkingFile = fopen("parking.txt", "r");
-    Parking currentParking;
-    while(fscanf(parkingFile, "%c %d %c %c %f %d %c %d",
-        &currentParking.ID, &currentParking.numberOfSpots,
-        currentParking.address, currentParking.municipality,
-        &currentParking.price, &currentParking.agentCIN,
-        currentParking.vehicules, &currentParking.hasElectricCharger
-        ) != EOF) {
-            if (currentParking.ID != modifiedParking.ID) {
-                addParking("parking1.txt", currentParking);
+    Parking parking;
+    char vehiculeCode[4];
+    while(fscanf(parkingFile, "%s %d %s %s %f %s %s %d\n",
+        parking.ID, &parking.numberOfSpots,
+        parking.address, parking.municipality,
+        &parking.price, parking.agentCIN,
+        vehiculeCode, &parking.hasElectricCharger) != EOF) {
+            if (strcmp(parking.ID, modifiedParking.ID) != 0) {
+                addParking("parking1.txt", parking);
             } else {
                 addParking("parking1.txt", modifiedParking);
             }
         }
     fclose(parkingFile1);
     fclose(parkingFile);
+    remove("parking.txt");
     rename("parking1.txt", "parking.txt");
 }
+/*
 void sortParking(char attribute) {
     int n, i, j;
     Parking currentParking;
