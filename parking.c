@@ -103,10 +103,7 @@ void printParkings(char dir[]) {
         &parking.price, parking.agentCIN,
         vehiculeCode, &parking.hasElectricCharger) != EOF) {
         printf("VEHICULE CODE:%s\n", vehiculeCode);
-        for (int i = 0; i < 4; i++) {
-            parking.vehicules[i] = vehiculeCode[i] - '0';
-        }
-        //getVehicules(parking.vehicules, vehiculeCode);
+        getVehicules(parking.vehicules, vehiculeCode);
         printParking(parking);
     }
     fclose(parkingFile);
@@ -114,10 +111,8 @@ void printParkings(char dir[]) {
 
 void getVehicules(int vehicules[4], char vehiculeCode[4]) {
     int i;
-    for(i = 0; i < 4; i++) {
-        if (strcmp(&vehiculeCode[i], "1") == 0) {
-            vehicules[i] = 1;
-        }
+    for (int i = 0; i < 4; i++) {
+        vehicules[i] = vehiculeCode[i] - '0';
     }
 }
 /*
