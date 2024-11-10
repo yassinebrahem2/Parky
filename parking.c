@@ -99,8 +99,8 @@ void printParkings(char dir[]) {
         parking.ID, &parking.numberOfSpots,
         parking.address, parking.municipality,
         &parking.price, parking.agentCIN,
-        parking.vehicules[0], parking.vehicules[1],
-        parking.vehicules[2], parking.vehicules[3],
+        &parking.vehicules[0], &parking.vehicules[1],
+        &parking.vehicules[2], &parking.vehicules[3],
         &parking.hasElectricCharger) != EOF) {
             printParking(parking);
         }
