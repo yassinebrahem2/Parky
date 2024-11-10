@@ -12,7 +12,7 @@ void main() {
     parking.numberOfSpots = 10;
     strcpy(parking.address, "adres");
     strcpy(parking.municipality, "munic");
-    parking.price = 100;
+    parking.price = 50;
     strcpy( parking.agentCIN, "idagent69");
     parking.hasElectricCharger = 1;
     parking.vehicules[0] = 1;
@@ -27,6 +27,7 @@ void main() {
     //addParking("parking.txt", parking);
     //printParkings(dir);
     deleteParking(dir, "3C");
+    modifyParking(dir, parking);
 
 }
 
