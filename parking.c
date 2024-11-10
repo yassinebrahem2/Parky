@@ -48,9 +48,7 @@ void printParking(Parking parking) {
     }
 }
 
-void addParking(char *dir, Parking newParking) {
-    FILE* parkingFile = fopen(dir, "a");
-
+void addParking(FILE *parkingFile, Parking newParking) {
     fprintf(parkingFile, "%s %d %s %s %f %s %d%d%d%d %d\n",
             newParking.ID, newParking.numberOfSpots,
             newParking.address, newParking.municipality,
@@ -59,7 +57,6 @@ void addParking(char *dir, Parking newParking) {
             newParking.vehicules[2], newParking.vehicules[3],
             newParking.hasElectricCharger
             );
-    fclose(parkingFile);
 }
 
 void printParkings(char *dir) {
@@ -87,11 +84,12 @@ void getVehicules(int vehicules[4], char vehiculeCode[4]) {
 void deleteParking(char *dir, char IDparking[8]) {
     Parking parking;
     char vehiculeCode[4];
-    FILE* parkingFile = fopen(dir, "r");
+    FILE *parkingFile = fopen(dir, "r");
+    FILE *tempFile = fopen("temp.txt", "r");
     printf("DELETING...");
     while(scanParking(parkingFile, &parking) != EOF) {
             if (strcmp(parking.ID, IDparking) != 0) {
-                addParking("temp.txt", parking);
+                addParking(tempFile, parking);
             }
     }
     printf("DONE...");
