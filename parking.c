@@ -4,7 +4,6 @@
 
 int getParkingNumber(char *dir, int* n) {
     Parking parking;
-    printf("%s", dir);
     FILE* parkingFile = fopen(dir, "r");
     if (parkingFile == NULL) {
         perror("Error opening file");
@@ -14,6 +13,7 @@ int getParkingNumber(char *dir, int* n) {
     while (scanParking(parkingFile, &parking) != EOF) {
         *n += 1;
     }
+    fclose(parkingFile);
 }
 
 void getParking(Parking *parking) {
