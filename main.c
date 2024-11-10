@@ -7,7 +7,7 @@
 void main() {
     int n;
     Parking parking;
-    char dir[] = "parking.txt";
+    char *dir = "parking.txt";
     strcpy(parking.ID, "123");
     parking.numberOfSpots = 10;
     strcpy(parking.address, "adres");
@@ -23,10 +23,9 @@ void main() {
     //int userInput;
     getParkingNumber("parking.txt", &n);
     printf("\n\n%d\n\n", n);
-    //printParking(parking);
     //addParking("parking.txt", parking);
-    //printParkings(dir);
-    deleteParking(dir, "3C");
+    printParkings(dir);
+    deleteParking(dir, "3");
     modifyParking(dir, parking);
 
 }
