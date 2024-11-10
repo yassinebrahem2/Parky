@@ -112,6 +112,7 @@ void modifyParking(char *dir, Parking modifiedParking) {
         parking.address, parking.municipality,
         &parking.price, parking.agentCIN,
         vehiculeCode, &parking.hasElectricCharger) != EOF) {
+            getVehicules(parking.vehicules, vehiculeCode);
             if (strcmp(parking.ID, modifiedParking.ID) != 0) {
                 addParking("temp.txt", parking);
             } else {
