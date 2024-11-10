@@ -24,7 +24,7 @@ void printParking(Parking parking);
 void printParkings(char dir[]);
 void getVehicules(int vehicules[4], char vehiculeCode[4]);
 void addParking(char dir[], Parking newParking);
-void deleteParking(int IDparking);
+void deleteParking(char IDparking[8]);
 void modifyParking(Parking modifiedParking);
 void sortParking(char attribute);
 #endif
