@@ -17,7 +17,7 @@ typedef struct {
     int hasElectricCharger;
 } Parking;
 
-
+int scanParking(FILE *parkingFile, Parking *parking);
 void getParkingNumber(char *dir, int* n);
 void getParking(Parking *parking);
 void printParking(Parking parking);
@@ -26,6 +26,7 @@ void getVehicules(int vehicules[4], char vehiculeCode[4]);
 void addParking(char *dir, Parking newParking);
 void deleteParking(char *dir, char IDparking[8]);
 void modifyParking(char *dir, Parking modifiedParking);
-void sortParking(char attribute);
+void createSortFile(char *dir);
+void sortParking(char *dir, char attribute);
 
 #endif
