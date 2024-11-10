@@ -7,7 +7,7 @@
 void main() {
     int n;
     Parking parking;
-    char *dir = "parking.txt";
+    char dir[] = "parking.txt";
     strcpy(parking.ID, "123");
     parking.numberOfSpots = 10;
     strcpy(parking.address, "adres");
