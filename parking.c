@@ -16,9 +16,6 @@ void getParkingNumber(char dir[], int* n) {
     }
 }
 
-void print() {
-    printf("HelloWorld!");
-}
 /*
 void getParking(Parking *parking) {
     int i;
@@ -39,17 +36,7 @@ void getParking(Parking *parking) {
 void printParking(Parking parking) {
     int n, i;
     char vehiculeNames[4][10] = {"Voiture", "Camion", "Moto", "Velo"};
-    strcpy(parking.ID, "123");
-    parking.numberOfSpots = 10;
-    strcpy(parking.address, "adres");
-    strcpy(parking.municipality, "munic");
-    parking.price = 100;
-    strcpy( parking.agentCIN, "idagent69");
-    parking.hasElectricCharger = 1;
-    parking.vehicules[0] = 1;
-    parking.vehicules[1] = 1;
-    parking.vehicules[2] = 1;
-    parking.vehicules[3] = 1;
+    
     printf("ID: %s\nNSpots: %d\nAddress: %s\nMunic: %s\nPrice: %f\nAgent: %s\nElect: %d\n",
         parking.ID, parking.numberOfSpots,
         parking.address, parking.municipality,
