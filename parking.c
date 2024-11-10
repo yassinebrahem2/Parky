@@ -95,7 +95,7 @@ void deleteParking(char *dir, char IDparking[8]) {
     printf("DELETING...");
     while(scanParking(parkingFile, &parking) != EOF) {
             if (strcmp(parking.ID, IDparking) != 0) {
-                addParking(tempFile, parking);
+                printParking(tempFile, parking);
             }
     }
     printf("DONE...");
