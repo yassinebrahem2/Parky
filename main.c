@@ -5,8 +5,6 @@
 
 
 void main() {
-
-
     Parking parking;
     strcpy(parking.ID, "123");
     parking.numberOfSpots = 10;
@@ -20,11 +18,11 @@ void main() {
     parking.vehicules[2] = 1;
     parking.vehicules[3] = 1;
 
-    printParking(parking);
     //int userInput;
     //getParking(&parking);
     //printParking(p);
     addParking("parking.txt", parking);
+    printParkings("parking.txt");
 
 }
 
