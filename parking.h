@@ -20,10 +20,11 @@ typedef struct {
 int scanParking(FILE *parkingFile, Parking *parking);
 int getParkingNumber(char *dir, int* n);
 void getParking(Parking *parking);
-void printParking(Parking parking);
+void displayParking(Parking parking);
 void printParkings(char *dir);
 void getVehicules(int vehicules[4], char vehiculeCode[4]);
-void addParking(FILE *parkingFile, Parking newParking);
+void printParking(FILE *parkingFile, Parking parking);
+void addParking(char *dir, Parking parking);
 void deleteParking(char *dir, char IDparking[8]);
 void modifyParking(char *dir, Parking modifiedParking);
 void createSortFile(char *dir);
