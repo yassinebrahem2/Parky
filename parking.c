@@ -56,7 +56,7 @@ void printParking(Parking parking) {
         parking.price, parking.agentCIN,
         parking.hasElectricCharger);
     printf("Vehicules: \n");
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < 5; i++) {
         if (parking.vehicules[i] == 1) {
             printf("  %s\n", vehiculeNames[i]);
         }
