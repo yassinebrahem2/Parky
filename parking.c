@@ -88,11 +88,7 @@ void deleteParking(char *dir, char IDparking[8]) {
     Parking parking;
     char vehiculeCode[4];
     FILE* parkingFile = fopen(dir, "r");
-    while(fscanf(parkingFile, "%s %d %s %s %f %s %s %d\n",
-        parking.ID, &parking.numberOfSpots,
-        parking.address, parking.municipality,
-        &parking.price, parking.agentCIN,
-        vehiculeCode, &parking.hasElectricCharger) != EOF) {
+    while(scanParking(parkingFile, &parking) != EOF) {
             if (strcmp(parking.ID, IDparking) != 0) {
                 getVehicules(parking.vehicules, vehiculeCode);
                 addParking("temp.txt", parking);
@@ -123,23 +119,57 @@ void modifyParking(char *dir, Parking modifiedParking) {
     remove(dir);
     rename("temp.txt", dir);
 }
-/*
-void sortParking(char attribute) {
-    int n, i, j;
-    Parking currentParking;
-    Parking selectedParking;
-    getParkingNumber("parkingList.txt", &n);
-    FILE* parkingList1 = fopen("parkingList1.txt", "w");
-    for(i = 0; i < n; i++) {
-        FILE* parkingList = fopen("parkingList.txt", "r");
+
+void sortParking(char *dir, char attribute) {
+    int n, i, j, sorted = 0;
+    Parking parking1;
+    Parking parking2;
+    char vehiculeCode1[4], vehiculeCode2[4];
+    getParkingNumber(dir, &n);
+    createSortFile(dir);
+
+    while(!sorted) {
+        sorted = 1;
+        FILE* parkingFile = fopen(dir, "r");
         for(j = 0; j < n; j++) {
-            fscanf(parkingList, "%c %d %c %c %f %d %c %d\n",
-            &currentParking.ID, &currentParking.numberOfSpots,
-            currentParking.address, currentParking.municipality,
-            &currentParking.price, &currentParking.agentCIN,
-            currentParking.vehicules, &currentParking.hasElectricCharger);
+            fscanf(parkingFile, "%s %d %s %s %f %s %s %d\n",
+                parking1.ID, &parking1.numberOfSpots,
+                parking1.address, parking1.municipality,
+                &parking1.price, parking1.agentCIN,
+                vehiculeCode1, &parking1.hasElectricCharger);
+            
+            fscanf(parkingFile, "%s %d %s %s %f %s %s %d\n",
+                parking2.ID, &parking2.numberOfSpots,
+                parking2.address, parking2.municipality,
+                &parking2.price, parking2.agentCIN,
+                vehiculeCode2, &parking2.hasElectricCharger);
+            
         }
     }
 }
-*/
 
+void createSortFile(char *dir) {
+    char ch;
+    FILE *sortedFile = fopen("sorted.txt", "w");
+    FILE *parkingFile = fopen(dir, "r");
+    while ((ch = fgetc(parkingFile)) != EOF) {
+        fputc(ch, sortedFile);
+    }
+    fclose(parkingFile);
+    fclose(sortedFile);
+}
+
+int scanParking(FILE *parkingFile, Parking *parking) {
+    char vehiculeCode[4];
+    char vehiculeNames[4][20] = {"Voiture", "Camion", "Moto", "Velo"};
+    int val = fscanf(parkingFile, "%s %d %s %s %f %s %s %d\n",
+    parking->ID, &parking->numberOfSpots,
+    parking->address, parking->municipality,
+    &parking->price, parking->agentCIN,
+    vehiculeCode, &parking->hasElectricCharger);
+    if (val > 0) {
+        getVehicules(&parking->vehicules, vehiculeNames);
+    }
+    return val;
+
+}
