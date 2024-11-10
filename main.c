@@ -22,9 +22,10 @@ void main() {
     //int userInput;
     getParkingNumber("parking.txt", &n);
     printf("\n\n%d\n\n", n);
-    printParking(parking);
+    //printParking(parking);
     //addParking("parking.txt", parking);
     printParkings("parking.txt");
+    deleteParking("69F");
 
 }
 
