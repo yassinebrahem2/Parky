@@ -26,5 +26,4 @@ void addParking(char dir[], Parking newParking);
 void deleteParking(int IDparking);
 void modifyParking(Parking modifiedParking);
 void sortParking(char attribute);
-void print();
 #endif
