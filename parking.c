@@ -94,7 +94,7 @@ void addParking(char dir[], Parking newParking) {
 void printParkings(char dir[]) {
     int i;
     Parking parking;
-    FILE* parkingFile = fopen(dir, "a");
+    FILE* parkingFile = fopen(dir, "r");
 
     //while (fscanf(parkingFile, "%s %d %s %s %f %s %d%d%d%d %d\n",
     //    parking.ID, &parking.numberOfSpots,
