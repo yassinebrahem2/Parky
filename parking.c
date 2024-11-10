@@ -94,7 +94,7 @@ void deleteParking(char IDparking[8]) {
         parking.address, parking.municipality,
         &parking.price, parking.agentCIN,
         vehiculeCode, &parking.hasElectricCharger) != EOF) {
-            if (*parking.ID != IDparking) {
+            if (strcmp(parking.ID, IDparking) != 0) {
                 getVehicules(parking.vehicules, vehiculeCode);
                 addParking("parking1.txt", parking);
             }
