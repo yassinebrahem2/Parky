@@ -111,7 +111,7 @@ void printParkings(char dir[]) {
 void getVehicules(int vehicules[4], char vehiculeCode[4]) {
     int i;
     for(i = 0; i < 4; i++) {
-        if (strcmp(vehiculeCode[i], "1")) {
+        if (strcmp(&vehiculeCode[i], "1")) {
             vehicules[i] = 1;
         }
     }
