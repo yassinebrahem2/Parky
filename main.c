@@ -5,9 +5,10 @@
 
 
 void main() {
+    printf("HELLOOOO");
     int n;
     Parking parking;
-    char dir[] = "parking.txt";
+    char dir[] = "Parking.txt";
     strcpy(parking.ID, "123");
     parking.numberOfSpots = 10;
     strcpy(parking.address, "adres");
