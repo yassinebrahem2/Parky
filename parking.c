@@ -101,6 +101,7 @@ void deleteParking(char *dir, char IDparking[8]) {
     }
     fclose(tempFile);
     fclose(parkingFile);
+    remove(dir);
     rename("temp.txt", dir);
 }
 
