@@ -126,11 +126,14 @@ void modifyParking(char *dir, Parking modifiedParking) {
     rename("temp.txt", dir);
 }
 
-int price(Parking parking1, Parking parking2) {
-    return parking1.price > parking2.price;
+int price(Parking parking1, Parking parking2, int sup) {
+    if (sup) {
+        return parking1.price > parking2.price;
+    }
+    return parking1.price < parking2.price;
 }
 
-void sortParking(char *dir, int (*compare)(Parking, Parking), int ascending) {
+void sortParking(char *dir, int (*compare)(Parking, Parking, int), int ascending) {
     int n, i, j, sorted = 0;
     Parking parking1;
     Parking parking2;
@@ -143,24 +146,13 @@ void sortParking(char *dir, int (*compare)(Parking, Parking), int ascending) {
 
         scanParking(sortedFile, &parking1);
         while(scanParking(sortedFile, &parking2) != EOF) {
-            if (ascending) {
-                if (compare(parking1, parking2)) {
-                    sorted = 0;
-                    printParking(tempFile, parking2);
-                } else {
-                    printParking(tempFile, parking1);
-                    swapParking(&parking1, &parking2);
-                }
+            if (compare(parking1, parking2, ascending)) {
+                sorted = 0;
+                printParking(tempFile, parking2);
             } else {
-                if (!compare(parking1, parking2)) {
-                    sorted = 0;
-                    printParking(tempFile, parking2);
-                } else {
-                    printParking(tempFile, parking1);
-                    swapParking(&parking1, &parking2);
-                }
+                printParking(tempFile, parking1);
+                swapParking(&parking1, &parking2);
             }
-            
         }
         printParking(tempFile, parking1);
         fclose(sortedFile);
