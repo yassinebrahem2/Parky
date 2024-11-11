@@ -28,8 +28,8 @@ void addParking(char *dir, Parking parking);
 void deleteParking(char *dir, char IDparking[8]);
 void modifyParking(char *dir, Parking modifiedParking);
 void createSortFile(char *dir);
-int price(Parking parking1, Parking parking2);
-void sortParking(char *dir, int (*compare)(Parking, Parking), int ascending);
+int price(Parking parking1, Parking parking2, int sup);
+void sortParking(char *dir, int (*compare)(Parking, Parking, int), int ascending);
 void swapParking(Parking *parking1, Parking *parking2);
 
 #endif
