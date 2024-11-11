@@ -132,50 +132,30 @@ void sortParking(char *dir) {
     Parking parking2;
     getParkingNumber(dir, &n);
     createSortFile(dir);
-    sorted = 1;
-    FILE *sortedFile = fopen("sorted.txt", "r");
-    FILE *tempFile = fopen("temp.txt", "w");
+    while(!sorted) {
+        sorted = 1;
+        FILE *sortedFile = fopen("sorted.txt", "r");
+        FILE *tempFile = fopen("temp.txt", "w");
 
-    scanParking(sortedFile, &parking1);
-    while(scanParking(sortedFile, &parking2) != EOF) {
-        printf("%f   /   %f\n", parking1.price, parking2.price);
-        if (parking1.price < parking2.price) {
-            
-            sorted = 0;
-            printParking(tempFile, parking2);
-        } else {
-            printf("SWITCHING\n");
-            printParking(tempFile, parking1);
-            swapParking(&parking1, &parking2);
+        scanParking(sortedFile, &parking1);
+        while(scanParking(sortedFile, &parking2) != EOF) {
+            printf("%f   /   %f\n", parking1.price, parking2.price);
+            if (parking1.price < parking2.price) {
+                
+                sorted = 0;
+                printParking(tempFile, parking2);
+            } else {
+                printf("SWITCHING\n");
+                printParking(tempFile, parking1);
+                swapParking(&parking1, &parking2);
+            }
         }
+        printParking(tempFile, parking1);
+        fclose(sortedFile);
+        fclose(tempFile);
+        remove("sorted.txt");
+        rename("temp.txt", "sorted.txt");
     }
-    printParking(tempFile, parking1);
-    fclose(sortedFile);
-    fclose(tempFile);
-    remove("sorted.txt");
-    rename("temp.txt", "sorted.txt");
-    // while(!sorted) {
-    //     sorted = 1;
-    //     FILE *sortedFile = fopen("sorted.txt", "r");
-    //     FILE *tempFile = fopen("temp.txt", "w");
-
-    //     scanParking(sortedFile, &parking1);
-    //     for(j = 0; j < n; j++) {
-    //         scanParking(sortedFile, &parking2);
-
-    //         if (parking2.price > parking1.price) {
-    //             sorted = 0;
-    //             printParking(tempFile, parking2);
-    //         } else if (parking2.price <= parking1.price) {
-    //             printParking(tempFile, parking1);
-    //             swapParking(&parking1, &parking2);
-    //         }
-    //     }
-    //     fclose(sortedFile);
-    //     fclose(tempFile);
-    //     remove("sorted.txt");
-    //     rename("temp.txt", "sorted.txt");
-    // }
 }
 
 void swapParking(Parking *parking1, Parking *parking2) {
