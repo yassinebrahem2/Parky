@@ -29,6 +29,7 @@ void main() {
     //deleteParking(dir, "3");
     //modifyParking(dir, parking);
     sortParking(dir);
+    printf("\n\n%d\n\n", n);
 
     //createSortFile(dir);
 
