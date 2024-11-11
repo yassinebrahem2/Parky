@@ -63,7 +63,7 @@ void filterByPrice(char *dir, int startValue, int endValue);
 void filterBySpots(char *dir, int startValue, int endValue);
 void filterbyVehicule(char *dir, int vehicules[4]);
 void filterbyHasElectricCharger(char *dir, int hasElectricCharger);
-void filterByText(char *dir, char *text, int (*compare)(Parking, char, int));
+void filterByText(char *dir, char *text, int (*compare)(Parking, char *, int));
 int compareAttribute(Parking parking, char *text, int attributeNumber);
 int validString(char *string1, char *string2);
 
