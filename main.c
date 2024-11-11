@@ -21,13 +21,14 @@ void main() {
     parking.vehicules[3] = 1;
 
     //int userInput;
-    getParkingNumber("Parking.txt", &n);
+    getParkingNumber(dir, &n);
     printf("\n\n%d\n\n", n);
 
     //addParking(dir, parking);
     // printParkings(dir);
     //deleteParking(dir, "3");
-    modifyParking(dir, parking);
+    //modifyParking(dir, parking);
+    sortParking(dir);
 
 }
 
