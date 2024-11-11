@@ -130,7 +130,7 @@ int price(Parking parking1, Parking parking2) {
     return parking1.price > parking2.price;
 }
 
-void sortParking(char *dir, int (*compare)(Parking, Parking)) {
+void sortParking(char *dir, int (*compare)(Parking, Parking), int ascending) {
     int n, i, j, sorted = 0;
     Parking parking1;
     Parking parking2;
@@ -143,13 +143,24 @@ void sortParking(char *dir, int (*compare)(Parking, Parking)) {
 
         scanParking(sortedFile, &parking1);
         while(scanParking(sortedFile, &parking2) != EOF) {
-            if (compare(parking1, parking2)) {
-                sorted = 0;
-                printParking(tempFile, parking2);
+            if (ascending) {
+                if (compare(parking1, parking2)) {
+                    sorted = 0;
+                    printParking(tempFile, parking2);
+                } else {
+                    printParking(tempFile, parking1);
+                    swapParking(&parking1, &parking2);
+                }
             } else {
-                printParking(tempFile, parking1);
-                swapParking(&parking1, &parking2);
+                if (!compare(parking1, parking2)) {
+                    sorted = 0;
+                    printParking(tempFile, parking2);
+                } else {
+                    printParking(tempFile, parking1);
+                    swapParking(&parking1, &parking2);
+                }
             }
+            
         }
         printParking(tempFile, parking1);
         fclose(sortedFile);
