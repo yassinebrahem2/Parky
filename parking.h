@@ -17,19 +17,38 @@ typedef struct {
     int hasElectricCharger;
 } Parking;
 
-int scanParking(FILE *parkingFile, Parking *parking);
-int getParkingNumber(char *dir, int* n);
+typedef struct {
+    char cin;
+} Agent;
+
 void getParking(Parking *parking);
+
 void displayParking(Parking parking);
 void displayParkings(char *dir);
-void getVehicules(int vehicules[4], char vehiculeCode[4]);
+
+int scanParking(FILE *parkingFile, Parking *parking);
 void printParking(FILE *parkingFile, Parking parking);
+void getVehicules(int vehicules[4], char vehiculeCode[4]);
+
 void addParking(char *dir, Parking parking);
 void deleteParking(char *dir, char IDparking[8]);
 void modifyParking(char *dir, Parking modifiedParking);
-void createSortFile(char *dir);
-int price(Parking parking1, Parking parking2, int sup);
-void sortParking(char *dir, int (*compare)(Parking, Parking, int), int ascending);
+
+int getParkingNumber(char *dir, int* n);
 void swapParking(Parking *parking1, Parking *parking2);
+
+int priceInRange(Parking parking1, Parking parking2, int sup);
+int spotsInRange(Parking parking1, Parking parking2, int sup);
+
+void createSortFile(char *dir);
+void sortParking(char *dir, int (*compare)(Parking, Parking, int), int ascending);
+
+void filterByPrice(char *dir, int startValue, int endValue);
+void filterBySpots(char *dir, int startValue, int endValue);
+void filterbyVehicule(char *dir, int vehicules[4]);
+void filterbyHasElectricCharger(char *dir, int hasElectricCharger);
+void filterByText(char *dir, char *text, int (*compare)(Parking, char, int));
+int compareAttribute(Parking parking, char *text, int attributeNumber);
+int validString(char *string1, char *string2);
 
 #endif
