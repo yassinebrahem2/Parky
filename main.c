@@ -28,8 +28,7 @@ void main() {
     // printParkings(dir);
     //deleteParking(dir, "3");
     //modifyParking(dir, parking);
-    sortParking(dir);
-    printf("\n\n%d\n\n", n);
+    sortParking(dir, price);
 
     //createSortFile(dir);
 
