@@ -137,8 +137,7 @@ void sortParking(char *dir) {
     FILE *tempFile = fopen("temp.txt", "w");
 
     scanParking(sortedFile, &parking1);
-    for(j = 0; j < n-1; j++) {
-        scanParking(sortedFile, &parking2);
+    while(scanParking(sortedFile, &parking2) != EOF) {
         printf("%f   /   %f\n", parking1.price, parking2.price);
         if (parking1.price < parking2.price) {
             printf("SWITCHING\n");
