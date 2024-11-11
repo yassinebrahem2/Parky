@@ -126,32 +126,41 @@ void modifyParking(char *dir, Parking modifiedParking) {
     rename("temp.txt", dir);
 }
 
-void sortParking(char *dir, char attribute) {
+void sortParking(char *dir) {
     int n, i, j, sorted = 0;
     Parking parking1;
     Parking parking2;
-    char vehiculeCode1[4], vehiculeCode2[4];
     getParkingNumber(dir, &n);
     createSortFile(dir);
 
     while(!sorted) {
         sorted = 1;
-        FILE* parkingFile = fopen(dir, "r");
+        FILE *sortedFile = fopen("sorted.txt", "r");
+        FILE *tempFile = fopen("temp.txt", "w");
+
+        scanParking(sortedFile, &parking1);
         for(j = 0; j < n; j++) {
-            fscanf(parkingFile, "%s %d %s %s %f %s %s %d\n",
-                parking1.ID, &parking1.numberOfSpots,
-                parking1.address, parking1.municipality,
-                &parking1.price, parking1.agentCIN,
-                vehiculeCode1, &parking1.hasElectricCharger);
-            
-            fscanf(parkingFile, "%s %d %s %s %f %s %s %d\n",
-                parking2.ID, &parking2.numberOfSpots,
-                parking2.address, parking2.municipality,
-                &parking2.price, parking2.agentCIN,
-                vehiculeCode2, &parking2.hasElectricCharger);
-            
+            scanParking(sortedFile, &parking2);
+
+            if (parking2.price > parking1.price) {
+                sorted = 0;
+                printParking(tempFile, parking2);
+            } else if (parking2.price <= parking1.price) {
+                printParking(tempFile, parking1);
+                swapParking(&parking1, &parking2);
+            }
         }
+        fclose(sortedFile);
+        fclose(tempFile);
+        remove("sorted.txt");
+        rename("temp.txt", "sorted.txt");
     }
+}
+
+void swapParking(Parking *parking1, Parking *parking2) {
+    Parking temp = *parking1;
+    *parking1 = *parking2;
+    *parking2 = temp;
 }
 
 void createSortFile(char *dir) {
@@ -167,7 +176,6 @@ void createSortFile(char *dir) {
 
 int scanParking(FILE *parkingFile, Parking *parking) {
     char vehiculeCode[4];
-    char vehiculeNames[4][20] = {"Voiture", "Camion", "Moto", "Velo"};
     int val = fscanf(parkingFile, "%s %d %s %s %f %s %s %d\n",
     parking->ID, &parking->numberOfSpots,
     parking->address, parking->municipality,
