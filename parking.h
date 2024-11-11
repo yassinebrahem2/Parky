@@ -21,13 +21,13 @@ int scanParking(FILE *parkingFile, Parking *parking);
 int getParkingNumber(char *dir, int* n);
 void getParking(Parking *parking);
 void displayParking(Parking parking);
-void printParkings(char *dir);
+void displayParkings(char *dir);
 void getVehicules(int vehicules[4], char vehiculeCode[4]);
 void printParking(FILE *parkingFile, Parking parking);
 void addParking(char *dir, Parking parking);
 void deleteParking(char *dir, char IDparking[8]);
 void modifyParking(char *dir, Parking modifiedParking);
 void createSortFile(char *dir);
-void sortParking(char *dir, char attribute);
+void sortParking(char *dir);
 
 #endif
