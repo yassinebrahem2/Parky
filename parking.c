@@ -126,14 +126,45 @@ void modifyParking(char *dir, Parking modifiedParking) {
     rename("temp.txt", dir);
 }
 
-int price(Parking parking1, Parking parking2, int sup) {
+int scanParking(FILE *parkingFile, Parking *parking) {
+    char vehiculeCode[4];
+    int val = fscanf(parkingFile, "%s %d %s %s %f %s %s %d\n",
+    parking->ID, &parking->numberOfSpots,
+    parking->address, parking->municipality,
+    &parking->price, parking->agentCIN,
+    vehiculeCode, &parking->hasElectricCharger);
+    if (val > 0) {
+        getVehicules(parking->vehicules, vehiculeCode);
+    }
+    return val;
+}
+
+int priceInRange(Parking parking1, Parking parking2, int sup) {
     if (sup) {
         return parking1.price > parking2.price;
     }
     return parking1.price < parking2.price;
 }
 
-void sortParking(char *dir, int (*compare)(Parking, Parking, int), int ascending) {
+int spotsInRange(Parking parking1, Parking parking2, int sup) {
+    if (sup) {
+        return parking1.numberOfSpots > parking2.numberOfSpots;
+    }
+    return parking1.numberOfSpots < parking2.numberOfSpots;
+}
+
+void createSortFile(char *dir) {
+    char ch;
+    FILE *sortedFile = fopen("sorted.txt", "w");
+    FILE *parkingFile = fopen(dir, "r");
+    while ((ch = fgetc(parkingFile)) != EOF) {
+        fputc(ch, sortedFile);
+    }
+    fclose(parkingFile);
+    fclose(sortedFile);
+}
+
+void sortParking(char *dir, int (*inRange)(Parking, Parking, int), int ascending) {
     int n, i, j, sorted = 0;
     Parking parking1;
     Parking parking2;
@@ -146,7 +177,7 @@ void sortParking(char *dir, int (*compare)(Parking, Parking, int), int ascending
 
         scanParking(sortedFile, &parking1);
         while(scanParking(sortedFile, &parking2) != EOF) {
-            if (compare(parking1, parking2, ascending)) {
+            if (inRange(parking1, parking2, ascending)) {
                 sorted = 0;
                 printParking(tempFile, parking2);
             } else {
@@ -168,27 +199,122 @@ void swapParking(Parking *parking1, Parking *parking2) {
     *parking2 = temp;
 }
 
-void createSortFile(char *dir) {
-    char ch;
-    FILE *sortedFile = fopen("sorted.txt", "w");
+void filterByPrice(char *dir, int startValue, int endValue) {
+    Parking parking;
+    FILE *filteredFile = fopen("filtered.txt", "w");
     FILE *parkingFile = fopen(dir, "r");
-    while ((ch = fgetc(parkingFile)) != EOF) {
-        fputc(ch, sortedFile);
+    while(scanParking(filteredFile, &parking) != EOF) {
+        if (parking.price >= startValue) {
+            if (endValue == 0) {
+                printParking(filteredFile, parking);
+            } else {
+                if (parking.price <= parking.price) {
+                    printParking(filteredFile, parking);
+                }
+            }
+        }
     }
+    fclose(filteredFile);
     fclose(parkingFile);
-    fclose(sortedFile);
 }
 
-int scanParking(FILE *parkingFile, Parking *parking) {
-    char vehiculeCode[4];
-    int val = fscanf(parkingFile, "%s %d %s %s %f %s %s %d\n",
-    parking->ID, &parking->numberOfSpots,
-    parking->address, parking->municipality,
-    &parking->price, parking->agentCIN,
-    vehiculeCode, &parking->hasElectricCharger);
-    if (val > 0) {
-        getVehicules(parking->vehicules, vehiculeCode);
+void filterBySpots(char *dir, int startValue, int endValue) {
+    Parking parking;
+    FILE *filteredFile = fopen("filtered.txt", "w");
+    FILE *parkingFile = fopen(dir, "r");
+    while(scanParking(filteredFile, &parking) != EOF) {
+        if (parking.numberOfSpots >= startValue) {
+            if (endValue == 0) {
+                printParking(filteredFile, parking);
+            } else {
+                if (parking.numberOfSpots <= parking.price) {
+                    printParking(filteredFile, parking);
+                }
+            }
+        }
     }
-    return val;
-
+    fclose(filteredFile);
+    fclose(parkingFile);
 }
+
+void filterbyVehicule(char *dir, int vehicules[4]) {
+    Parking parking;
+    int i;
+    FILE *filteredFile = fopen("filtered.txt", "w");
+    FILE *parkingFile = fopen(dir, "r");
+    while(scanParking(filteredFile, &parking) != EOF) {
+        for(i = 0; i < 4; i++) {
+            if (vehicules[i] == 1) {
+                if (parking.vehicules[i] == 1) {
+                    printParking(filteredFile, parking);
+                }
+            }
+        }
+    }
+    fclose(filteredFile);
+    fclose(parkingFile);
+}
+
+void filterbyHasElectricCharger(char *dir, int hasElectricCharger) {
+    Parking parking;
+    FILE *filteredFile = fopen("filtered.txt", "w");
+    FILE *parkingFile = fopen(dir, "r");
+    while(scanParking(filteredFile, &parking) != EOF) {
+        if (parking.hasElectricCharger == hasElectricCharger) {
+            printParking(filteredFile, parking);
+        }
+    }
+    fclose(filteredFile);
+    fclose(parkingFile);
+}
+
+void filterByText(char *dir, char *text, int (*compare)(Parking, char, int)) {
+    Parking parking;
+    FILE *filteredFile = fopen("filtered.txt", "w");
+    FILE *parkingFile = fopen(dir, "r");
+    while(scanParking(filteredFile, &parking) != EOF) {
+        if (compare(parking, text, 0)) {
+            printParking(filteredFile, parking);
+        }
+    }
+    fclose(filteredFile);
+    fclose(parkingFile);
+}
+
+int compareAttribute(Parking parking, char *text, int attributeNumber) {
+    char *attribute;
+    if (attributeNumber == 0) {
+        attribute = parking.ID;
+    } else if (attributeNumber == 1) {
+        attribute = parking.address;
+    } else if (attributeNumber == 2) {
+        attribute = parking.municipality;
+    } else if (attributeNumber == 3) {
+        attribute = parking.agentCIN;
+    }
+    return validString(text, attribute);
+}
+
+int validString(char *string1, char *string2) {
+    int i;
+    if (strlen(string1) > strlen(string2)) {
+        return 0;
+    }
+
+    for (int i = 0; i < strlen(string2); i++) {
+        if (string2[i] != string1[i]) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+// int readAgent(char *filename, Agent agent) {
+//     FILE *f = fopen(filename, "a");
+//     if (f != NULL) {
+//         fprintf(f, "%s %s %s %d %d %d %s %s %d %d %d %d %d %d %d %d %d %s %s\n",
+//                 agent.cin, agent.nom, agent.prenom, agent.date_naissance.jour, agent.date_naissance.mois,
+//                 agent.date_naissance.annee, agent.salaire, agent.adresse, agent.sexe,
+//                 agent.services[0], agent.services[1], agent.services[2], agent.services[3], agent.services[4],
+//                 agent.services[5], agent.services[6], agent.etat, agent.id_parking, agent.numtel);
+//         fclose(f);
