@@ -268,7 +268,7 @@ void filterbyHasElectricCharger(char *dir, int hasElectricCharger) {
     fclose(parkingFile);
 }
 
-void filterByText(char *dir, char *text, int (*compare)(Parking, *char, int)) {
+void filterByText(char *dir, char *text, int (*compare)(Parking, char *, int)) {
     Parking parking;
     FILE *filteredFile = fopen("filtered.txt", "w");
     FILE *parkingFile = fopen(dir, "r");
