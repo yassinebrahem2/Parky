@@ -28,7 +28,8 @@ void main() {
     // printParkings(dir);
     //deleteParking(dir, "3");
     //modifyParking(dir, parking);
-    sortParking(dir);
+    //sortParking(dir);
+    createSortFile(dir);
 
 }
 
