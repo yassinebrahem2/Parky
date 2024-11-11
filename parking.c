@@ -140,11 +140,11 @@ void sortParking(char *dir) {
     for(j = 0; j < n; j++) {
         scanParking(sortedFile, &parking2);
         printf("%f   /   %f\n", parking1.price, parking2.price);
-        if (parking1.price > parking2.price) {
+        if (parking1.price < parking2.price) {
             printf("SWITCHING\n");
             sorted = 0;
             printParking(tempFile, parking2);
-        } else if (parking1.price <= parking2.price) {
+        } else {
             printParking(tempFile, parking1);
             swapParking(&parking1, &parking2);
         }
