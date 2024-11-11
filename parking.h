@@ -29,5 +29,6 @@ void deleteParking(char *dir, char IDparking[8]);
 void modifyParking(char *dir, Parking modifiedParking);
 void createSortFile(char *dir);
 void sortParking(char *dir);
+void swapParking(Parking *parking1, Parking *parking2);
 
 #endif
