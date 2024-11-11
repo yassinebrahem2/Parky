@@ -133,25 +133,26 @@ void sortParking(char *dir) {
     getParkingNumber(dir, &n);
     createSortFile(dir);
     sorted = 1;
-        FILE *sortedFile = fopen("sorted.txt", "r");
-        FILE *tempFile = fopen("temp.txt", "w");
+    FILE *sortedFile = fopen("sorted.txt", "r");
+    FILE *tempFile = fopen("temp.txt", "w");
 
-        scanParking(sortedFile, &parking1);
-        for(j = 0; j < n; j++) {
-            scanParking(sortedFile, &parking2);
-
-            if (parking2.price > parking1.price) {
-                sorted = 0;
-                printParking(tempFile, parking2);
-            } else if (parking2.price <= parking1.price) {
-                printParking(tempFile, parking1);
-                swapParking(&parking1, &parking2);
-            }
+    scanParking(sortedFile, &parking1);
+    for(j = 0; j < n; j++) {
+        scanParking(sortedFile, &parking2);
+        printf("%d   /   %d\n", parking1.price, parking2.price);
+        if (parking1.price > parking2.price) {
+            printf("SWITCHING\n");
+            sorted = 0;
+            printParking(tempFile, parking2);
+        } else if (parking1.price <= parking2.price) {
+            printParking(tempFile, parking1);
+            swapParking(&parking1, &parking2);
         }
-        fclose(sortedFile);
-        fclose(tempFile);
-        remove("sorted.txt");
-        rename("temp.txt", "sorted.txt");
+    }
+    fclose(sortedFile);
+    fclose(tempFile);
+    remove("sorted.txt");
+    rename("temp.txt", "sorted.txt");
     // while(!sorted) {
     //     sorted = 1;
     //     FILE *sortedFile = fopen("sorted.txt", "r");
