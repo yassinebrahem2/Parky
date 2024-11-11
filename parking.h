@@ -18,7 +18,23 @@ typedef struct {
 } Parking;
 
 typedef struct {
-    char cin;
+    int jour;
+    int mois;
+    int annee;
+} Date;
+
+typedef struct {
+    char cin[20];
+    char nom[50];
+    char prenom[50];
+    Date date_naissance;
+    char salaire[10];
+    char adresse[100];
+    int sexe;
+    int services[7];
+    int etat;
+    char id_parking[10];
+    char numtel[20];
 } Agent;
 
 void getParking(Parking *parking);
