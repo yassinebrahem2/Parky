@@ -140,14 +140,16 @@ void sortParking(char *dir) {
     while(scanParking(sortedFile, &parking2) != EOF) {
         printf("%f   /   %f\n", parking1.price, parking2.price);
         if (parking1.price < parking2.price) {
-            printf("SWITCHING\n");
+            
             sorted = 0;
             printParking(tempFile, parking2);
         } else {
+            printf("SWITCHING\n");
             printParking(tempFile, parking1);
             swapParking(&parking1, &parking2);
         }
     }
+    printParking(tempFile, parking1);
     fclose(sortedFile);
     fclose(tempFile);
     remove("sorted.txt");
