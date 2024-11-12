@@ -84,17 +84,18 @@ void getVehicules(int vehicules[4], char vehiculeCode[4]) {
     }
 }
 void deleteParking(char *dir, char IDparking[8]) {
+    FILE* parkingFile = fopen(dir, "r");
+    FILE* tempFile = fopen("temp.txt", "w");
     Parking parking;
     char vehiculeCode[4];
-    FILE *parkingFile = fopen(dir, "r");
-    FILE *tempFile = fopen("temp.txt", "w");
     while(scanParking(parkingFile, &parking) != EOF) {
+            getVehicules(parking.vehicules, vehiculeCode);
             if (strcmp(parking.ID, IDparking) != 0) {
                 printParking(tempFile, parking);
             }
-    }
-    fclose(tempFile);
+        }
     fclose(parkingFile);
+    fclose(tempFile);
     remove(dir);
     rename("temp.txt", dir);
 }
@@ -301,14 +302,14 @@ int validString(char *string1, char *string2) {
     return 1;
 }
 
-// int scanAgent(char *filename, Agent *agent) {
-//     FILE *f = fopen(filename, "a");
-//     if (f != NULL) {
-//         fprintf(f, "%s %s %s %d %d %d %s %s %d %d %d %d %d %d %d %d %d %s %s\n",
-//                 agent->cin, agent->nom, agent->prenom, agent->date_naissance.jour, agent->date_naissance.mois,
-//                 agent->date_naissance.annee, agent->salaire, agent->adresse, &agent->sexe,
-//                 agent->services[0], agent->services[1], agent->services[2], agent->services[3], agent->services[4],
-//                 agent->services[5], agent->services[6], agent->etat, agent->id_parking, agent->numtel);
-//         fclose(f);
-//     }
-// }
+int scanAgent(char *filename, Agent *agent) {
+    FILE *f = fopen(filename, "a");
+    if (f != NULL) {
+        fprintf(f, "%s %s %s %d %d %d %s %s %d %d %d %d %d %d %d %d %d %s %s\n",
+                agent->cin, agent->nom, agent->prenom, agent->date_naissance.jour, agent->date_naissance.mois,
+                agent->date_naissance.annee, agent->salaire, agent->adresse, &agent->sexe,
+                agent->services[0], agent->services[1], agent->services[2], agent->services[3], agent->services[4],
+                agent->services[5], agent->services[6], agent->etat, agent->id_parking, agent->numtel);
+        fclose(f);
+    }
+}
