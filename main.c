@@ -38,6 +38,7 @@ void main() {
     
     scanAgent("Agent.txt", &agent);
     printf("\n%s\n", agent.cin);
+    printAgent("filteredAgent.txt", agent);
 
 
 }
