@@ -297,7 +297,7 @@ int validString(char *string1, char *string2) {
     return 1;
 }
 
-void printAgent(char *agentFile, Agent agent) {
+void printAgent(FILE *agentFile, Agent agent) {
     fprintf(agentFile, "%s %s %s %d %d %d %s %s %d %d %d %d %d %d %d %d %d %s %s\n",
             agent.cin, agent.nom, agent.prenom, agent.date_naissance.jour, agent.date_naissance.mois,
             agent.date_naissance.annee, agent.salaire, agent.adresse, agent.sexe,
