@@ -316,14 +316,21 @@ int scanAgent(FILE *agentFile, Agent *agent) {
 
 void filterAvailableAgents() {
     Agent agent;
+    int i;
     FILE *agentFile = fopen("Agent.txt", "r");
     FILE *filteredFile = fopen("filteredAgent.txt", "w");
     printf("started");
-    while (scanAgent(filteredFile, &agent) != EOF) {
+    // while (scanAgent(filteredFile, &agent) != EOF) {
+    //     printf("%s", agent.cin);
+    //     if (agent.id_parking == "0") {
+    //         printAgent(filteredFile, agent);
+    //     }
+    for(i = 0; i < 6; i++) {
         printf("%s", agent.cin);
         if (agent.id_parking == "0") {
             printAgent(filteredFile, agent);
         }
+    }
     }
     printf("\nDONE\n");
 
