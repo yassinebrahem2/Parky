@@ -35,9 +35,9 @@ void main() {
     //filterByText(dir, "1234", 0);
     
 
-    filterByPrice(dir, 10.0, 100.0);
+    //filterByPrice(dir, 10.0, 100.0);
 
-    //sortParking(dir, priceInRange, 1);
+    sortParking(dir, priceInRange, 1);
 
     // filterAvailableAgents();
 
