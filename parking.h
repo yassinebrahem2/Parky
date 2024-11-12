@@ -1,4 +1,3 @@
-
 #ifndef parking_h
 #define parking_h
 
@@ -45,8 +44,9 @@ void displayParkings(char *dir);
 int scanParking(FILE *parkingFile, Parking *parking);
 void printParking(FILE *parkingFile, Parking parking);
 void getVehicules(int vehicules[4], char vehiculeCode[4]);
-void scanAgent(char *filename, Agent *agent);
-void printAgent(char *filename, Agent agent);
+int scanAgent(FILE *agentFile, Agent *agent);
+void printAgent(char *agentFile, Agent agent);
+void filterAvailableAgents();
 
 void addParking(char *dir, Parking parking);
 void deleteParking(char *dir, char IDparking[8]);
