@@ -192,7 +192,7 @@ void swapParking(Parking *parking1, Parking *parking2) {
     *parking2 = temp;
 }
 
-void filterByPrice(char *dir, int startValue, int endValue) {
+void filterByPrice(char *dir, float startValue, float endValue) {
     Parking parking;
     FILE *filteredFile = fopen("filtered.txt", "w");
     FILE *parkingFile = fopen(dir, "r");
