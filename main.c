@@ -22,8 +22,8 @@ void main() {
     parking.vehicules[3] = 1;
 
     //int userInput;
-    getParkingNumber(dir, &n);
-    printf("\n\n%d\n\n", n);
+    // getParkingNumber(dir, &n);
+    // printf("\n\n%d\n\n", n);
 
     //addParking(dir, parking);
     // printParkings(dir);
@@ -37,7 +37,7 @@ void main() {
     //filterByText(dir, "1234", 0);
     
     scanAgent("agent.txt", &agent);
-    printf("%s", agent.cin);
+    printf("\n%s\n", agent.cin);
 
 
 }
