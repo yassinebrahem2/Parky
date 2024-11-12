@@ -32,7 +32,7 @@ void main() {
     //filterbyHasElectricCharger(dir, 1);
     //createSortFile(dir);
     printf("FILTERING...\n");
-    filterByPrice(dir, 10, 100);
-
+    //filterByPrice(dir, 10, 100);
+    filterByText(dir, "1234", 0);
 }
 
