@@ -60,7 +60,7 @@ int spotsInRange(Parking parking1, Parking parking2, int sup);
 void createSortFile(char *dir);
 void sortParking(char *dir, int (*compare)(Parking, Parking, int), int ascending);
 
-void filterByPrice(char *dir, int startValue, int endValue);
+void filterByPrice(char *dir, float startValue, float endValue);
 void filterBySpots(char *dir, int startValue, int endValue);
 void filterbyVehicule(char *dir, int vehicules[4]);
 void filterbyHasElectricCharger(char *dir, int hasElectricCharger);
