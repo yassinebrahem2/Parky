@@ -209,12 +209,12 @@ void filterBySpots(char *dir, int startValue, int endValue) {
     Parking parking;
     FILE *filteredFile = fopen("filtered.txt", "w");
     FILE *parkingFile = fopen(dir, "r");
-    while(scanParking(filteredFile, &parking) != EOF) {
+    while(scanParking(parkingFile, &parking) != EOF) {
         if (parking.numberOfSpots >= startValue) {
             if (endValue == 0) {
                 printParking(filteredFile, parking);
             } else {
-                if (parking.numberOfSpots <= parking.price) {
+                if (parking.numberOfSpots <= endValue) {
                     printParking(filteredFile, parking);
                 }
             }
