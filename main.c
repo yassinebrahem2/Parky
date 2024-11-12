@@ -39,7 +39,7 @@ void main() {
     // printf("\nFILTERING...\n");
     FILE *agentFile = fopen("Agent.txt", "r");
     scanAgent(agentFile, &agent);
-    printf("\n%s\n", agent.cin);
+    printf("\n%s\n", agent.id_parking);
     fclose(agentFile);
     //filterAvailableAgents();
 
