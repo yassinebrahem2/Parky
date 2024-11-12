@@ -37,6 +37,10 @@ void main() {
     //filterByText(dir, "1234", 0);
     
     // printf("\nFILTERING...\n");
+    FILE *agentFile = fopen("Agent.txt", "r");
+    scanAgent(agentFile, &agent);
+    printf("\n%d\n", agent.cin);
+    fclose(agentFile);
     filterAvailableAgents();
 
 
