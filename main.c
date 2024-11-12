@@ -41,7 +41,7 @@ void main() {
     scanAgent(agentFile, &agent);
     printf("\n%s\n", agent.cin);
     fclose(agentFile);
-    filterAvailableAgents();
+    //filterAvailableAgents();
 
 
 }
