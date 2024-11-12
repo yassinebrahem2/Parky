@@ -31,8 +31,8 @@ void main() {
     //sortParking(dir, priceInRange, 1);
     //filterbyHasElectricCharger(dir, 1);
     //createSortFile(dir);
-    printf("FILTERING...\n");
+    //sprintf("FILTERING...\n");
     //filterByPrice(dir, 10, 100);
-    filterByText(dir, "1234", 0);
+    //filterByText(dir, "1234", 0);
 }
 
