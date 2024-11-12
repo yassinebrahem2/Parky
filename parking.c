@@ -89,11 +89,13 @@ void deleteParking(char *dir, char IDparking[8]) {
     Parking parking;
     char vehiculeCode[4];
     while(scanParking(parkingFile, &parking) != EOF) {
-            getVehicules(parking.vehicules, vehiculeCode);
-            if (strcmp(parking.ID, IDparking) != 0) {
-                printParking(tempFile, parking);
-            }
+        printf("\n%d %d\n", parking.vehicules[0], vehiculeCode[0]);
+        getVehicules(parking.vehicules, vehiculeCode);
+        printf("\n%d %d\n", parking.vehicules[0], vehiculeCode[0]);
+        if (strcmp(parking.ID, IDparking) != 0) {
+            printParking(tempFile, parking);
         }
+    }
     fclose(parkingFile);
     fclose(tempFile);
     remove(dir);
