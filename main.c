@@ -35,9 +35,9 @@ void main() {
 
 
     
-    //deleteParking(dir, "1A5");
+    deleteParking(dir, "1A5");
 
-    filterByPrice(dir, 10.0, 100.0);
+    //filterByPrice(dir, 10.0, 100.0);
 
     //sortParking(dir, priceInRange, 1);
 
