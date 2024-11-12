@@ -25,7 +25,7 @@ void main() {
     // getParkingNumber(dir, &n);
     // printf("\n\n%d\n\n", n);
 
-    //addParking(dir, parking);
+    addParking(dir, parking);
     // printParkings(dir);
     //modifyParking(dir, parking);
     //filterbyHasElectricCharger(dir, 1);
