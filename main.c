@@ -24,7 +24,7 @@ void main() {
     getParkingNumber(dir, &n);
     printf("\n\n%d\n\n", n);
 
-    addParking(dir, parking);
+    //addParking(dir, parking);
     // printParkings(dir);
     //deleteParking(dir, "3C3");
     //modifyParking(dir, parking);
