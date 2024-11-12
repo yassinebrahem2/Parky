@@ -29,19 +29,17 @@ void main() {
     // printParkings(dir);
     //deleteParking(dir, "3C3");
     //modifyParking(dir, parking);
-    //sortParking(dir, priceInRange, 1);
     //filterbyHasElectricCharger(dir, 1);
     //createSortFile(dir);
     //sprintf("FILTERING...\n");
-    //filterByPrice(dir, 10.0, 100.0);
     //filterByText(dir, "1234", 0);
     
-    // printf("\nFILTERING...\n");
-    // FILE *agentFile = fopen("Agent.txt", "r");
-    // scanAgent(agentFile, &agent);
-    // printf("\n%s\n", agent.id_parking);
-    // fclose(agentFile);
-    filterAvailableAgents();
+
+    filterByPrice(dir, 10.0, 100.0);
+
+    //sortParking(dir, priceInRange, 1);
+
+    // filterAvailableAgents();
 
 
 }
