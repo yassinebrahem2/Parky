@@ -318,13 +318,14 @@ void filterAvailableAgents() {
     int i;
     FILE *agentFile = fopen("Agent.txt", "r");
     FILE *filteredFile = fopen("filteredAgent.txt", "w");
-    printf("started");
+    printf("started\n");
     while (fscanf(agentFile, "%s %s %s %d %d %d %s %s %d %d %d %d %d %d %d %d %d %s %s\n",
             agent.cin, agent.nom, agent.prenom, &agent.date_naissance.jour, &agent.date_naissance.mois,
             &agent.date_naissance.annee, agent.salaire, agent.adresse, &agent.sexe,
             &agent.services[0], &agent.services[1], &agent.services[2], &agent.services[3], &agent.services[4],
             &agent.services[5], &agent.services[6], &agent.etat, agent.id_parking, agent.numtel) != EOF) {
         printf("ENTERED...\n");
+        printf("%s\n", agent.id_parking);
         if (agent.id_parking == "0") {
             printAgent(filteredFile, agent);
         }
