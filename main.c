@@ -7,6 +7,7 @@
 void main() {
     int n;
     Parking parking;
+    Agent agent;
     char *dir = "Parking.txt";
     strcpy(parking.ID, "123");
     parking.numberOfSpots = 10;
@@ -34,5 +35,10 @@ void main() {
     //sprintf("FILTERING...\n");
     //filterByPrice(dir, 10, 100);
     //filterByText(dir, "1234", 0);
+    FILE *agentFile = fopen("Agent.txt", "r");
+    scanAgent(agentFile, &agent);
+    printf("%s", agent.cin);
+    fclose(agentFile);
+
 }
 
