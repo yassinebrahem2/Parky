@@ -37,11 +37,11 @@ void main() {
     //filterByText(dir, "1234", 0);
     
     // printf("\nFILTERING...\n");
-    FILE *agentFile = fopen("Agent.txt", "r");
-    scanAgent(agentFile, &agent);
-    printf("\n%s\n", agent.id_parking);
-    fclose(agentFile);
-    //filterAvailableAgents();
+    // FILE *agentFile = fopen("Agent.txt", "r");
+    // scanAgent(agentFile, &agent);
+    // printf("\n%s\n", agent.id_parking);
+    // fclose(agentFile);
+    filterAvailableAgents();
 
 
 }
