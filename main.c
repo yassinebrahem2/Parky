@@ -36,7 +36,7 @@ void main() {
     //filterByPrice(dir, 10, 100);
     //filterByText(dir, "1234", 0);
     
-    printf("\n%s\n", agent.cin);
+    printf("\nFILTERING...\n");
     filterAvailableAgents();
 
 
