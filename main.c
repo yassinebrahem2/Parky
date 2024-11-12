@@ -36,9 +36,8 @@ void main() {
     //filterByPrice(dir, 10, 100);
     //filterByText(dir, "1234", 0);
     
-    scanAgent("Agent.txt", &agent);
     printf("\n%s\n", agent.cin);
-    printAgent("filteredAgent.txt", agent);
+    filterAvailableAgents();
 
 
 }
