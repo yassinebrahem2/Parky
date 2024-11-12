@@ -326,7 +326,7 @@ void filterAvailableAgents() {
             &agent.services[5], &agent.services[6], &agent.etat, agent.id_parking, agent.numtel) != EOF) {
         printf("ENTERED...\n");
         printf("%s\n", agent.id_parking);
-        if (agent.id_parking == "0") {
+        if (strcmp(agent.id_parking, "0") == 0) {
             printAgent(filteredFile, agent);
         }
     }
