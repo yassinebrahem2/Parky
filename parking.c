@@ -325,6 +325,7 @@ void filterAvailableAgents() {
             printAgent(filteredFile, agent);
         }
     }
+    printf("\nDONE\n");
 
     fclose(agentFile);
     fclose(filteredFile);
