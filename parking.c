@@ -196,7 +196,7 @@ void filterByPrice(char *dir, float startValue, float endValue) {
     Parking parking;
     FILE *filteredFile = fopen("filtered.txt", "w");
     FILE *parkingFile = fopen(dir, "r");
-    while(scanParking(filteredFile, &parking) != EOF) {
+    while(scanParking(parkingFile, &parking) != EOF) {
         printf("%f, %f, %f", parking.price, startValue, endValue);
         if (parking.price >= startValue && parking.price <= parking.price) {
             printParking(filteredFile, parking);
@@ -325,6 +325,7 @@ void filterAvailableAgents() {
     //     if (agent.id_parking == "0") {
     //         printAgent(filteredFile, agent);
     //     }
+    // }
     for(i = 0; i < 6; i++) {
         printf("%s", agent.cin);
         if (agent.id_parking == "0") {
