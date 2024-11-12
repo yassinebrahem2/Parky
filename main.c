@@ -26,10 +26,10 @@ void main() {
 
     addParking(dir, parking);
     // printParkings(dir);
-    deleteParking(dir, "3C3");
+    //deleteParking(dir, "3C3");
     //modifyParking(dir, parking);
     //sortParking(dir, priceInRange, 1);
-    
+    filterByPrice(dir, 10, 100);
     //createSortFile(dir);
 
 }
