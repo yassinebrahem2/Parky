@@ -45,7 +45,7 @@ int scanParking(FILE *parkingFile, Parking *parking);
 void printParking(FILE *parkingFile, Parking parking);
 void getVehicules(int vehicules[4], char vehiculeCode[4]);
 int scanAgent(FILE *agentFile, Agent *agent);
-void printAgent(char *agentFile, Agent agent);
+void printAgent(FILE *agentFile, Agent agent);
 void filterAvailableAgents();
 
 void addParking(char *dir, Parking parking);
