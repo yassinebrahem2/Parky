@@ -197,9 +197,9 @@ void filterByPrice(char *dir, float startValue, float endValue) {
     FILE *filteredFile = fopen("filtered.txt", "w");
     FILE *parkingFile = fopen(dir, "r");
     while(scanParking(filteredFile, &parking) != EOF) {
+        printf("%f, %f, %f", parking.price, startValue, endValue);
         if (parking.price >= startValue && parking.price <= parking.price) {
             printParking(filteredFile, parking);
-            
         }
     }
     fclose(filteredFile);
