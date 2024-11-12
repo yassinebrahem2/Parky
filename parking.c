@@ -318,6 +318,7 @@ void filterAvailableAgents() {
     Agent agent;
     FILE *agentFile = fopen("Agent.txt", "r");
     FILE *filteredFile = fopen("filteredAgent.txt", "w");
+    printf("started");
     while (scanAgent(filteredFile, &agent) != EOF) {
         printf("%s", agent.cin);
         if (agent.id_parking == "0") {
