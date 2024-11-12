@@ -297,26 +297,33 @@ int validString(char *string1, char *string2) {
     return 1;
 }
 
-void printAgent(char *filename, Agent agent) {
-    FILE *f = fopen(filename, "w");
-    if (f != NULL) {
-        fprintf(f, "%s %s %s %d %d %d %s %s %d %d %d %d %d %d %d %d %d %s %s\n",
-                agent.cin, agent.nom, agent.prenom, agent.date_naissance.jour, agent.date_naissance.mois,
-                agent.date_naissance.annee, agent.salaire, agent.adresse, agent.sexe,
-                agent.services[0], agent.services[1], agent.services[2], agent.services[3], agent.services[4],
-                agent.services[5], agent.services[6], agent.etat, agent.id_parking, agent.numtel);
-        fclose(f);
-    }
+void printAgent(char *agentFile, Agent agent) {
+    fprintf(agentFile, "%s %s %s %d %d %d %s %s %d %d %d %d %d %d %d %d %d %s %s\n",
+            agent.cin, agent.nom, agent.prenom, agent.date_naissance.jour, agent.date_naissance.mois,
+            agent.date_naissance.annee, agent.salaire, agent.adresse, agent.sexe,
+            agent.services[0], agent.services[1], agent.services[2], agent.services[3], agent.services[4],
+            agent.services[5], agent.services[6], agent.etat, agent.id_parking, agent.numtel);
 }
 
-void scanAgent(char *filename, Agent *agent) {
-    FILE *f = fopen(filename, "r");
-    if (f != NULL) {
-        fscanf(f, "%s %s %s %d %d %d %s %s %d %d %d %d %d %d %d %d %d %s %s\n",
-                agent->cin, agent->nom, agent->prenom, &agent->date_naissance.jour, &agent->date_naissance.mois,
-                &agent->date_naissance.annee, agent->salaire, agent->adresse, &agent->sexe,
-                &agent->services[0], &agent->services[1], &agent->services[2], &agent->services[3], &agent->services[4],
-                &agent->services[5], &agent->services[6], &agent->etat, agent->id_parking, agent->numtel);
-        fclose(f);
+int scanAgent(FILE *agentFile, Agent *agent) {
+    int val = fscanf(agentFile, "%s %s %s %d %d %d %s %s %d %d %d %d %d %d %d %d %d %s %s\n",
+            agent->cin, agent->nom, agent->prenom, &agent->date_naissance.jour, &agent->date_naissance.mois,
+            &agent->date_naissance.annee, agent->salaire, agent->adresse, &agent->sexe,
+            &agent->services[0], &agent->services[1], &agent->services[2], &agent->services[3], &agent->services[4],
+            &agent->services[5], &agent->services[6], &agent->etat, agent->id_parking, agent->numtel);
+    return val;
+}
+
+void filterAvailableAgents() {
+    Agent agent;
+    FILE *agentFile = fopen("Agent.txt", "r");
+    FILE *filteredFile = fopen("FilteredAgent.txt", "w");
+    while (scanAgent(filteredFile, &agent) != EOF) {
+        if (agent.id_parking == "0") {
+            printAgent(filteredFile, agent);
+        }
     }
+
+    fclose(agentFile);
+    fclose(filteredFile);
 }
