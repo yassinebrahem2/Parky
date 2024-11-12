@@ -35,10 +35,10 @@ void main() {
     //sprintf("FILTERING...\n");
     //filterByPrice(dir, 10, 100);
     //filterByText(dir, "1234", 0);
-    FILE *agentFile = fopen("Agent.txt", "r");
-    scanAgent(agentFile, &agent);
+    
+    scanAgent("agent.txt", &agent);
     printf("%s", agent.cin);
-    fclose(agentFile);
+
 
 }
 
