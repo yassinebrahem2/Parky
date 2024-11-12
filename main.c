@@ -29,8 +29,9 @@ void main() {
     //deleteParking(dir, "3C3");
     //modifyParking(dir, parking);
     //sortParking(dir, priceInRange, 1);
-    filterbyHasElectricCharger(dir, 1);
+    //filterbyHasElectricCharger(dir, 1);
     //createSortFile(dir);
+    filterByPrice(dir, 10, 100);
 
 }
 
