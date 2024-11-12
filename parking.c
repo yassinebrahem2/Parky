@@ -297,7 +297,7 @@ int validString(char *string1, char *string2) {
     return 1;
 }
 
-int printAgent(char *filename, Agent *agent) {
+void printAgent(char *filename, Agent *agent) {
     FILE *f = fopen(filename, "a");
     if (f != NULL) {
         fprintf(f, "%s %s %s %d %d %d %s %s %d %d %d %d %d %d %d %d %d %s %s\n",
@@ -309,8 +309,8 @@ int printAgent(char *filename, Agent *agent) {
     }
 }
 
-int scanAgent(char *filename, Agent *agent) {
-    FILE *f = fopen(filename, "a");
+void scanAgent(char *filename, Agent *agent) {
+    FILE *f = fopen(filename, "r");
     if (f != NULL) {
         fprintf(f, "%s %s %s %d %d %d %s %s %d %d %d %d %d %d %d %d %d %s %s\n",
                 agent->cin, agent->nom, agent->prenom, &agent->date_naissance.jour, &agent->date_naissance.mois,
