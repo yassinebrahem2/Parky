@@ -12,8 +12,8 @@ void main() {
     parking.numberOfSpots = 10;
     strcpy(parking.address, "adres");
     strcpy(parking.municipality, "munic");
-    parking.price = 6969;
-    strcpy( parking.agentCIN, "idagent69");
+    parking.price = 10;
+    strcpy( parking.agentCIN, "idagent");
     parking.hasElectricCharger = 1;
     parking.vehicules[0] = 1;
     parking.vehicules[1] = 1;
