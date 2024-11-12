@@ -27,19 +27,21 @@ void main() {
 
     //addParking(dir, parking);
     // printParkings(dir);
-    //deleteParking(dir, "3C3");
     //modifyParking(dir, parking);
     //filterbyHasElectricCharger(dir, 1);
     //createSortFile(dir);
     //sprintf("FILTERING...\n");
     //filterByText(dir, "1234", 0);
+
+
     
+    deleteParking(dir, "1A5");
 
     //filterByPrice(dir, 10.0, 100.0);
 
-    sortParking(dir, priceInRange, 1);
+    //sortParking(dir, priceInRange, 1);
 
-    // filterAvailableAgents();
+    //filterAvailableAgents();
 
 
 }
