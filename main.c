@@ -33,11 +33,11 @@ void main() {
     //filterbyHasElectricCharger(dir, 1);
     //createSortFile(dir);
     //sprintf("FILTERING...\n");
-    filterByPrice(dir, 10.0, 100.0);
+    //filterByPrice(dir, 10.0, 100.0);
     //filterByText(dir, "1234", 0);
     
     // printf("\nFILTERING...\n");
-    // filterAvailableAgents();
+    filterAvailableAgents();
 
 
 }
