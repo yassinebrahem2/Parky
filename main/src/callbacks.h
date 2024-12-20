@@ -156,15 +156,35 @@ on_Administrateur_map                  (GtkWidget       *widget,
                                         gpointer         user_data);
 
 void
+on_YBButtonChercher_clicked            (GtkWidget       *object,
+                                        gpointer         user_data);
+
+void
+on_YBButtonModifier_clicked            (GtkWidget       *object,
+                                        gpointer         user_data);
+
+void
+on_YBButtonConfirmer_clicked           (GtkWidget       *object,
+                                        gpointer         user_data);
+
+void
+on_YBButtonSupprimer_clicked           (GtkWidget       *object,
+                                        gpointer         user_data);
+
+void
+on_YBButtonAjouter_clicked             (GtkWidget       *object,
+                                        gpointer         user_data);
+
+void
 on_YBFiltreRadiobuttonOui_toggled      (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
-on_YBFiltreRadiobuttonNon_toggled      (GtkToggleButton *togglebutton,
+on_YBFiltreCheckboxVoiture_toggled     (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
-on_YBFiltreRadioButtonAucun_toggled    (GtkToggleButton *togglebutton,
+on_YBFiltreRadiobuttonNon_toggled      (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
@@ -176,15 +196,7 @@ on_YBFiltreCheckboxCamion_toggled      (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
-on_YBFiltreCheckboxVoiture_toggled     (GtkToggleButton *togglebutton,
-                                        gpointer         user_data);
-
-void
 on_YBFiltreCheckboxMoto_toggled        (GtkToggleButton *togglebutton,
-                                        gpointer         user_data);
-
-void
-on_YBFiltreRadiobuttonAdresse_toggled  (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
@@ -192,23 +204,39 @@ on_YBFiltreRadiobuttonID_toggled       (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
+on_YBFiltreRadiobuttonAdresse_toggled  (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
 on_YBFiltreRadiobuttonMunic_toggled    (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
-on_YBClearButton_clicked               (GtkButton       *button,
+on_YBFiltreRadiobuttonAgent_toggled    (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
-on_YBButtonChercher_clicked            (GtkButton       *button,
+on_YBParkingCheckboxVoiture_toggled    (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
-on_YBNouveauRadiobuttonNon_toggled     (GtkToggleButton *togglebutton,
+on_YBParkingCheckboxCamion_toggled        (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
-on_YBNouveauCheckboxCamion_toggled     (GtkToggleButton *togglebutton,
+on_YBParkingCheckboxMoto_toggled          (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_YBParkingCheckboxVelo_toggled          (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_YBParkingRadiobuttonOui_toggled     (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_YBParkingRadiobuttonNon_toggled     (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
@@ -216,7 +244,7 @@ on_YBNouveauCheckboxVoiture_toggled    (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
-on_YBNouveauRadiobuttonOui_toggled     (GtkToggleButton *togglebutton,
+on_YBNouveauCheckboxCamion_toggled     (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
@@ -228,49 +256,44 @@ on_YBNouveauCheckboxVelo_toggled       (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
-on_YBButtonAjouter_clicked             (GtkButton       *button,
+on_YBNouveauRadiobuttonOui_toggled     (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
-on_YBParkingRadiobuttonOui_toggled     (GtkToggleButton *togglebutton,
+on_YBNouveauRadiobuttonNon_toggled     (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+void
+on_YBButtonRevoquer_clicked            (GtkWidget       *object,
                                         gpointer         user_data);
 
 void
-on_YBParkingCheckboxVoiture_toggled    (GtkToggleButton *togglebutton,
+on_YBButtonAffecter_clicked            (GtkWidget       *object,
                                         gpointer         user_data);
 
 void
-on_YBParkingRadiobuttonNon_toggled     (GtkToggleButton *togglebutton,
-                                        gpointer         user_data);
-
-void
-on_YBParkingCheckboxCamion_toggled     (GtkToggleButton *togglebutton,
-                                        gpointer         user_data);
-
-void
-on_YBParkingCheckboxMoto_toggled       (GtkToggleButton *togglebutton,
-                                        gpointer         user_data);
-
-void
-on_YBParkingCheckboxVelo_toggled       (GtkToggleButton *togglebutton,
-                                        gpointer         user_data);
-
-void
-on_YBButtonModifier_clicked            (GtkButton       *button,
-                                        gpointer         user_data);
-
-void
-on_YBButtonConfirmer_clicked           (GtkButton       *button,
-                                        gpointer         user_data);
-
-void
-on_YBButtonSupprimer_clicked           (GtkButton       *button,
-                                        gpointer         user_data);
-
-void
-on_YBTreeviewParking_row_activated     (GtkTreeView     *treeview,
+on_YBTreeviewParking_row_activated     (GtkWidget     *treeview,
                                         GtkTreePath     *path,
                                         GtkTreeViewColumn *column,
+                                        gpointer         user_data);
+
+void updateParkingTreeview(GtkWidget *object);
+void initParkingTreeview(GtkWidget *object);
+void updateParkingAgentsTreeview(GtkWidget *object);
+void initParkingAgentsTreeview(GtkWidget *object);
+
+void
+on_YBClearButton_clicked               (GtkWidget       *object,
+                                        gpointer         user_data);
+
+
+void
+on_YBFiltreRadioButtonAucun_toggled    (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+
+
+void
+on_YBcomboboxTrieOption_changed        (GtkComboBox     *combobox,
                                         gpointer         user_data);
 
 void
@@ -278,21 +301,9 @@ on_YBComboboxTrier_changed             (GtkComboBox     *combobox,
                                         gpointer         user_data);
 
 void
-on_YBcomboboxTrieOption_changed        (GtkComboBox     *combobox,
-                                        gpointer         user_data);
-
-void
-on_YBTreeviewAgent_row_activated       (GtkTreeView     *treeview,
+on_YBTreeviewAgent_row_activated       (GtkWidget     *object,
                                         GtkTreePath     *path,
                                         GtkTreeViewColumn *column,
-                                        gpointer         user_data);
-
-void
-on_YBButtonRevoquer_clicked            (GtkButton       *button,
-                                        gpointer         user_data);
-
-void
-on_YBButtonAffecter_clicked            (GtkButton       *button,
                                         gpointer         user_data);
 
 void
