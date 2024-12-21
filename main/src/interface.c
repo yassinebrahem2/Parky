@@ -61,6 +61,7 @@ create_Citoyen (void)
   GtkWidget *label1205;
   GtkWidget *label1206;
   GtkWidget *ab_entry_profile_cin;
+  GtkWidget *label1208;
   GtkWidget *ab_rb_profile_homme;
   GSList *ab_rb_profile_homme_group = NULL;
   GtkWidget *ab_rb_profile_femme;
@@ -84,7 +85,6 @@ create_Citoyen (void)
   GtkWidget *hbox175;
   GtkWidget *image179;
   GtkWidget *label1210;
-  GtkWidget *label1208;
   GtkWidget *label1211;
   GtkWidget *frame44;
   GtkWidget *alignment223;
@@ -531,6 +531,11 @@ create_Citoyen (void)
   gtk_widget_set_size_request (ab_entry_profile_cin, 160, 27);
   gtk_entry_set_invisible_char (GTK_ENTRY (ab_entry_profile_cin), 8226);
 
+  label1208 = gtk_label_new ("");
+  gtk_widget_show (label1208);
+  gtk_fixed_put (GTK_FIXED (fixed132), label1208, 400, 720);
+  gtk_widget_set_size_request (label1208, 304, 56);
+
   ab_rb_profile_homme = gtk_radio_button_new_with_mnemonic (NULL, _("Homme"));
   gtk_widget_show (ab_rb_profile_homme);
   gtk_fixed_put (GTK_FIXED (fixed132), ab_rb_profile_homme, 448, 264);
@@ -634,11 +639,6 @@ create_Citoyen (void)
   label1210 = gtk_label_new_with_mnemonic (_("Confirmer"));
   gtk_widget_show (label1210);
   gtk_box_pack_start (GTK_BOX (hbox175), label1210, FALSE, FALSE, 0);
-
-  label1208 = gtk_label_new ("");
-  gtk_widget_show (label1208);
-  gtk_fixed_put (GTK_FIXED (fixed132), label1208, 400, 720);
-  gtk_widget_set_size_request (label1208, 304, 56);
 
   label1211 = gtk_label_new (_("<b>Information Profile</b>"));
   gtk_widget_show (label1211);
@@ -2121,6 +2121,7 @@ create_Citoyen (void)
   GLADE_HOOKUP_OBJECT (Citoyen, label1205, "label1205");
   GLADE_HOOKUP_OBJECT (Citoyen, label1206, "label1206");
   GLADE_HOOKUP_OBJECT (Citoyen, ab_entry_profile_cin, "ab_entry_profile_cin");
+  GLADE_HOOKUP_OBJECT (Citoyen, label1208, "label1208");
   GLADE_HOOKUP_OBJECT (Citoyen, ab_rb_profile_homme, "ab_rb_profile_homme");
   GLADE_HOOKUP_OBJECT (Citoyen, ab_rb_profile_femme, "ab_rb_profile_femme");
   GLADE_HOOKUP_OBJECT (Citoyen, checkbutton8, "checkbutton8");
@@ -2143,7 +2144,6 @@ create_Citoyen (void)
   GLADE_HOOKUP_OBJECT (Citoyen, hbox175, "hbox175");
   GLADE_HOOKUP_OBJECT (Citoyen, image179, "image179");
   GLADE_HOOKUP_OBJECT (Citoyen, label1210, "label1210");
-  GLADE_HOOKUP_OBJECT (Citoyen, label1208, "label1208");
   GLADE_HOOKUP_OBJECT (Citoyen, label1211, "label1211");
   GLADE_HOOKUP_OBJECT (Citoyen, frame44, "frame44");
   GLADE_HOOKUP_OBJECT (Citoyen, alignment223, "alignment223");
@@ -6152,13 +6152,14 @@ create_mdp_oublie (void)
 {
   GtkWidget *mdp_oublie;
   GtkWidget *fixed130;
-  GtkWidget *ab_entry_oublie_nmdp;
-  GtkWidget *ab_entry_oublie_nmdpc;
-  GtkWidget *ab_entry_oublie_cin;
+  GtkWidget *entry1;
+  GtkWidget *entry2;
+  GtkWidget *entry3;
   GtkWidget *label1195;
   GtkWidget *label1189;
   GtkWidget *label1191;
   GtkWidget *label1190;
+  GtkWidget *label1192;
   GtkWidget *button2;
   GtkWidget *alignment218;
   GtkWidget *hbox172;
@@ -6169,7 +6170,6 @@ create_mdp_oublie (void)
   GtkWidget *hbox171;
   GtkWidget *image175;
   GtkWidget *label1193;
-  GtkWidget *label1192;
 
   mdp_oublie = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (mdp_oublie), _("window1"));
@@ -6178,23 +6178,23 @@ create_mdp_oublie (void)
   gtk_widget_show (fixed130);
   gtk_container_add (GTK_CONTAINER (mdp_oublie), fixed130);
 
-  ab_entry_oublie_nmdp = gtk_entry_new ();
-  gtk_widget_show (ab_entry_oublie_nmdp);
-  gtk_fixed_put (GTK_FIXED (fixed130), ab_entry_oublie_nmdp, 184, 176);
-  gtk_widget_set_size_request (ab_entry_oublie_nmdp, 160, 27);
-  gtk_entry_set_invisible_char (GTK_ENTRY (ab_entry_oublie_nmdp), 8226);
+  entry1 = gtk_entry_new ();
+  gtk_widget_show (entry1);
+  gtk_fixed_put (GTK_FIXED (fixed130), entry1, 184, 176);
+  gtk_widget_set_size_request (entry1, 160, 27);
+  gtk_entry_set_invisible_char (GTK_ENTRY (entry1), 8226);
 
-  ab_entry_oublie_nmdpc = gtk_entry_new ();
-  gtk_widget_show (ab_entry_oublie_nmdpc);
-  gtk_fixed_put (GTK_FIXED (fixed130), ab_entry_oublie_nmdpc, 184, 248);
-  gtk_widget_set_size_request (ab_entry_oublie_nmdpc, 160, 27);
-  gtk_entry_set_invisible_char (GTK_ENTRY (ab_entry_oublie_nmdpc), 8226);
+  entry2 = gtk_entry_new ();
+  gtk_widget_show (entry2);
+  gtk_fixed_put (GTK_FIXED (fixed130), entry2, 184, 248);
+  gtk_widget_set_size_request (entry2, 160, 27);
+  gtk_entry_set_invisible_char (GTK_ENTRY (entry2), 8226);
 
-  ab_entry_oublie_cin = gtk_entry_new ();
-  gtk_widget_show (ab_entry_oublie_cin);
-  gtk_fixed_put (GTK_FIXED (fixed130), ab_entry_oublie_cin, 184, 104);
-  gtk_widget_set_size_request (ab_entry_oublie_cin, 160, 27);
-  gtk_entry_set_invisible_char (GTK_ENTRY (ab_entry_oublie_cin), 8226);
+  entry3 = gtk_entry_new ();
+  gtk_widget_show (entry3);
+  gtk_fixed_put (GTK_FIXED (fixed130), entry3, 184, 104);
+  gtk_widget_set_size_request (entry3, 160, 27);
+  gtk_entry_set_invisible_char (GTK_ENTRY (entry3), 8226);
 
   label1195 = gtk_label_new (_("CIN:"));
   gtk_widget_show (label1195);
@@ -6215,6 +6215,11 @@ create_mdp_oublie (void)
   gtk_widget_show (label1190);
   gtk_fixed_put (GTK_FIXED (fixed130), label1190, 0, 240);
   gtk_widget_set_size_request (label1190, 192, 67);
+
+  label1192 = gtk_label_new ("");
+  gtk_widget_show (label1192);
+  gtk_fixed_put (GTK_FIXED (fixed130), label1192, 8, 328);
+  gtk_widget_set_size_request (label1192, 400, 64);
 
   button2 = gtk_button_new ();
   gtk_widget_show (button2);
@@ -6258,11 +6263,6 @@ create_mdp_oublie (void)
   gtk_widget_show (label1193);
   gtk_box_pack_start (GTK_BOX (hbox171), label1193, FALSE, FALSE, 0);
 
-  label1192 = gtk_label_new ("");
-  gtk_widget_show (label1192);
-  gtk_fixed_put (GTK_FIXED (fixed130), label1192, 8, 328);
-  gtk_widget_set_size_request (label1192, 400, 64);
-
   g_signal_connect ((gpointer) button2, "clicked",
                     G_CALLBACK (on_ab_button_oublier_ok_clicked),
                     NULL);
@@ -6273,13 +6273,14 @@ create_mdp_oublie (void)
   /* Store pointers to all widgets, for use by lookup_widget(). */
   GLADE_HOOKUP_OBJECT_NO_REF (mdp_oublie, mdp_oublie, "mdp_oublie");
   GLADE_HOOKUP_OBJECT (mdp_oublie, fixed130, "fixed130");
-  GLADE_HOOKUP_OBJECT (mdp_oublie, ab_entry_oublie_nmdp, "ab_entry_oublie_nmdp");
-  GLADE_HOOKUP_OBJECT (mdp_oublie, ab_entry_oublie_nmdpc, "ab_entry_oublie_nmdpc");
-  GLADE_HOOKUP_OBJECT (mdp_oublie, ab_entry_oublie_cin, "ab_entry_oublie_cin");
+  GLADE_HOOKUP_OBJECT (mdp_oublie, entry1, "entry1");
+  GLADE_HOOKUP_OBJECT (mdp_oublie, entry2, "entry2");
+  GLADE_HOOKUP_OBJECT (mdp_oublie, entry3, "entry3");
   GLADE_HOOKUP_OBJECT (mdp_oublie, label1195, "label1195");
   GLADE_HOOKUP_OBJECT (mdp_oublie, label1189, "label1189");
   GLADE_HOOKUP_OBJECT (mdp_oublie, label1191, "label1191");
   GLADE_HOOKUP_OBJECT (mdp_oublie, label1190, "label1190");
+  GLADE_HOOKUP_OBJECT (mdp_oublie, label1192, "label1192");
   GLADE_HOOKUP_OBJECT (mdp_oublie, button2, "button2");
   GLADE_HOOKUP_OBJECT (mdp_oublie, alignment218, "alignment218");
   GLADE_HOOKUP_OBJECT (mdp_oublie, hbox172, "hbox172");
@@ -6290,7 +6291,6 @@ create_mdp_oublie (void)
   GLADE_HOOKUP_OBJECT (mdp_oublie, hbox171, "hbox171");
   GLADE_HOOKUP_OBJECT (mdp_oublie, image175, "image175");
   GLADE_HOOKUP_OBJECT (mdp_oublie, label1193, "label1193");
-  GLADE_HOOKUP_OBJECT (mdp_oublie, label1192, "label1192");
 
   return mdp_oublie;
 }

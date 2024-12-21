@@ -5,6 +5,33 @@ void
 on_Citoyen_map                         (GtkWidget       *widget,
                                         gpointer         user_data);
 
+void
+on_checkbutton13_toggled               (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_checkbutton12_toggled               (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_checkbutton11_toggled               (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_checkbutton8_toggled                (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_checkbutton9_toggled                (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_checkbutton10_toggled               (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_button1_clicked                     (GtkWidget       *widget,
+                                        gpointer         user_data);
 
 void
 on_asbuttonajouter_clicked             (GtkButton       *button,
@@ -540,38 +567,6 @@ on_ab_button_login_oublie_clicked      (GtkButton       *button,
                                         gpointer         user_data);
 
 void
-on_checkbutton13_toggled               (GtkToggleButton *togglebutton,
-                                        gpointer         user_data);
-
-void
-on_checkbutton12_toggled               (GtkToggleButton *togglebutton,
-                                        gpointer         user_data);
-
-void
-on_checkbutton11_toggled               (GtkToggleButton *togglebutton,
-                                        gpointer         user_data);
-
-void
-on_checkbutton8_toggled                (GtkToggleButton *togglebutton,
-                                        gpointer         user_data);
-
-void
-on_checkbutton9_toggled                (GtkToggleButton *togglebutton,
-                                        gpointer         user_data);
-
-void
-on_checkbutton10_toggled               (GtkToggleButton *togglebutton,
-                                        gpointer         user_data);
-
-
-void on_row_double_clicked(GtkTreeView *treeview, GtkTreePath *path, GtkTreeViewColumn *column, gpointer user_data);
-
-void on_row_selected(GtkTreeSelection *selection, gpointer user_data);
-void
 on_ab_button_vehicule_Supprimer_clicked
                                         (GtkButton       *button,
-                                        gpointer         user_data);
-
-void
-on_button1_clicked                     (GtkWidget *widget,
                                         gpointer         user_data);

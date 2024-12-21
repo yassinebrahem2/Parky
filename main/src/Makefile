@@ -100,13 +100,8 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_parky_OBJECTS = main.$(OBJEXT) support.$(OBJEXT) \
-<<<<<<< HEAD
 	interface.$(OBJEXT) callbacks.$(OBJEXT) reservation.$(OBJEXT) \
-	parking.$(OBJEXT)
-=======
-	interface.$(OBJEXT) callbacks.$(OBJEXT) projet.$(OBJEXT) \
-	window.$(OBJEXT) reservation.$(OBJEXT)
->>>>>>> client
+	parking.$(OBJEXT) projet.$(OBJEXT) window.$(OBJEXT)
 parky_OBJECTS = $(am_parky_OBJECTS)
 am__DEPENDENCIES_1 =
 parky_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -166,12 +161,12 @@ ETAGS = etags
 CTAGS = ctags
 am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/depcomp
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/missing aclocal-1.15
+ACLOCAL = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/MERGING/parking/missing" aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
-AUTOCONF = ${SHELL} /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/missing autoconf
-AUTOHEADER = ${SHELL} /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/missing autoheader
-AUTOMAKE = ${SHELL} /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/missing automake-1.15
+AUTOCONF = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/MERGING/parking/missing" autoconf
+AUTOHEADER = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/MERGING/parking/missing" autoheader
+AUTOMAKE = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/MERGING/parking/missing" automake-1.15
 AWK = mawk
 CATALOGS = 
 CATOBJEXT = .gmo
@@ -206,7 +201,7 @@ LIBOBJS =
 LIBS = 
 LTLIBOBJS = 
 MAINT = 
-MAKEINFO = ${SHELL} /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/missing makeinfo
+MAKEINFO = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/MERGING/parking/missing" makeinfo
 MKDIR_P = /bin/mkdir -p
 MKINSTALLDIRS = ./mkinstalldirs
 MSGFMT = /usr/bin/msgfmt
@@ -235,10 +230,10 @@ STRIP =
 USE_NLS = yes
 VERSION = 0.1
 XGETTEXT = /usr/bin/xgettext
-abs_builddir = /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/src
-abs_srcdir = /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/src
-abs_top_builddir = /home/vboxuser/Desktop/TESTINGGGGG/Parky/main
-abs_top_srcdir = /home/vboxuser/Desktop/TESTINGGGGG/Parky/main
+abs_builddir = /home/vboxuser/Documents/FINAL PROJECTS/MERGING/parking/src
+abs_srcdir = /home/vboxuser/Documents/FINAL PROJECTS/MERGING/parking/src
+abs_top_builddir = /home/vboxuser/Documents/FINAL PROJECTS/MERGING/parking
+abs_top_srcdir = /home/vboxuser/Documents/FINAL PROJECTS/MERGING/parking
 ac_ct_CC = gcc
 am__include = include
 am__leading_dot = .
@@ -257,7 +252,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/install-sh
+install_sh = ${SHELL} '/home/vboxuser/Documents/FINAL PROJECTS/MERGING/parking/install-sh'
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -288,14 +283,10 @@ parky_SOURCES = \
 	support.c support.h \
 	interface.c interface.h \
 	callbacks.c callbacks.h \
-<<<<<<< HEAD
 	reservation.c reservation.h \
-	parking.c parking.h
-=======
+	parking.c parking.h \
 	projet.c projet.h \
-	window.c window.h \
-	reservation.c reservation.h
->>>>>>> client
+	window.c window.h
 
 parky_LDADD = -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype $(INTLLIBS)
 all: all-am
@@ -387,11 +378,8 @@ distclean-compile:
 include ./$(DEPDIR)/callbacks.Po
 include ./$(DEPDIR)/interface.Po
 include ./$(DEPDIR)/main.Po
-<<<<<<< HEAD
 include ./$(DEPDIR)/parking.Po
-=======
 include ./$(DEPDIR)/projet.Po
->>>>>>> client
 include ./$(DEPDIR)/reservation.Po
 include ./$(DEPDIR)/support.Po
 include ./$(DEPDIR)/window.Po

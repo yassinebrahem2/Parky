@@ -3,11 +3,7 @@
 #include <gtk/gtk.h>
 typedef struct {
     char idreservation[8];
-<<<<<<< HEAD
     char cin[8];
-=======
-    char cin[9];
->>>>>>> client
     char parkingID[8];
     int jours, mois, annee;
     int heureh, heuremin;
@@ -26,10 +22,7 @@ int supprimer_reservation(char *filename, char *idreservation);
 void updateReservationDisplayFile(char *reservationFileDirectory, char *reservationDisplayFileDirectory);
 int getReservationByID(char *filename, Reservation *reservation,char *id);
 void filterReservationByCIN(char *filename, char *cin);
-<<<<<<< HEAD
 void filterReservationByDate(char *filename, int jour, int mois, int annee);
-=======
->>>>>>> client
 void afficher_reservations(GtkWidget *liste ,char *reservationDisplayFileDirectory, const char *cin);
 void vider(GtkWidget *liste);
 

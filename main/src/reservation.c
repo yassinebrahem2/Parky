@@ -112,19 +112,11 @@ int getReservationByID(char *filename, Reservation *reservation,char *id) {
 }
 // Chercher une réservation par son cin pour le treeview 
 void filterReservationByCIN(char *filename, char *cin) {
-<<<<<<< HEAD
-=======
-     
->>>>>>> client
     Reservation r;
     FILE *displayFile = fopen("temp.txt", "w");
     FILE *f = fopen(filename, "r");
     if (f != NULL) {
         while (scanReservation(f, &r) != EOF) {
-<<<<<<< HEAD
-=======
-            printf("batata\n");
->>>>>>> client
             if (strcmp(r.cin, cin) == 0) {
                 printReservation(displayFile, r);
             }
@@ -134,7 +126,6 @@ void filterReservationByCIN(char *filename, char *cin) {
     remove(filename);
     rename("temp.txt", filename);
     }
-<<<<<<< HEAD
 }
 
 void filterReservationByDate(char *filename, int jour, int mois, int annee) {
@@ -152,9 +143,6 @@ void filterReservationByDate(char *filename, int jour, int mois, int annee) {
     remove(filename);
     rename("temp.txt", filename);
     }
-=======
-    
->>>>>>> client
 }
 
 

@@ -9,12 +9,15 @@
 #include "support.h"
 #include "parking.h"
 #include "reservation.h"
+#include "projet.h"
+#include "window.h"
 
 
 GtkWidget *treeviewParking;
 GtkWidget *treeviewParkingAgents;
 GtkWidget *treeviewParkingReservation;
 GtkWidget *treeviewReservation;
+GtkWidget *treeviewReservationClient;
 GtkTreeStore *storeAgent;
 
 GtkWidget *entryParkingID;
@@ -58,10 +61,7 @@ int met=1;
 int dem_spec[2]={0,0};
 int agree=0;
 Parking parkingReservation;
-char loggedCIN[8] = "333";
 
-char *reservationFileDirectory = "Data/reservation.txt";
-char *reservationDisplayFileDirectory = "Cashe/displayReservation.txt";
 
 GtkWidget *labelNewParkingNotification;
 GtkWidget *labelParkingNotification;
@@ -73,118 +73,7 @@ GtkTreeStore *store;
 Agent agent;
 
 
-char municipality[20][100] = {"munic1", "munic2", "munic3", "munic4", "munic5"};
-char *parkingFileDirectory = "Data/parking.txt";
-char *agentFileDirectory = "Data/agent.txt";
-char *parkingDisplayFileDirectory = "Cashe/parkingDisplay.txt";
-char *parkingAgentsDisplayFileDirectory = "Cashe/parkingAgentsDisplay.txt";
-char *parkingReservationDisplayFileDirectory = "Cashe/parkingReservationDisplay.txt";
 
-#include "projet.h"
-#include "window.h"
-#include "reservation.h"
-
-<<<<<<< HEAD
-void
-on_Citoyen_map                         (GtkWidget       *widget,
-                                        gpointer         user_data)
-{
-    initReservationParkingTreeview(widget);
-    initReservationTreeview(widget);
-    
-    GtkWidget *entry_cin = lookup_widget(GTK_WIDGET(widget), "asentrycina");
-    gtk_entry_set_text(GTK_ENTRY(entry_cin), loggedCIN);
-    GtkWidget *entry_idpa = lookup_widget(GTK_WIDGET(widget), "asentryidpa");
-    gtk_entry_set_text(GTK_ENTRY(entry_idpa), "-1");
-
-    GtkWidget *entry_cinm = lookup_widget(GTK_WIDGET(widget), "asentrycinm");
-    gtk_entry_set_text(GTK_ENTRY(entry_cinm), loggedCIN);
-}
-
-
-void
-on_checkbutton8_toggled                (GtkToggleButton *togglebutton,
-                                        gpointer         user_data)
-{
-
-}
-
-
-void
-on_checkbutton9_toggled                (GtkToggleButton *togglebutton,
-                                        gpointer         user_data)
-{
-
-}
-
-
-void
-on_checkbutton10_toggled               (GtkToggleButton *togglebutton,
-                                        gpointer         user_data)
-{
-
-}
-
-
-void
-on_checkbutton11_toggled               (GtkToggleButton *togglebutton,
-                                        gpointer         user_data)
-{
-
-}
-
-
-void
-on_checkbutton12_toggled               (GtkToggleButton *togglebutton,
-                                        gpointer         user_data)
-{
-
-}
-
-
-void
-on_checkbutton13_toggled               (GtkToggleButton *togglebutton,
-                                        gpointer         user_data)
-{
-
-}
-
-
-void
-on_ab_button_profile_modifier_clicked  (GtkButton       *button,
-                                        gpointer         user_data)
-{
-
-}
-
-
-void
-on_ab_button_profile_confirmer_clicked (GtkButton       *button,
-                                        gpointer         user_data)
-{
-
-}
-
-
-void
-on_ab_button_vehicule_confirme_clicked (GtkButton       *button,
-                                        gpointer         user_data)
-{
-
-}
-
-
-void
-on_ab_button_vehicule_annuler_clicked  (GtkButton       *button,
-                                        gpointer         user_data)
-{
-=======
->>>>>>> client
-
-GtkWidget *treeviewReservationClient;
-
-char *reservationFileDirectory = "reservation.txt";
-char *reservationDisplayFileDirectory = "displayReservation.txt";
 
 int a,aa,mm;
 char num_carte[50],code[5];
@@ -198,8 +87,36 @@ vehicule v={0};
  GtkListStore *list_store2; 
 gboolean search_filter_function(GtkTreeModel *model, GtkTreeIter *iter, gpointer data);
 
-char CIN[20],MDP[20];
+char loggedCIN[20],MDP[20];
 
+
+char municipality[20][100] = {"munic1", "munic2", "munic3", "munic4", "munic5"};
+char *parkingFileDirectory = "Data/parking.txt";
+char *agentFileDirectory = "Data/agent.txt";
+char *parkingDisplayFileDirectory = "Cashe/parkingDisplay.txt";
+char *parkingAgentsDisplayFileDirectory = "Cashe/parkingAgentsDisplay.txt";
+char *parkingReservationDisplayFileDirectory = "Cashe/parkingReservationDisplay.txt";
+
+char *reservationFileDirectory = "Data/reservation.txt";
+char *reservationDisplayFileDirectory = "Cashe/displayReservation.txt";
+
+void
+on_Citoyen_map                         (GtkWidget       *widget,
+                                        gpointer         user_data)
+{
+    initReservationParkingTreeview(widget);
+    initReservationTreeview(widget);
+    initCitoyen(widget);
+
+    GtkWidget *entry_cin = lookup_widget(GTK_WIDGET(widget), "asentrycina");
+    gtk_entry_set_text(GTK_ENTRY(entry_cin), loggedCIN);
+    GtkWidget *entry_idpa = lookup_widget(GTK_WIDGET(widget), "asentryidpa");
+    gtk_entry_set_text(GTK_ENTRY(entry_idpa), "-1");
+
+    GtkWidget *entry_cinm = lookup_widget(GTK_WIDGET(widget), "asentrycinm");
+    gtk_entry_set_text(GTK_ENTRY(entry_cinm), loggedCIN);
+
+}
 
 
 
@@ -1863,8 +1780,6 @@ on_mfbuttonappliquerreservation_clicked
 
 }
 
-
-
 void transform_space_to_underscore(const char *text1) {
     
     char* text= strdup(text1);
@@ -1900,7 +1815,7 @@ char cin1[50], mdp1[50];
 cin = lookup_widget(objet_graphique,"ab_entry_login_cin");
 mdp = lookup_widget(objet_graphique,"ab_entry_login_MDP");
 label = lookup_widget(objet_graphique,"label4");
-strcpy(CIN,gtk_entry_get_text(GTK_ENTRY(cin)));
+strcpy(loggedCIN,gtk_entry_get_text(GTK_ENTRY(cin)));
 strcpy(MDP,gtk_entry_get_text(GTK_ENTRY(mdp)));
 FILE *f=fopen(file_directory_citoyen,"r");
 
@@ -1912,14 +1827,14 @@ FILE *f=fopen(file_directory_citoyen,"r");
  
  while(fscanf(f,"%19s %*s %*s %*s %*s %*s %19s %*d %*d %*d %*d %*d %*d %*d %*d %*d %*d",cin1,mdp1)!=EOF){
 
-    if (strcmp(CIN,cin1)==0 && strcmp(MDP,mdp1)==0)
+    if (strcmp(loggedCIN,cin1)==0 && strcmp(MDP,mdp1)==0)
     {   
         
         windows_show_window(Citoyen);
         x=1;
         break;
     }  
-    else if (strcmp(CIN,cin1)==0 && strcmp(MDP,mdp1)!=0)
+    else if (strcmp(loggedCIN,cin1)==0 && strcmp(MDP,mdp1)!=0)
     {
         x=2;
     }
@@ -2687,230 +2602,6 @@ if (gtk_toggle_button_get_active(togglebutton))
         c.options[2] = 0;
 }
 
-
-void
-on_Citoyen_map                         (GtkWidget       *widget,
-                                        gpointer         user_data)
-{
-
-GtkWidget *nom,*prenom,*email,*adresse,*tel,*mdp,*mdpc,*cin,*sb1,*sb2,*sb3,*cb1,*cb2,*cb3,*cb4,*cb5,*cb6,*rb1,*rb2,*tv,*tv2
-,*entry1,*entry2,*spin1,*spin2;
-GtkTreeViewColumn *column;
-GtkCellRenderer *renderer;
-char cin1[50], mdp1[50], nom1[50], prenom1[50], tel1[50], email1[50], adresse1[100],matricule[50],marque[50];
-int x=0,dn[3],options[6],genre,type;
-
-nom = lookup_widget(widget,"ab_entry_profile_nom");
-prenom = lookup_widget(widget,"ab_entry_profile_prenom");
-email = lookup_widget(widget,"ab_entry_profile_email");
-adresse = lookup_widget(widget,"ab_entry_profile_adresse");
-tel = lookup_widget(widget,"ab_entry_profile_tel");
-mdp = lookup_widget(widget,"ab_entry_profile_MDP");
-mdpc = lookup_widget(widget,"ab_entry_profile_MDPc");
-cin = lookup_widget(widget,"ab_entry_profile_cin");
-sb1 = lookup_widget(widget,"ab_sb_profile_DNj");
-sb2 = lookup_widget(widget,"ab_sb_profile_DNm");
-sb3 = lookup_widget(widget,"ab_sb_profile_DNa");
-cb1 = lookup_widget(widget,"checkbutton8");
-cb2 = lookup_widget(widget,"checkbutton9");
-cb3 = lookup_widget(widget,"checkbutton10");
-cb4 = lookup_widget(widget,"checkbutton11");
-cb5 = lookup_widget(widget,"checkbutton12");
-cb6 = lookup_widget(widget,"checkbutton13");
-rb1 = lookup_widget(widget,"ab_rb_profile_femme");
-rb2 = lookup_widget(widget,"ab_rb_profile_homme");
-tv = lookup_widget(widget,"ab_treeview_vehicule_listvehicule");
-tv2 = lookup_widget(widget,"ab_treeview_facture_options");
-spin1= lookup_widget(widget,"spinbutton1");
-spin2= lookup_widget(widget,"spinbutton2");
-entry1 = lookup_widget(widget,"ab_entry_facture_numcarte");
-entry2 = lookup_widget(widget,"ab_entry_facture_code");
-
-
-list_store = gtk_list_store_new(3,G_TYPE_STRING,G_TYPE_STRING,G_TYPE_STRING); // Declare the list store globally   
-list_store2 = gtk_list_store_new(1,G_TYPE_STRING);  
-
-
-renderer = gtk_cell_renderer_text_new();
-column = gtk_tree_view_column_new_with_attributes("Marque",renderer,"text",0,NULL);
-gtk_tree_view_append_column(GTK_TREE_VIEW(tv), column);
-
-renderer = gtk_cell_renderer_text_new();
-column = gtk_tree_view_column_new_with_attributes("Options",renderer,"text",0,NULL);
-gtk_tree_view_append_column(GTK_TREE_VIEW(tv2), column);
-
-renderer = gtk_cell_renderer_text_new();
-column = gtk_tree_view_column_new_with_attributes("Matricule", renderer, "text", 1, NULL);
-gtk_tree_view_append_column(GTK_TREE_VIEW(tv), column);
-
-renderer = gtk_cell_renderer_text_new();
-column = gtk_tree_view_column_new_with_attributes("Type", renderer, "text", 2, NULL);
-gtk_tree_view_append_column(GTK_TREE_VIEW(tv), column);
-
-GtkTreeModel *model = GTK_TREE_MODEL(list_store);
-gtk_tree_view_set_model(GTK_TREE_VIEW(tv), model);
-
-GtkTreeModel *model2 = GTK_TREE_MODEL(list_store2);
-gtk_tree_view_set_model(GTK_TREE_VIEW(tv2), model2);
-
-GtkTreeSelection *selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(tv));
-gtk_tree_selection_set_mode(selection, GTK_SELECTION_SINGLE);
-
-GtkTreeSelection *selection2 = gtk_tree_view_get_selection(GTK_TREE_VIEW(tv2));
-gtk_tree_selection_set_mode(selection2, GTK_SELECTION_SINGLE);
-g_signal_connect(selection, "changed", G_CALLBACK(on_row_selected), NULL);
-//g_signal_connect(tv, "row-activated", G_CALLBACK(on_row_double_clicked), NULL);
-
-
-
-
-FILE *f=fopen(file_directory_citoyen,"r");
-if (!f)
-    {
-        g_print( "Erreur: Impossible d'ouvrir le fichier!");
-        return;
-    }
-while(fscanf(f,"%19s %s %s %s %s %s %19s %d %d %d %d %d %d %d %d %d %d",cin1,nom1,prenom1,tel1,email1,adresse1,mdp1, &dn[0],&dn[1],&dn[2] , &genre ,&options[0]
- ,&options[1],&options[2],&options[3],&options[4],&options[5])!=EOF){
-    
-
-    if (strcmp(CIN,cin1)==0 && strcmp(MDP,mdp1)==0)
-    {   transform_underscore_to_space(nom1);
-        gtk_entry_set_text(GTK_ENTRY(nom),nom1);
-        gtk_editable_set_editable(GTK_EDITABLE(nom), FALSE);
-        gtk_entry_set_text(GTK_ENTRY(tel),tel1);
-        gtk_editable_set_editable(GTK_EDITABLE(tel), FALSE);
-        transform_underscore_to_space(prenom1);
-        gtk_entry_set_text(GTK_ENTRY(prenom),prenom1);
-        gtk_editable_set_editable(GTK_EDITABLE(prenom), FALSE);
-        transform_underscore_to_space(adresse1);
-        gtk_entry_set_text(GTK_ENTRY(adresse),adresse1);
-        gtk_editable_set_editable(GTK_EDITABLE(adresse), FALSE);
-        gtk_entry_set_text(GTK_ENTRY(email),email1);
-        gtk_editable_set_editable(GTK_EDITABLE(email), FALSE);
-        gtk_entry_set_text(GTK_ENTRY(mdp),mdp1);
-        gtk_editable_set_editable(GTK_EDITABLE(mdp), FALSE);
-        gtk_entry_set_text(GTK_ENTRY(mdpc),"");
-        gtk_editable_set_editable(GTK_EDITABLE(mdpc), FALSE);
-        gtk_entry_set_text(GTK_ENTRY(adresse),adresse1);
-        gtk_editable_set_editable(GTK_EDITABLE(adresse), FALSE);
-        gtk_entry_set_text(GTK_ENTRY(cin),cin1);
-        gtk_editable_set_editable(GTK_EDITABLE(cin), FALSE);
-        gtk_widget_set_sensitive(GTK_WIDGET(rb1), FALSE);
-        gtk_widget_set_sensitive(GTK_WIDGET(rb2), FALSE);
-        gtk_spin_button_set_value(GTK_SPIN_BUTTON(sb1),dn[0]);
-        gtk_spin_button_set_value(GTK_SPIN_BUTTON(sb2),dn[1]);
-        gtk_spin_button_set_value(GTK_SPIN_BUTTON(sb3),dn[2]);
-        gtk_widget_set_sensitive(GTK_WIDGET(sb1), FALSE);
-        gtk_widget_set_sensitive(GTK_WIDGET(sb2), FALSE);
-        gtk_widget_set_sensitive(GTK_WIDGET(sb3), FALSE);
-        GtkTreeIter iter;
-             if (options[0] == 0) {
-    gtk_list_store_append(list_store2, &iter);
-    gtk_list_store_set(list_store2, &iter, 0, "NULL", -1);
-} else {
-    gtk_list_store_append(list_store2, &iter);
-    gtk_list_store_set(list_store2, &iter, 0, "parking a etages", -1);
-}
-
-if (options[1] == 0) {
-    gtk_list_store_append(list_store2, &iter);
-    gtk_list_store_set(list_store2, &iter, 0, "NULL", -1);
-} else {
-    gtk_list_store_append(list_store2, &iter);
-    gtk_list_store_set(list_store2, &iter, 0, "Handicape", -1);
-}
-
-if (options[2] == 0) {
-    gtk_list_store_append(list_store2, &iter);
-    gtk_list_store_set(list_store2, &iter, 0, "NULL", -1);
-} else {
-    gtk_list_store_append(list_store2, &iter);
-    gtk_list_store_set(list_store2, &iter, 0, "Lavage", -1);
-}
-
-if (options[3] == 0) {
-    gtk_list_store_append(list_store2, &iter);
-    gtk_list_store_set(list_store2, &iter, 0, "NULL", -1);
-} else {
-    gtk_list_store_append(list_store2, &iter);
-    gtk_list_store_set(list_store2, &iter, 0, "Service client", -1);
-}
-
-if (options[4] == 0) {
-    gtk_list_store_append(list_store2, &iter);
-    gtk_list_store_set(list_store2, &iter, 0, "NULL", -1);
-} else {
-    gtk_list_store_append(list_store2, &iter);
-    gtk_list_store_set(list_store2, &iter, 0, "Agent de securite", -1);
-}
-
-if (options[5] == 0) {
-    gtk_list_store_append(list_store2, &iter);
-    gtk_list_store_set(list_store2, &iter, 0, "NULL", -1);
-} else {
-    gtk_list_store_append(list_store2, &iter);
-    gtk_list_store_set(list_store2, &iter, 0, "Technicien de maintenance", -1);
-}
-
-        
-
-  if(genre==0)
-  {
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(rb2) , TRUE);
-  }
-  else
-  {
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(rb1) , TRUE);
-  }
-  gtk_widget_set_sensitive(GTK_WIDGET(cb6), FALSE);
-  gtk_widget_set_sensitive(GTK_WIDGET(cb5), FALSE);
-    gtk_widget_set_sensitive(GTK_WIDGET(cb4), FALSE);
-      gtk_widget_set_sensitive(GTK_WIDGET(cb1), FALSE);
-      gtk_widget_set_sensitive(GTK_WIDGET(cb2), FALSE);
-      gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(cb3),options[2]);
-  gtk_widget_set_sensitive(GTK_WIDGET(cb3), FALSE);
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(cb2),options[1]);
-      gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(cb1),options[0]);
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(cb5),options[4]);
-      gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(cb6),options[5]);
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(cb4),options[3]);
-
-        gtk_entry_set_text(GTK_ENTRY(entry1),num_carte);
-        gtk_entry_set_text(GTK_ENTRY(entry2),code);
-        gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin1),mm);
-        gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin2),aa);
-
-        break;
-    }  
-}
-fclose(f);
-FILE *f1=fopen(file_directory_vehicule,"r");
-if (!f1)
-    {
-        g_print( "Erreur: Impossible d'ouvrir le fichier!");
-        return;
-    }
-while(fscanf(f1,"%s %s %s %d %*s",cin1,matricule,marque,&type)!=EOF)
-{ 
-  if (strcmp(CIN,cin1)==0)
-  {  char type1[50];
-    if(type==0){strcpy(type1,"Camion");}
-    if(type==1){strcpy(type1,"Sedan");}
-    if(type==2){strcpy(type1,"Moto");}
-    GtkTreeIter iter;
-    gtk_list_store_append(list_store,&iter);
-    gtk_list_store_set(list_store,&iter,0,marque,1,matricule,2,type1,-1);
-
-  }
-
-}
-fclose(f1);
-
-initReservationClientTreeview(widget);
-}
-
-
 void on_row_selected(GtkTreeSelection *selection, gpointer user_data) {
     GtkTreeModel *model;
     GtkTreeIter iter;
@@ -2926,6 +2617,227 @@ void on_row_selected(GtkTreeSelection *selection, gpointer user_data) {
         g_free(type);
     }
 }
+
+void initCitoyen(GtkWidget *widget) {
+    GtkWidget *nom,*prenom,*email,*adresse,*tel,*mdp,*mdpc,*cin,*sb1,*sb2,*sb3,*cb1,*cb2,*cb3,*cb4,*cb5,*cb6,*rb1,*rb2,*tv,*tv2
+    ,*entry1,*entry2,*spin1,*spin2;
+    GtkTreeViewColumn *column;
+    GtkCellRenderer *renderer;
+    char cin1[50], mdp1[50], nom1[50], prenom1[50], tel1[50], email1[50], adresse1[100],matricule[50],marque[50];
+    int x=0,dn[3],options[6],genre,type;
+
+    nom = lookup_widget(widget,"ab_entry_profile_nom");
+    prenom = lookup_widget(widget,"ab_entry_profile_prenom");
+    email = lookup_widget(widget,"ab_entry_profile_email");
+    adresse = lookup_widget(widget,"ab_entry_profile_adresse");
+    tel = lookup_widget(widget,"ab_entry_profile_tel");
+    mdp = lookup_widget(widget,"ab_entry_profile_MDP");
+    mdpc = lookup_widget(widget,"ab_entry_profile_MDPc");
+    cin = lookup_widget(widget,"ab_entry_profile_cin");
+    sb1 = lookup_widget(widget,"ab_sb_profile_DNj");
+    sb2 = lookup_widget(widget,"ab_sb_profile_DNm");
+    sb3 = lookup_widget(widget,"ab_sb_profile_DNa");
+    cb1 = lookup_widget(widget,"checkbutton8");
+    cb2 = lookup_widget(widget,"checkbutton9");
+    cb3 = lookup_widget(widget,"checkbutton10");
+    cb4 = lookup_widget(widget,"checkbutton11");
+    cb5 = lookup_widget(widget,"checkbutton12");
+    cb6 = lookup_widget(widget,"checkbutton13");
+    rb1 = lookup_widget(widget,"ab_rb_profile_femme");
+    rb2 = lookup_widget(widget,"ab_rb_profile_homme");
+    tv = lookup_widget(widget,"ab_treeview_vehicule_listvehicule");
+    tv2 = lookup_widget(widget,"ab_treeview_facture_options");
+    spin1= lookup_widget(widget,"spinbutton1");
+    spin2= lookup_widget(widget,"spinbutton2");
+    entry1 = lookup_widget(widget,"ab_entry_facture_numcarte");
+    entry2 = lookup_widget(widget,"ab_entry_facture_code");
+
+
+    list_store = gtk_list_store_new(3,G_TYPE_STRING,G_TYPE_STRING,G_TYPE_STRING); // Declare the list store globally   
+    list_store2 = gtk_list_store_new(1,G_TYPE_STRING);  
+
+
+    renderer = gtk_cell_renderer_text_new();
+    column = gtk_tree_view_column_new_with_attributes("Marque",renderer,"text",0,NULL);
+    gtk_tree_view_append_column(GTK_TREE_VIEW(tv), column);
+
+    renderer = gtk_cell_renderer_text_new();
+    column = gtk_tree_view_column_new_with_attributes("Options",renderer,"text",0,NULL);
+    gtk_tree_view_append_column(GTK_TREE_VIEW(tv2), column);
+
+    renderer = gtk_cell_renderer_text_new();
+    column = gtk_tree_view_column_new_with_attributes("Matricule", renderer, "text", 1, NULL);
+    gtk_tree_view_append_column(GTK_TREE_VIEW(tv), column);
+
+    renderer = gtk_cell_renderer_text_new();
+    column = gtk_tree_view_column_new_with_attributes("Type", renderer, "text", 2, NULL);
+    gtk_tree_view_append_column(GTK_TREE_VIEW(tv), column);
+
+    GtkTreeModel *model = GTK_TREE_MODEL(list_store);
+    gtk_tree_view_set_model(GTK_TREE_VIEW(tv), model);
+
+    GtkTreeModel *model2 = GTK_TREE_MODEL(list_store2);
+    gtk_tree_view_set_model(GTK_TREE_VIEW(tv2), model2);
+
+    GtkTreeSelection *selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(tv));
+    gtk_tree_selection_set_mode(selection, GTK_SELECTION_SINGLE);
+
+    GtkTreeSelection *selection2 = gtk_tree_view_get_selection(GTK_TREE_VIEW(tv2));
+    gtk_tree_selection_set_mode(selection2, GTK_SELECTION_SINGLE);
+    g_signal_connect(selection, "changed", G_CALLBACK(on_row_selected), NULL);
+    //g_signal_connect(tv, "row-activated", G_CALLBACK(on_row_double_clicked), NULL);
+
+
+
+
+    FILE *f=fopen(file_directory_citoyen,"r");
+    if (!f)
+        {
+            g_print( "Erreur: Impossible d'ouvrir le fichier!");
+            return;
+        }
+    while(fscanf(f,"%19s %s %s %s %s %s %19s %d %d %d %d %d %d %d %d %d %d",cin1,nom1,prenom1,tel1,email1,adresse1,mdp1, &dn[0],&dn[1],&dn[2] , &genre ,&options[0]
+    ,&options[1],&options[2],&options[3],&options[4],&options[5])!=EOF){
+        
+
+        if (strcmp(loggedCIN,cin1)==0 && strcmp(MDP,mdp1)==0)
+        {   transform_underscore_to_space(nom1);
+            gtk_entry_set_text(GTK_ENTRY(nom),nom1);
+            gtk_editable_set_editable(GTK_EDITABLE(nom), FALSE);
+            gtk_entry_set_text(GTK_ENTRY(tel),tel1);
+            gtk_editable_set_editable(GTK_EDITABLE(tel), FALSE);
+            transform_underscore_to_space(prenom1);
+            gtk_entry_set_text(GTK_ENTRY(prenom),prenom1);
+            gtk_editable_set_editable(GTK_EDITABLE(prenom), FALSE);
+            transform_underscore_to_space(adresse1);
+            gtk_entry_set_text(GTK_ENTRY(adresse),adresse1);
+            gtk_editable_set_editable(GTK_EDITABLE(adresse), FALSE);
+            gtk_entry_set_text(GTK_ENTRY(email),email1);
+            gtk_editable_set_editable(GTK_EDITABLE(email), FALSE);
+            gtk_entry_set_text(GTK_ENTRY(mdp),mdp1);
+            gtk_editable_set_editable(GTK_EDITABLE(mdp), FALSE);
+            gtk_entry_set_text(GTK_ENTRY(mdpc),"");
+            gtk_editable_set_editable(GTK_EDITABLE(mdpc), FALSE);
+            gtk_entry_set_text(GTK_ENTRY(adresse),adresse1);
+            gtk_editable_set_editable(GTK_EDITABLE(adresse), FALSE);
+            gtk_entry_set_text(GTK_ENTRY(cin),cin1);
+            gtk_editable_set_editable(GTK_EDITABLE(cin), FALSE);
+            gtk_widget_set_sensitive(GTK_WIDGET(rb1), FALSE);
+            gtk_widget_set_sensitive(GTK_WIDGET(rb2), FALSE);
+            gtk_spin_button_set_value(GTK_SPIN_BUTTON(sb1),dn[0]);
+            gtk_spin_button_set_value(GTK_SPIN_BUTTON(sb2),dn[1]);
+            gtk_spin_button_set_value(GTK_SPIN_BUTTON(sb3),dn[2]);
+            gtk_widget_set_sensitive(GTK_WIDGET(sb1), FALSE);
+            gtk_widget_set_sensitive(GTK_WIDGET(sb2), FALSE);
+            gtk_widget_set_sensitive(GTK_WIDGET(sb3), FALSE);
+            GtkTreeIter iter;
+                if (options[0] == 0) {
+        gtk_list_store_append(list_store2, &iter);
+        gtk_list_store_set(list_store2, &iter, 0, "NULL", -1);
+    } else {
+        gtk_list_store_append(list_store2, &iter);
+        gtk_list_store_set(list_store2, &iter, 0, "parking a etages", -1);
+    }
+
+    if (options[1] == 0) {
+        gtk_list_store_append(list_store2, &iter);
+        gtk_list_store_set(list_store2, &iter, 0, "NULL", -1);
+    } else {
+        gtk_list_store_append(list_store2, &iter);
+        gtk_list_store_set(list_store2, &iter, 0, "Handicape", -1);
+    }
+
+    if (options[2] == 0) {
+        gtk_list_store_append(list_store2, &iter);
+        gtk_list_store_set(list_store2, &iter, 0, "NULL", -1);
+    } else {
+        gtk_list_store_append(list_store2, &iter);
+        gtk_list_store_set(list_store2, &iter, 0, "Lavage", -1);
+    }
+
+    if (options[3] == 0) {
+        gtk_list_store_append(list_store2, &iter);
+        gtk_list_store_set(list_store2, &iter, 0, "NULL", -1);
+    } else {
+        gtk_list_store_append(list_store2, &iter);
+        gtk_list_store_set(list_store2, &iter, 0, "Service client", -1);
+    }
+
+    if (options[4] == 0) {
+        gtk_list_store_append(list_store2, &iter);
+        gtk_list_store_set(list_store2, &iter, 0, "NULL", -1);
+    } else {
+        gtk_list_store_append(list_store2, &iter);
+        gtk_list_store_set(list_store2, &iter, 0, "Agent de securite", -1);
+    }
+
+    if (options[5] == 0) {
+        gtk_list_store_append(list_store2, &iter);
+        gtk_list_store_set(list_store2, &iter, 0, "NULL", -1);
+    } else {
+        gtk_list_store_append(list_store2, &iter);
+        gtk_list_store_set(list_store2, &iter, 0, "Technicien de maintenance", -1);
+    }
+
+            
+
+    if(genre==0)
+    {
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(rb2) , TRUE);
+    }
+    else
+    {
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(rb1) , TRUE);
+    }
+    gtk_widget_set_sensitive(GTK_WIDGET(cb6), FALSE);
+    gtk_widget_set_sensitive(GTK_WIDGET(cb5), FALSE);
+        gtk_widget_set_sensitive(GTK_WIDGET(cb4), FALSE);
+        gtk_widget_set_sensitive(GTK_WIDGET(cb1), FALSE);
+        gtk_widget_set_sensitive(GTK_WIDGET(cb2), FALSE);
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(cb3),options[2]);
+    gtk_widget_set_sensitive(GTK_WIDGET(cb3), FALSE);
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(cb2),options[1]);
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(cb1),options[0]);
+            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(cb5),options[4]);
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(cb6),options[5]);
+            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(cb4),options[3]);
+
+            gtk_entry_set_text(GTK_ENTRY(entry1),num_carte);
+            gtk_entry_set_text(GTK_ENTRY(entry2),code);
+            gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin1),mm);
+            gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin2),aa);
+
+            break;
+        }  
+    }
+    fclose(f);
+    FILE *f1=fopen(file_directory_vehicule,"r");
+    if (!f1)
+        {
+            g_print( "Erreur: Impossible d'ouvrir le fichier!");
+            return;
+        }
+    while(fscanf(f1,"%s %s %s %d %*s",cin1,matricule,marque,&type)!=EOF)
+    { 
+    if (strcmp(loggedCIN,cin1)==0)
+    {  char type1[50];
+        if(type==0){strcpy(type1,"Camion");}
+        if(type==1){strcpy(type1,"Sedan");}
+        if(type==2){strcpy(type1,"Moto");}
+        GtkTreeIter iter;
+        gtk_list_store_append(list_store,&iter);
+        gtk_list_store_set(list_store,&iter,0,marque,1,matricule,2,type1,-1);
+
+    }
+
+    }
+    fclose(f1);
+
+    initReservationClientTreeview(widget);
+}
+
+
+
 /*
 void on_row_double_clicked(GtkTreeView *treeview, GtkTreePath *path, GtkTreeViewColumn *column, gpointer user_data) {
     GtkTreeModel *model = gtk_tree_view_get_model(treeview);
@@ -3078,7 +2990,7 @@ void updateReservationClientTreeview(GtkWidget *object) {
     G_TYPE_STRING);
     treeviewReservationClient = lookup_widget(object, "ab_treeview_facture_datereserve");
     
-    filterReservationByCIN(reservationDisplayFileDirectory, CIN);
+    filterReservationByCIN(reservationDisplayFileDirectory, loggedCIN);
     FILE *reservationFile = fopen(reservationDisplayFileDirectory, "r");
     while (scanReservation(reservationFile, &reservation) != EOF) {
         GtkTreeIter iter;
@@ -3104,3 +3016,5 @@ void updateReservationClientTreeview(GtkWidget *object) {
     
     gtk_tree_view_set_model(GTK_TREE_VIEW(treeviewReservationClient), GTK_TREE_MODEL(storeReservationClient));
 }
+
+
