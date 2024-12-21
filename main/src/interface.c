@@ -1981,8 +1981,8 @@ create_Citoyen (void)
 
   EAlabelerreur = gtk_label_new (_("label1298"));
   gtk_widget_show (EAlabelerreur);
-  gtk_fixed_put (GTK_FIXED (fixed120), EAlabelerreur, 400, 880);
-  gtk_widget_set_size_request (EAlabelerreur, 856, 25);
+  gtk_fixed_put (GTK_FIXED (fixed120), EAlabelerreur, 272, 864);
+  gtk_widget_set_size_request (EAlabelerreur, 1072, 32);
 
   label369 = gtk_label_new (_("Avis et reclamation"));
   gtk_widget_show (label369);

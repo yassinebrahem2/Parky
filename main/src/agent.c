@@ -331,7 +331,7 @@ void afficher_agents(GtkTreeView *treeview, char *agentFile) {
                                6, a.adresse,
                                7, sexe_str,
                                8, services_str,
-                               9, "-1",  // Placeholder pour l'ID de parking
+                               9, a.id_parking,  // Placeholder pour l'ID de parking
                                -1);
         }
         fclose(f);  // Fermer le fichier après la lecture

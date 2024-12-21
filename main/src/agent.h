@@ -28,17 +28,6 @@ typedef struct {
 } Agent;
 
 
-typedef struct {
-    char idreservation[8];
-    char cin[8];
-    Date date;
-    int heureh, heuremin;
-    int dureeh, dureemin;
-    char mat[15];
-    int methpai;
-    int demspec[2];
-} reservation;
-
 
 
 int ajouter_agent(char *filename, Agent a);

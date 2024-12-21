@@ -5748,7 +5748,7 @@ Moto</property>
 	      <property name="fixed_height_mode">False</property>
 	      <property name="hover_selection">False</property>
 	      <property name="hover_expand">False</property>
-	      <signal name="row_activated" handler="on_EA_treeview_avis_row_activated" last_modification_time="Sat, 21 Dec 2024 04:54:48 GMT"/>
+	      <signal name="row_activated" handler="on_EA_treeview_avis_row_activated" last_modification_time="Sat, 21 Dec 2024 05:15:06 GMT"/>
 	    </widget>
 	    <packing>
 	      <property name="x">256</property>
@@ -6314,8 +6314,8 @@ Reclamation</property>
 
 	  <child>
 	    <widget class="GtkLabel" id="EAlabelerreur">
-	      <property name="width_request">856</property>
-	      <property name="height_request">25</property>
+	      <property name="width_request">1072</property>
+	      <property name="height_request">32</property>
 	      <property name="visible">True</property>
 	      <property name="label" translatable="yes">label1298</property>
 	      <property name="use_underline">False</property>
@@ -6333,8 +6333,8 @@ Reclamation</property>
 	      <property name="angle">0</property>
 	    </widget>
 	    <packing>
-	      <property name="x">400</property>
-	      <property name="y">880</property>
+	      <property name="x">272</property>
+	      <property name="y">864</property>
 	    </packing>
 	  </child>
 	</widget>

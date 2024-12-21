@@ -129,11 +129,11 @@ int scanParking(FILE *parkingFile, Parking *parking) {
 
 
 int scanAgent(FILE *agentFile, Agent *agent) {
-    return fscanf(agentFile, "%s %s %s %d %d %d %s %s %d %d %d %d %d %d %d %d %s %s\n",
+    return fscanf(agentFile, "%s %s %s %d %d %d %s %s %d %d %d %d %d %d %s %s\n",
         agent->cin, agent->nom, agent->prenom, &agent->date_naissance.jour, &agent->date_naissance.mois,
         &agent->date_naissance.annee, agent->salaire, agent->adresse, &agent->sexe,
         &agent->services[0], &agent->services[1], &agent->services[2], &agent->services[3], &agent->services[4],
-        &agent->services[5], &agent->services[6], agent->id_parking, agent->numtel);
+        agent->id_parking, agent->numtel);
 }
 
 int priceInRange(Parking parking1, Parking parking2, int sup) {
@@ -354,11 +354,11 @@ int validString(char *string1, char *string2) {
 }
 
 void displayAgent(Agent agent) {
-    printf("cin:%s\nnom:%s %s\ndate:%d %d %d\nsalaire:%s\nadresse%s\nsexe:%d\nservice:%d %d %d %d %d %d %d\nidp:%s\nnum:%s\n\n",
+    printf("cin:%s\nnom:%s %s\ndate:%d %d %d\nsalaire:%s\nadresse%s\nsexe:%d\nservice:%d %d %d %d %d\nidp:%s\nnum:%s\n\n",
             agent.cin, agent.nom, agent.prenom, agent.date_naissance.jour, agent.date_naissance.mois,
             agent.date_naissance.annee, agent.salaire, agent.adresse, agent.sexe,
             agent.services[0], agent.services[1], agent.services[2], agent.services[3], agent.services[4],
-            agent.services[5], agent.services[6], agent.id_parking, agent.numtel);
+            agent.id_parking, agent.numtel);
 }
 
 void displayAgents(char *dir) {
@@ -372,20 +372,13 @@ void displayAgents(char *dir) {
 }
 
 void printAgent(FILE *agentFile, Agent agent) {
-    fprintf(agentFile, "%s %s %s %d %d %d %s %s %d %d %d %d %d %d %d %d %s %s\n",
+    fprintf(agentFile, "%s %s %s %d %d %d %s %s %d %d %d %d %d %d %s %s\n",
         agent.cin, agent.nom, agent.prenom, agent.date_naissance.jour, agent.date_naissance.mois,
         agent.date_naissance.annee, agent.salaire, agent.adresse, agent.sexe,
         agent.services[0], agent.services[1], agent.services[2], agent.services[3], agent.services[4],
-        agent.services[5], agent.services[6], agent.id_parking, agent.numtel);
+        agent.id_parking, agent.numtel);
 }
-/*
-int scanAgent(FILE *agentFile, Agent *agent) {
-    return fscanf(agentFile, "%s %s %s %d %d %d %s %s %d %d %d %d %d %d %d %d %s %s\n",
-        agent->cin, agent->nom, agent->prenom, &agent->date_naissance.jour, &agent->date_naissance.mois,
-        &agent->date_naissance.annee, agent->salaire, agent->adresse, &agent->sexe,
-        &agent->services[0], &agent->services[1], &agent->services[2], &agent->services[3], &agent->services[4],
-        &agent->services[5], &agent->services[6], agent->id_parking, agent->numtel);
-}*/
+
 
 Agent *filterAvailableAgents(char *dir, int numAvailableAgents) {
     Agent agent;
@@ -419,8 +412,6 @@ void fillAgent(Agent *agent1, Agent agent2) {
     agent1->services[2] = agent2.services[2];
     agent1->services[3] = agent2.services[3];
     agent1->services[4] = agent2.services[4];
-    agent1->services[5] = agent2.services[5];
-    agent1->services[6] = agent2.services[6];
     strcpy(agent1->id_parking, agent2.id_parking);
     strcpy(agent1->numtel, agent2.numtel);
 } 
@@ -483,12 +474,6 @@ void getServicesChar(char ch[100], Agent agent) {
     }
     if (agent.services[4] == 1) {
         strcat(ch, "Service5\n");
-    }
-    if (agent.services[5] == 1) {
-        strcat(ch, "Service6\n");
-    }
-    if (agent.services[6] == 1) {
-        strcat(ch, "Service7\n");
     }
 }
 

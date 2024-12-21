@@ -200,21 +200,12 @@ distuninstallcheck_listfiles = find . -type f -print
 am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
-<<<<<<< HEAD
-ACLOCAL = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/MERGING/parking/missing" aclocal-1.15
+ACLOCAL = ${SHELL} /home/vboxuser/Git/Parky/main/missing aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
-AUTOCONF = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/MERGING/parking/missing" autoconf
-AUTOHEADER = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/MERGING/parking/missing" autoheader
-AUTOMAKE = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/MERGING/parking/missing" automake-1.15
-=======
-ACLOCAL = ${SHELL} "/home/mariefersi/Desktop/FINAL PROJECTS (1)/agent/missing" aclocal-1.15
-AMTAR = $${TAR-tar}
-AM_DEFAULT_VERBOSITY = 1
-AUTOCONF = ${SHELL} "/home/mariefersi/Desktop/FINAL PROJECTS (1)/agent/missing" autoconf
-AUTOHEADER = ${SHELL} "/home/mariefersi/Desktop/FINAL PROJECTS (1)/agent/missing" autoheader
-AUTOMAKE = ${SHELL} "/home/mariefersi/Desktop/FINAL PROJECTS (1)/agent/missing" automake-1.15
->>>>>>> agents
+AUTOCONF = ${SHELL} /home/vboxuser/Git/Parky/main/missing autoconf
+AUTOHEADER = ${SHELL} /home/vboxuser/Git/Parky/main/missing autoheader
+AUTOMAKE = ${SHELL} /home/vboxuser/Git/Parky/main/missing automake-1.15
 AWK = mawk
 CATALOGS = 
 CATOBJEXT = .gmo
@@ -249,11 +240,7 @@ LIBOBJS =
 LIBS = 
 LTLIBOBJS = 
 MAINT = 
-<<<<<<< HEAD
-MAKEINFO = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/MERGING/parking/missing" makeinfo
-=======
-MAKEINFO = ${SHELL} "/home/mariefersi/Desktop/FINAL PROJECTS (1)/agent/missing" makeinfo
->>>>>>> agents
+MAKEINFO = ${SHELL} /home/vboxuser/Git/Parky/main/missing makeinfo
 MKDIR_P = /bin/mkdir -p
 MKINSTALLDIRS = ./mkinstalldirs
 MSGFMT = /usr/bin/msgfmt
@@ -282,17 +269,10 @@ STRIP =
 USE_NLS = yes
 VERSION = 0.1
 XGETTEXT = /usr/bin/xgettext
-<<<<<<< HEAD
-abs_builddir = /home/vboxuser/Documents/FINAL PROJECTS/MERGING/parking
-abs_srcdir = /home/vboxuser/Documents/FINAL PROJECTS/MERGING/parking
-abs_top_builddir = /home/vboxuser/Documents/FINAL PROJECTS/MERGING/parking
-abs_top_srcdir = /home/vboxuser/Documents/FINAL PROJECTS/MERGING/parking
-=======
-abs_builddir = /home/mariefersi/Desktop/FINAL PROJECTS (1)/agent
-abs_srcdir = /home/mariefersi/Desktop/FINAL PROJECTS (1)/agent
-abs_top_builddir = /home/mariefersi/Desktop/FINAL PROJECTS (1)/agent
-abs_top_srcdir = /home/mariefersi/Desktop/FINAL PROJECTS (1)/agent
->>>>>>> agents
+abs_builddir = /home/vboxuser/Git/Parky/main
+abs_srcdir = /home/vboxuser/Git/Parky/main
+abs_top_builddir = /home/vboxuser/Git/Parky/main
+abs_top_srcdir = /home/vboxuser/Git/Parky/main
 ac_ct_CC = gcc
 am__include = include
 am__leading_dot = .
@@ -311,11 +291,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-<<<<<<< HEAD
-install_sh = ${SHELL} '/home/vboxuser/Documents/FINAL PROJECTS/MERGING/parking/install-sh'
-=======
-install_sh = ${SHELL} '/home/mariefersi/Desktop/FINAL PROJECTS (1)/agent/install-sh'
->>>>>>> agents
+install_sh = ${SHELL} /home/vboxuser/Git/Parky/main/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale

@@ -378,6 +378,11 @@ void
 on_mfbuttonappliquerreservation_clicked
                                         (GtkWidget       *object,
                                         gpointer         user_data);
+
+void
+on_mfbuttonlisteagent_clicked          (GtkWidget       *object,
+                                        gpointer         user_data);
+
 void
 on_AKTreeviewService_row_activated     (GtkTreeView     *treeview,
                                         GtkTreePath     *path,
@@ -459,6 +464,9 @@ void
 on_AKButtonAffecter_clicked            (GtkButton       *button,
                                         gpointer         user_data);
 
+void
+on_AKbuttonannuler_clicked             (GtkButton       *button,
+                                        gpointer         user_data);
 
 void
 on_ab_button_login_s_inscrire_clicked  (GtkButton       *button,
@@ -564,7 +572,6 @@ on_ab_button_oublier_annuler_clicked   (GtkButton       *button,
                                         gpointer         user_data);
 
 void
-<<<<<<< HEAD
 on_ab_button_login_oublie_clicked      (GtkButton       *button,
                                         gpointer         user_data);
 
@@ -577,11 +584,5 @@ void
 on_EA_treeview_avis_row_activated      (GtkWidget     *object,
                                         GtkTreePath     *path,
                                         GtkTreeViewColumn *column,
-=======
-on_mfbuttonlisteagent_clicked          (GtkWidget       *object,
                                         gpointer         user_data);
 
-void
-on_AKbuttonannuler_clicked             (GtkButton       *button,
->>>>>>> agents
-                                        gpointer         user_data);

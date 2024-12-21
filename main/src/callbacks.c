@@ -7,12 +7,12 @@
 #include "callbacks.h"
 #include "interface.h"
 #include "support.h"
-<<<<<<< HEAD
 #include "parking.h"
 #include "reservation.h"
 #include "projet.h"
 #include "window.h"
 #include "avis.h"
+#include "agent.h"
 
 
 GtkWidget *treeviewParking;
@@ -93,6 +93,15 @@ GtkTreeStore *store;
 Agent agent;
 avis av;
 
+GtkWidget *treeviewAdminReservation;
+extern GtkWidget *mftreeviewafficheragents;
+int sexe_selectionne = -1;
+int sexe_modifie_selectionne = -1;
+
+int services[5] = {0, 0, 0, 0, 0};
+
+
+
 
 
 
@@ -120,24 +129,6 @@ char *parkingReservationDisplayFileDirectory = "Cashe/parkingReservationDisplay.
 
 char *reservationFileDirectory = "Data/reservation.txt";
 char *reservationDisplayFileDirectory = "Cashe/displayReservation.txt";
-=======
-#include "agent.h"
-#include "reservation.h"
-
-
-GtkWidget *treeviewAdminReservation;
-extern GtkWidget *mftreeviewafficheragents;
-int sexe_selectionne = -1;
-int sexe_modifie_selectionne = -1;
-
-int services[5] = {0, 0, 0, 0, 0};
-
-char agentFileDirectory[] = "Data/agent.txt";
-char *reservationFileDirectory = "Data/reservation.txt";
-char *reservationDisplayFileDirectory = "Cashe/displayReservation.txt";
-
-
->>>>>>> agents
 
 void
 on_Citoyen_map                         (GtkWidget       *widget,
@@ -1303,11 +1294,21 @@ void
 on_Administrateur_map                  (GtkWidget       *widget,
                                         gpointer         user_data)
 {
-<<<<<<< HEAD
     initFiles();
     initParkingTreeview(widget);
     initParkingAgentsTreeview(widget);
     fillComboboxAvailableAgents(widget);
+
+    // Récupérer le GtkTreeView à partir de l'interface
+    GtkTreeView *treeview = GTK_TREE_VIEW(lookup_widget(gtk_widget_get_toplevel(widget), "mftreeviewafficheragents"));
+    
+    // Réinitialiser l'affichage du GtkTreeView
+    gtk_tree_view_set_model(treeview, NULL);  // Enlever le modèle précédent
+
+    // Appeler la fonction pour afficher les agents dans le GtkTreeView
+    afficher_agents(treeview, agentFileDirectory);
+
+    initAdminReservationTreeview(widget);
 }
 
 
@@ -1482,27 +1483,11 @@ on_YBButtonSupprimer_clicked           (GtkWidget       *object,
         strcpy(notification, "An Error Has Occurred");
     }
     gtk_label_set_text(GTK_LABEL(labelParkingNotification),notification);
-=======
-    // Récupérer le GtkTreeView à partir de l'interface
-    GtkTreeView *treeview = GTK_TREE_VIEW(lookup_widget(gtk_widget_get_toplevel(widget), "mftreeviewafficheragents"));
-    
-    // Réinitialiser l'affichage du GtkTreeView
-    gtk_tree_view_set_model(treeview, NULL);  // Enlever le modèle précédent
-
-    // Appeler la fonction pour afficher les agents dans le GtkTreeView
-    afficher_agents(treeview, agentFileDirectory);
-
-    initAdminReservationTreeview(widget);
->>>>>>> agents
 }
 
 
 void
-<<<<<<< HEAD
 on_YBButtonAjouter_clicked             (GtkWidget       *object,
-=======
-on_YBFiltreRadiobuttonOui_toggled      (GtkToggleButton *togglebutton,
->>>>>>> agents
                                         gpointer         user_data)
 {
     char notification[30];
@@ -2022,6 +2007,7 @@ on_YBTreeviewAgent_row_activated       (GtkWidget     *object,
     }
 }
 
+
 void afficher_dialog(GtkWidget *parent, const gchar *message) {
     GtkWidget *dialog;
     
@@ -2040,6 +2026,19 @@ void afficher_dialog(GtkWidget *parent, const gchar *message) {
     gtk_widget_destroy(dialog);
 }
 
+void
+on_mfbuttonlisteagent_clicked          (GtkWidget       *object,
+                                        gpointer         user_data)
+{
+	// Récupérer le GtkTreeView à partir de l'interface
+    GtkTreeView *treeview = GTK_TREE_VIEW(lookup_widget(gtk_widget_get_toplevel(object), "mftreeviewafficheragents"));
+    
+    // Réinitialiser l'affichage du GtkTreeView
+    gtk_tree_view_set_model(treeview, NULL);  // Enlever le modèle précédent
+
+    // Appeler la fonction pour afficher les agents dans le GtkTreeView
+    afficher_agents(treeview, agentFileDirectory);
+}
 
 void on_mftreeviewafficheragents_row_activated(GtkWidget *object, GtkTreePath *path, GtkTreeViewColumn *column, gpointer user_data)
 {
@@ -2901,6 +2900,13 @@ on_AKButtonAffecter_clicked            (GtkButton       *button,
                                         gpointer         user_data)
 {
 
+}
+
+void
+on_AKbuttonannuler_clicked             (GtkButton       *button,
+                                        gpointer         user_data)
+{
+    
 }
 
 
@@ -4143,28 +4149,4 @@ void updateReservationClientTreeview(GtkWidget *object) {
 }
 
 
-<<<<<<< HEAD
-=======
-void
-on_mfbuttonlisteagent_clicked          (GtkWidget       *object,
-                                        gpointer         user_data)
-{
-	// Récupérer le GtkTreeView à partir de l'interface
-    GtkTreeView *treeview = GTK_TREE_VIEW(lookup_widget(gtk_widget_get_toplevel(object), "mftreeviewafficheragents"));
-    
-    // Réinitialiser l'affichage du GtkTreeView
-    gtk_tree_view_set_model(treeview, NULL);  // Enlever le modèle précédent
-
-    // Appeler la fonction pour afficher les agents dans le GtkTreeView
-    afficher_agents(treeview, agentFileDirectory);
-}
-
-
-void
-on_AKbuttonannuler_clicked             (GtkButton       *button,
-                                        gpointer         user_data)
-{
-
-}
->>>>>>> agents
 
