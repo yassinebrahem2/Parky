@@ -100,7 +100,12 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_parky_OBJECTS = main.$(OBJEXT) support.$(OBJEXT) \
+<<<<<<< HEAD
 	interface.$(OBJEXT) callbacks.$(OBJEXT) parking.$(OBJEXT)
+=======
+	interface.$(OBJEXT) callbacks.$(OBJEXT) reservation.$(OBJEXT) \
+	parking.$(OBJEXT)
+>>>>>>> reservation
 parky_OBJECTS = $(am_parky_OBJECTS)
 am__DEPENDENCIES_1 =
 parky_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -160,12 +165,21 @@ ETAGS = etags
 CTAGS = ctags
 am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/depcomp
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+<<<<<<< HEAD
 ACLOCAL = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/Parky/main/missing" aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
 AUTOCONF = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/Parky/main/missing" autoconf
 AUTOHEADER = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/Parky/main/missing" autoheader
 AUTOMAKE = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/Parky/main/missing" automake-1.15
+=======
+ACLOCAL = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/reservation/missing" aclocal-1.15
+AMTAR = $${TAR-tar}
+AM_DEFAULT_VERBOSITY = 1
+AUTOCONF = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/reservation/missing" autoconf
+AUTOHEADER = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/reservation/missing" autoheader
+AUTOMAKE = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/reservation/missing" automake-1.15
+>>>>>>> reservation
 AWK = mawk
 CATALOGS = 
 CATOBJEXT = .gmo
@@ -200,7 +214,11 @@ LIBOBJS =
 LIBS = 
 LTLIBOBJS = 
 MAINT = 
+<<<<<<< HEAD
 MAKEINFO = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/Parky/main/missing" makeinfo
+=======
+MAKEINFO = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/reservation/missing" makeinfo
+>>>>>>> reservation
 MKDIR_P = /bin/mkdir -p
 MKINSTALLDIRS = ./mkinstalldirs
 MSGFMT = /usr/bin/msgfmt
@@ -229,10 +247,17 @@ STRIP =
 USE_NLS = yes
 VERSION = 0.1
 XGETTEXT = /usr/bin/xgettext
+<<<<<<< HEAD
 abs_builddir = /home/vboxuser/Documents/FINAL PROJECTS/Parky/main/src
 abs_srcdir = /home/vboxuser/Documents/FINAL PROJECTS/Parky/main/src
 abs_top_builddir = /home/vboxuser/Documents/FINAL PROJECTS/Parky/main
 abs_top_srcdir = /home/vboxuser/Documents/FINAL PROJECTS/Parky/main
+=======
+abs_builddir = /home/vboxuser/Documents/FINAL PROJECTS/reservation/src
+abs_srcdir = /home/vboxuser/Documents/FINAL PROJECTS/reservation/src
+abs_top_builddir = /home/vboxuser/Documents/FINAL PROJECTS/reservation
+abs_top_srcdir = /home/vboxuser/Documents/FINAL PROJECTS/reservation
+>>>>>>> reservation
 ac_ct_CC = gcc
 am__include = include
 am__leading_dot = .
@@ -251,7 +276,11 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
+<<<<<<< HEAD
 install_sh = ${SHELL} '/home/vboxuser/Documents/FINAL PROJECTS/Parky/main/install-sh'
+=======
+install_sh = ${SHELL} '/home/vboxuser/Documents/FINAL PROJECTS/reservation/install-sh'
+>>>>>>> reservation
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -282,6 +311,10 @@ parky_SOURCES = \
 	support.c support.h \
 	interface.c interface.h \
 	callbacks.c callbacks.h \
+<<<<<<< HEAD
+=======
+	reservation.c reservation.h \
+>>>>>>> reservation
 	parking.c parking.h
 
 parky_LDADD = -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype $(INTLLIBS)
@@ -375,6 +408,10 @@ include ./$(DEPDIR)/callbacks.Po
 include ./$(DEPDIR)/interface.Po
 include ./$(DEPDIR)/main.Po
 include ./$(DEPDIR)/parking.Po
+<<<<<<< HEAD
+=======
+include ./$(DEPDIR)/reservation.Po
+>>>>>>> reservation
 include ./$(DEPDIR)/support.Po
 
 .c.o:
