@@ -610,6 +610,24 @@ on_YBButtonAffecter_clicked            (GtkButton       *button,
 
 }
 
+void afficher_dialog(GtkWidget *parent, const gchar *message) {
+    GtkWidget *dialog;
+    
+    // Créer la boîte de dialogue
+    dialog = gtk_message_dialog_new(GTK_WINDOW(gtk_widget_get_toplevel(parent)),
+                                    GTK_DIALOG_MODAL,
+                                    GTK_MESSAGE_INFO,
+                                    GTK_BUTTONS_OK,
+                                    "%s",
+                                    message);
+
+    // Afficher la boîte de dialogue et attendre la réponse
+    gtk_dialog_run(GTK_DIALOG(dialog));
+    
+    // Détruire la boîte de dialogue
+    gtk_widget_destroy(dialog);
+}
+
 
 void on_mftreeviewafficheragents_row_activated(GtkWidget *object, GtkTreePath *path, GtkTreeViewColumn *column, gpointer user_data)
 {
@@ -836,12 +854,29 @@ void on_mfcheckbuttonagententretienajout_toggled(GtkToggleButton *togglebutton, 
     services[4] = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(togglebutton));
 }
 
+void afficher_message_dialog(GtkWidget *parent, const gchar *message, GtkMessageType type) {
+    GtkWidget *dialog;
+
+    // Créer la boîte de dialogue
+    dialog = gtk_message_dialog_new(GTK_WINDOW(gtk_widget_get_toplevel(parent)),
+                                    GTK_DIALOG_MODAL,
+                                    type,
+                                    GTK_BUTTONS_OK,
+                                    "%s",
+                                    message);
+
+    // Afficher la boîte de dialogue et attendre la réponse
+    gtk_dialog_run(GTK_DIALOG(dialog));
+    
+    // Détruire la boîte de dialogue
+    gtk_widget_destroy(dialog);
+}
+
 void on_mfbuttonajouter_clicked(GtkWidget *object, gpointer user_data) {
     GtkWidget *entry_cin, *entry_nom, *entry_prenom, *entry_num, *entry_salaire, *entry_adresse;
     GtkWidget *radiobutton_homme, *radiobutton_femme;
     GtkWidget *checkbuttons[5];
     GtkWidget *spinbutton_jour, *spinbutton_mois, *spinbutton_annee;
-    GtkWidget *label_error;
     GtkWidget *treeview;
 
     // 2. Déclaration des variables
@@ -859,7 +894,6 @@ void on_mfbuttonajouter_clicked(GtkWidget *object, gpointer user_data) {
     entry_adresse = lookup_widget(object, "mfentryadresseajout");
     radiobutton_homme = lookup_widget(object, "mfradiobuttonhommeajout");
     radiobutton_femme = lookup_widget(object, "mfradiobuttonfemmeajout");
-    label_error = lookup_widget(object, "mflabelerrorajout");
 
     // Association des checkbuttons
     checkbuttons[0] = lookup_widget(object, "mfcheckbuttonagentdesecurite");
@@ -891,8 +925,8 @@ void on_mfbuttonajouter_clicked(GtkWidget *object, gpointer user_data) {
     } else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(radiobutton_femme))) {
         a.sexe = 0; // Femme
     } else {
-        gtk_label_set_text(GTK_LABEL(label_error), "Erreur : Veuillez sélectionner un sexe.");
-        return; // Arrête l'exécution si le sexe n'est pas sélectionné
+        afficher_message_dialog(object, "Erreur : Veuillez sélectionner un sexe.", GTK_MESSAGE_ERROR);
+        return;
     }
 
     // Récupération des services
@@ -902,24 +936,24 @@ void on_mfbuttonajouter_clicked(GtkWidget *object, gpointer user_data) {
 
     // Validation des champs obligatoires
     if (strlen(a.cin) == 0 || strlen(a.nom) == 0 || strlen(a.prenom) == 0 ||
-        strlen(a.numtel) == 0 || strlen(a.salaire) == 0 || strlen(a.adresse) == 0 ) {
-        gtk_label_set_text(GTK_LABEL(label_error), "Erreur : Tous les champs sont obligatoires.");
-        return; // Arrête l'exécution si les champs ne sont pas remplis
+        strlen(a.numtel) == 0 || strlen(a.salaire) == 0 || strlen(a.adresse) == 0) {
+        afficher_message_dialog(object, "Erreur : Tous les champs sont obligatoires.", GTK_MESSAGE_ERROR);
+        return;
     }
 
     // 5. Appel de la fonction ajouter_agent pour sauvegarder les données
     resultat = ajouter_agent(agentFileDirectory, a);
 
-    // Mise à jour du label pour afficher le résultat
+    // Gérer le résultat
     if (resultat == 1) {
         sprintf(message, "Ajout réussi : %s %s %s", a.prenom, a.nom, a.cin);
-        gtk_label_set_text(GTK_LABEL(label_error), message);
+        afficher_message_dialog(object, message, GTK_MESSAGE_INFO);
 
-        // Afficher les agents dans le TreeView
+        // Mise à jour du TreeView
         treeview = lookup_widget(gtk_widget_get_toplevel(object), "mftreeviewafficheragents");
         afficher_agents(treeview, agentFileDirectory);
 
-        // Vider les champs après un ajout réussi
+        // Réinitialiser les champs
         gtk_entry_set_text(GTK_ENTRY(entry_cin), "");
         gtk_entry_set_text(GTK_ENTRY(entry_nom), "");
         gtk_entry_set_text(GTK_ENTRY(entry_prenom), "");
@@ -934,16 +968,15 @@ void on_mfbuttonajouter_clicked(GtkWidget *object, gpointer user_data) {
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(radiobutton_homme), TRUE);
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(radiobutton_femme), FALSE);
 
-        // Désélectionner les services
         for (int i = 0; i < 5; i++) {
             gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkbuttons[i]), FALSE);
         }
     } else if (resultat == -1) {
-        gtk_label_set_text(GTK_LABEL(label_error), "Erreur : Le CIN existe déjà.");
+        afficher_message_dialog(object, "Erreur : Le CIN existe déjà.", GTK_MESSAGE_ERROR);
     } else if (resultat == -2) {
-        gtk_label_set_text(GTK_LABEL(label_error), "Erreur : Le numéro de téléphone existe déjà.");
+        afficher_message_dialog(object, "Erreur : Le numéro de téléphone existe déjà.", GTK_MESSAGE_ERROR);
     } else {
-        gtk_label_set_text(GTK_LABEL(label_error), "Erreur : Échec de l'ajout de l'agent.");
+        afficher_message_dialog(object, "Erreur : Échec de l'ajout de l'agent.", GTK_MESSAGE_ERROR);
     }
 }
 
@@ -1077,6 +1110,7 @@ void on_mfbuttonconfirmer_clicked(GtkWidget *object, gpointer user_data) {
 }
 
 
+
 void on_mfbuttonsupprimer_clicked(GtkWidget *object, gpointer user_data) {
     GtkWidget *treeview_agents = lookup_widget(object, "mftreeviewafficheragents");
 
@@ -1096,15 +1130,15 @@ void on_mfbuttonsupprimer_clicked(GtkWidget *object, gpointer user_data) {
         if (supprimer_agent(agentFileDirectory, cin)) {
             // Supprimer la ligne du TreeView
             gtk_list_store_remove(GTK_LIST_STORE(model), &iter);
-            gtk_label_set_text(GTK_LABEL(lookup_widget(object, "mflabelmessagerecherche")), "Agent supprimé avec succès.");
+            afficher_dialog(object, "Agent supprimé avec succès.");
         } else {
-            gtk_label_set_text(GTK_LABEL(lookup_widget(object, "mflabelmessagerecherche")), "Erreur lors de la suppression.");
+            afficher_dialog(object, "Erreur lors de la suppression.");
         }
 
         // Libérer la mémoire
         g_free(cin);
     } else {
-        gtk_label_set_text(GTK_LABEL(lookup_widget(object, "mflabelmessagerecherche")), "Veuillez sélectionner une ligne.");
+        afficher_dialog(object, "Veuillez sélectionner une ligne.");
     }
 }
 

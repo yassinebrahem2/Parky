@@ -56,7 +56,7 @@ main (int argc, char *argv[])
   gtk_widget_show (Tun);
   mdp_oublie = create_mdp_oublie ();
   gtk_widget_show (mdp_oublie);
-
+  
   gtk_main ();
   return 0;
 }
