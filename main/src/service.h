@@ -1,6 +1,7 @@
 #ifndef SERVICE_H_INCLUDED
 #define SERVICE_H_INCLUDED
 #include <gtk/gtk.h>
+#include "reservation.h"
 
 typedef struct{
 	char ID[30];
@@ -13,19 +14,6 @@ typedef struct{
 	int dureeJ;
 	int dureeH;
 }Service;
-
-typedef struct {
-    char idreservation[8];
-    char parkingID[8];
-    char cin[8];
-    int jours, mois, annee;
-    int heureh, heuremin;
-    int dureeh, dureemin;
-    char mat[15];
-    int methpai;
-    int demspec[2];
-    char type[50];
-} Reservation;
 
 
 

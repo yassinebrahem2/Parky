@@ -383,7 +383,6 @@ void
 on_mfbuttonlisteagent_clicked          (GtkWidget       *object,
                                         gpointer         user_data);
 
-
 void
 on_AKTreeviewService_row_activated     (GtkWidget     *object,
                                         GtkTreePath     *path,
@@ -468,10 +467,6 @@ on_AKButtonAjouter_clicked             (GtkWidget       *object,
 void
 on_AKButtonDisplayServiceTreeview_clicked
                                         (GtkWidget       *object,
-                                        gpointer         user_data);
-
-void
-on_AKbuttonannuler_clicked             (GtkButton       *button,
                                         gpointer         user_data);
 
 void
@@ -578,7 +573,6 @@ on_ab_button_oublier_annuler_clicked   (GtkButton       *button,
                                         gpointer         user_data);
 
 void
-<<<<<<< HEAD
 on_ab_button_login_oublie_clicked      (GtkButton       *button,
                                         gpointer         user_data);
 
@@ -593,11 +587,7 @@ on_EA_treeview_avis_row_activated      (GtkWidget     *object,
                                         GtkTreeViewColumn *column,
                                         gpointer         user_data);
 
-=======
-on_mflistedesagents_clicked            (GtkButton       *button,
-                                        gpointer         user_data);
 
 void
 on_AKButtonAnnuler_clicked             (GtkWidget       *object,
                                         gpointer         user_data);
->>>>>>> service
