@@ -2572,8 +2572,25 @@ create_Administrateur (void)
   GtkWidget *label1122;
   GtkWidget *label462;
   GtkWidget *fixed65;
+<<<<<<< HEAD
   GtkWidget *scrolledwindow6;
   GtkWidget *mftreeviewafficheragents;
+=======
+  GtkWidget *frame38;
+  GtkWidget *alignment189;
+  GtkWidget *fixed119;
+  GtkWidget *mfentryajoutchercher;
+  GtkWidget *label534;
+  GtkWidget *mfcomboboxrecherche;
+  GtkWidget *mfbuttonchercherajout;
+  GtkWidget *alignment80;
+  GtkWidget *hbox65;
+  GtkWidget *image65;
+  GtkWidget *label537;
+  GtkWidget *mflabelmessagerecherche;
+  GtkWidget *mflistedesagents;
+  GtkWidget *label1101;
+>>>>>>> service
   GtkWidget *frame37;
   GtkWidget *alignment186;
   GtkWidget *eventbox4;
@@ -3541,10 +3558,22 @@ create_Administrateur (void)
   gtk_fixed_put (GTK_FIXED (fixed65), scrolledwindow6, 8, 136);
   gtk_widget_set_size_request (scrolledwindow6, 1136, 848);
 
+<<<<<<< HEAD
   mftreeviewafficheragents = gtk_tree_view_new ();
   gtk_widget_show (mftreeviewafficheragents);
   gtk_container_add (GTK_CONTAINER (scrolledwindow6), mftreeviewafficheragents);
   gtk_widget_set_size_request (mftreeviewafficheragents, 1136, 824);
+=======
+  mflistedesagents = gtk_button_new_with_mnemonic (_("liste agents"));
+  gtk_widget_show (mflistedesagents);
+  gtk_fixed_put (GTK_FIXED (fixed119), mflistedesagents, 800, 16);
+  gtk_widget_set_size_request (mflistedesagents, 136, 32);
+
+  label1101 = gtk_label_new (_("<b>Recherche</b>"));
+  gtk_widget_show (label1101);
+  gtk_frame_set_label_widget (GTK_FRAME (frame38), label1101);
+  gtk_label_set_use_markup (GTK_LABEL (label1101), TRUE);
+>>>>>>> service
 
   frame37 = gtk_frame_new (NULL);
   gtk_widget_show (frame37);
@@ -4129,9 +4158,15 @@ create_Administrateur (void)
   gtk_widget_show (label1036);
   gtk_box_pack_start (GTK_BOX (hbox135), label1036, FALSE, FALSE, 0);
 
+<<<<<<< HEAD
   AKButtonAnnuler = gtk_button_new_with_mnemonic (_("annuler"));
   gtk_widget_show (AKButtonAnnuler);
   gtk_fixed_put (GTK_FIXED (fixed124), AKButtonAnnuler, 560, 24);
+=======
+  AKButtonAnnuler = gtk_button_new_with_mnemonic (_("Annuler"));
+  gtk_widget_show (AKButtonAnnuler);
+  gtk_fixed_put (GTK_FIXED (fixed124), AKButtonAnnuler, 552, 24);
+>>>>>>> service
   gtk_widget_set_size_request (AKButtonAnnuler, 74, 29);
 
   label1146 = gtk_label_new (_("<b>Chercher</b>"));
@@ -4737,6 +4772,9 @@ create_Administrateur (void)
   g_signal_connect ((gpointer) mftreeviewafficheragents, "row_activated",
                     G_CALLBACK (on_mftreeviewafficheragents_row_activated),
                     NULL);
+  g_signal_connect ((gpointer) mflistedesagents, "clicked",
+                    G_CALLBACK (on_mflistedesagents_clicked),
+                    NULL);
   g_signal_connect ((gpointer) mfbuttonconfirmer, "clicked",
                     G_CALLBACK (on_mfbuttonconfirmer_clicked),
                     NULL);
@@ -4804,7 +4842,11 @@ create_Administrateur (void)
                     G_CALLBACK (on_AKButtonChercher_clicked),
                     NULL);
   g_signal_connect ((gpointer) AKButtonAnnuler, "clicked",
+<<<<<<< HEAD
                     G_CALLBACK (on_AKbuttonannuler_clicked),
+=======
+                    G_CALLBACK (on_AKButtonAnnuler_clicked),
+>>>>>>> service
                     NULL);
   g_signal_connect ((gpointer) AKServiceCheckbuttonJoursOrdinaire, "toggled",
                     G_CALLBACK (on_AKServiceCheckbuttonJoursOrdinaire_toggled),
@@ -4991,8 +5033,25 @@ create_Administrateur (void)
   GLADE_HOOKUP_OBJECT (Administrateur, label1122, "label1122");
   GLADE_HOOKUP_OBJECT (Administrateur, label462, "label462");
   GLADE_HOOKUP_OBJECT (Administrateur, fixed65, "fixed65");
+<<<<<<< HEAD
   GLADE_HOOKUP_OBJECT (Administrateur, scrolledwindow6, "scrolledwindow6");
   GLADE_HOOKUP_OBJECT (Administrateur, mftreeviewafficheragents, "mftreeviewafficheragents");
+=======
+  GLADE_HOOKUP_OBJECT (Administrateur, frame38, "frame38");
+  GLADE_HOOKUP_OBJECT (Administrateur, alignment189, "alignment189");
+  GLADE_HOOKUP_OBJECT (Administrateur, fixed119, "fixed119");
+  GLADE_HOOKUP_OBJECT (Administrateur, mfentryajoutchercher, "mfentryajoutchercher");
+  GLADE_HOOKUP_OBJECT (Administrateur, label534, "label534");
+  GLADE_HOOKUP_OBJECT (Administrateur, mfcomboboxrecherche, "mfcomboboxrecherche");
+  GLADE_HOOKUP_OBJECT (Administrateur, mfbuttonchercherajout, "mfbuttonchercherajout");
+  GLADE_HOOKUP_OBJECT (Administrateur, alignment80, "alignment80");
+  GLADE_HOOKUP_OBJECT (Administrateur, hbox65, "hbox65");
+  GLADE_HOOKUP_OBJECT (Administrateur, image65, "image65");
+  GLADE_HOOKUP_OBJECT (Administrateur, label537, "label537");
+  GLADE_HOOKUP_OBJECT (Administrateur, mflabelmessagerecherche, "mflabelmessagerecherche");
+  GLADE_HOOKUP_OBJECT (Administrateur, mflistedesagents, "mflistedesagents");
+  GLADE_HOOKUP_OBJECT (Administrateur, label1101, "label1101");
+>>>>>>> service
   GLADE_HOOKUP_OBJECT (Administrateur, frame37, "frame37");
   GLADE_HOOKUP_OBJECT (Administrateur, alignment186, "alignment186");
   GLADE_HOOKUP_OBJECT (Administrateur, eventbox4, "eventbox4");

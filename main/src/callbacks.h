@@ -383,23 +383,34 @@ void
 on_mfbuttonlisteagent_clicked          (GtkWidget       *object,
                                         gpointer         user_data);
 
+
 void
-on_AKTreeviewService_row_activated     (GtkTreeView     *treeview,
+on_AKTreeviewService_row_activated     (GtkWidget     *object,
                                         GtkTreePath     *path,
                                         GtkTreeViewColumn *column,
                                         gpointer         user_data);
 
 void
-on_AKButtonChercher_clicked            (GtkButton       *button,
+on_AKButtonChercher_clicked            (GtkWidget       *object,
+                                        gpointer         user_data);
+
+void
+on_AKTreeviewReservation_row_activated (GtkWidget     *object,
+                                        GtkTreePath     *path,
+                                        GtkTreeViewColumn *column,
+                                        gpointer         user_data);
+
+void
+on_AKButtonAffecter_clicked            (GtkWidget       *object,
+                                        gpointer         user_data);
+
+void
+on_AKServiceCheckboxWeekend_toggled    (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
 on_AKServiceCheckbuttonJoursOrdinaire_toggled
                                         (GtkToggleButton *togglebutton,
-                                        gpointer         user_data);
-
-void
-on_AKServiceCheckboxWeekend_toggled    (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
@@ -416,15 +427,15 @@ on_AkServiceRadiobutton2_toggled       (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
-on_AKButtonModifier_clicked            (GtkButton       *button,
+on_AKButtonConfirmer_clicked           (GtkWidget       *object,
                                         gpointer         user_data);
 
 void
-on_AKButtonConfirmer_clicked           (GtkButton       *button,
+on_AKButtonModifier_clicked            (GtkWidget       *object,
                                         gpointer         user_data);
 
 void
-on_AKButtonSupprimer_clicked           (GtkButton       *button,
+on_AKButtonSupprimer_clicked           (GtkWidget       *object,
                                         gpointer         user_data);
 
 void
@@ -451,17 +462,12 @@ on_AKNouveauRadiobutton2_toggled       (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
-on_AKButtonAjouter_clicked             (GtkButton       *button,
+on_AKButtonAjouter_clicked             (GtkWidget       *object,
                                         gpointer         user_data);
 
 void
-on_AKTreeviewReservation_row_activated (GtkTreeView     *treeview,
-                                        GtkTreePath     *path,
-                                        GtkTreeViewColumn *column,
-                                        gpointer         user_data);
-
-void
-on_AKButtonAffecter_clicked            (GtkButton       *button,
+on_AKButtonDisplayServiceTreeview_clicked
+                                        (GtkWidget       *object,
                                         gpointer         user_data);
 
 void
@@ -572,6 +578,7 @@ on_ab_button_oublier_annuler_clicked   (GtkButton       *button,
                                         gpointer         user_data);
 
 void
+<<<<<<< HEAD
 on_ab_button_login_oublie_clicked      (GtkButton       *button,
                                         gpointer         user_data);
 
@@ -586,3 +593,11 @@ on_EA_treeview_avis_row_activated      (GtkWidget     *object,
                                         GtkTreeViewColumn *column,
                                         gpointer         user_data);
 
+=======
+on_mflistedesagents_clicked            (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_AKButtonAnnuler_clicked             (GtkWidget       *object,
+                                        gpointer         user_data);
+>>>>>>> service
