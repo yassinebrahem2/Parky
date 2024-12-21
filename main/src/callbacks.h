@@ -295,17 +295,7 @@ void
 on_YBButtonAffecter_clicked            (GtkButton       *button,
                                         gpointer         user_data);
 
-void
-on_mfbuttonchercherajout_clicked       (GtkButton       *button,
-                                        gpointer         user_data);
-
-void
-on_mfbuttonconfirmer_clicked           (GtkButton       *button,
-                                        gpointer         user_data);
-
-void
-on_mfbuttonsupprimer_clicked           (GtkButton       *button,
-                                        gpointer         user_data);
+void on_mftreeviewafficheragents_row_activated(GtkWidget *object, GtkTreePath *path, GtkTreeViewColumn *column, gpointer user_data) ;
 
 void
 on_mfradiobuttonhommemodifier_toggled  (GtkToggleButton *togglebutton,
@@ -321,7 +311,7 @@ on_mfcheckbuttonagentsecuritemodifier_toggled
                                         gpointer         user_data);
 
 void
-on_mfcheckbuttonresponsableparkingmodifier_toggled
+on_mfcheckbuttonagentparkingmodifier_toggled
                                         (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
@@ -331,25 +321,25 @@ on_mfcheckbuttontechnicienmodifier_toggled
                                         gpointer         user_data);
 
 void
+on_mfcheckbuttonresponsableparkingmodifier_toggled
+                                        (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
 on_mfcheckbuttonagententretienmodifier_toggled
                                         (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
-on_mfcheckbuttonagentparkingmodifier_toggled
-                                        (GtkToggleButton *togglebutton,
+on_mfbuttonmodifier_clicked            (GtkWidget       *object,
                                         gpointer         user_data);
 
 void
-on_mfbuttonmodifier_clicked            (GtkButton       *button,
+on_mfbuttonconfirmer_clicked           (GtkWidget       *object,
                                         gpointer         user_data);
 
 void
-on_mfbuttonajouter_clicked             (GtkButton       *button,
-                                        gpointer         user_data);
-
-void
-on_mfradiobuttonfemmeajout_toggled     (GtkToggleButton *togglebutton,
+on_mfbuttonsupprimer_clicked           (GtkWidget       *object,
                                         gpointer         user_data);
 
 void
@@ -357,12 +347,11 @@ on_mfradiobuttonhommeajout_toggled     (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
-on_mfcheckbuttonagentdesecurite_toggled
-                                        (GtkToggleButton *togglebutton,
+on_mfradiobuttonfemmeajout_toggled     (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
-on_mfcheckbuttonresponsableparkingajout_toggled
+on_mfcheckbuttonagentdesecurite_toggled
                                         (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
@@ -372,22 +361,34 @@ on_mfcheckbuttontechnicienmaintenanceajout_toggled
                                         gpointer         user_data);
 
 void
-on_mfcheckbuttonagententretienajout_toggled
-                                        (GtkToggleButton *togglebutton,
-                                        gpointer         user_data);
-
-void
 on_mfcheckbuttonagentparkingajout_toggled
                                         (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
-on_mftreeviewafficheragents_row_activated
-                                        (GtkTreeView     *treeview,
-                                        GtkTreePath     *path,
-                                        GtkTreeViewColumn *column,
+on_mfcheckbuttonresponsableparkingajout_toggled
+                                        (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
+void
+on_mfcheckbuttonagententretienajout_toggled
+                                        (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void on_mfbuttonajouter_clicked(GtkWidget *object, gpointer user_data);
+
+void
+on_mfbuttonchercherajout_clicked       (GtkWidget       *object,
+                                        gpointer         user_data);
+
+void
+on_mflistedesagents__clicked           (GtkWidget       *object,
+                                        gpointer         user_data);
+
+void
+on_mfbuttonappliquerreservation_clicked
+                                        (GtkWidget       *object,
+                                        gpointer         user_data);
 void
 on_AKTreeviewService_row_activated     (GtkTreeView     *treeview,
                                         GtkTreePath     *path,
@@ -469,10 +470,6 @@ void
 on_AKButtonAffecter_clicked            (GtkButton       *button,
                                         gpointer         user_data);
 
-void
-on_mfbuttonappliquerreservation_clicked
-                                        (GtkButton       *button,
-                                        gpointer         user_data);
 
 void
 on_ab_button_login_s_inscrire_clicked  (GtkButton       *button,
