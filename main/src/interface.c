@@ -2572,21 +2572,11 @@ create_Administrateur (void)
   GtkWidget *label1122;
   GtkWidget *label462;
   GtkWidget *fixed65;
-  GtkWidget *frame38;
-  GtkWidget *alignment189;
-  GtkWidget *fixed119;
-  GtkWidget *mfentryajoutchercher;
-  GtkWidget *label534;
-  GtkWidget *mfcomboboxrecherche;
-  GtkWidget *mfbuttonchercherajout;
-  GtkWidget *alignment80;
-  GtkWidget *hbox65;
-  GtkWidget *image65;
-  GtkWidget *label537;
-  GtkWidget *mflabelmessagerecherche;
-  GtkWidget *label1101;
+  GtkWidget *scrolledwindow6;
+  GtkWidget *mftreeviewafficheragents;
   GtkWidget *frame37;
   GtkWidget *alignment186;
+  GtkWidget *eventbox4;
   GtkWidget *fixed118;
   GtkWidget *mfentrynommodifier;
   GtkWidget *mfentryprenommodifier;
@@ -2609,7 +2599,6 @@ create_Administrateur (void)
   GtkWidget *label1094;
   GtkWidget *label1089;
   GtkWidget *label1088;
-  GtkWidget *mflabelerreurmodifier;
   GtkWidget *mfbuttonconfirmer;
   GtkWidget *alignment188;
   GtkWidget *hbox147;
@@ -2633,7 +2622,24 @@ create_Administrateur (void)
   GtkWidget *hbox146;
   GtkWidget *image149;
   GtkWidget *label1098;
+  GtkWidget *mflabelerreurmodifier;
   GtkWidget *label1099;
+  GtkWidget *frame38;
+  GtkWidget *alignment189;
+  GtkWidget *eventbox3;
+  GtkWidget *fixed119;
+  GtkWidget *mfentryajoutchercher;
+  GtkWidget *label534;
+  GtkWidget *mfcomboboxrecherche;
+  GtkWidget *mfbuttonchercherajout;
+  GtkWidget *alignment80;
+  GtkWidget *hbox65;
+  GtkWidget *image65;
+  GtkWidget *label537;
+  GtkWidget *mfbuttonlisteagent;
+  GtkWidget *mflabelmessagerecherche;
+  GtkWidget *label1101;
+  GtkWidget *eventbox5;
   GtkWidget *frame15;
   GtkWidget *alignment76;
   GtkWidget *fixed67;
@@ -2666,15 +2672,13 @@ create_Administrateur (void)
   GtkWidget *mfradiobuttonfemmeajout;
   GSList *mfradiobuttonfemmeajout_group = NULL;
   GtkWidget *mfradiobuttonhommeajout;
-  GtkWidget *mflabelerrorajout;
   GtkWidget *mfcheckbuttonagentdesecurite;
   GtkWidget *mfcheckbuttonresponsableparkingajout;
   GtkWidget *mfcheckbuttontechnicienmaintenanceajout;
   GtkWidget *mfcheckbuttonagententretienajout;
   GtkWidget *mfcheckbuttonagentparkingajout;
+  GtkWidget *mflabelerrorajout;
   GtkWidget *label533;
-  GtkWidget *scrolledwindow6;
-  GtkWidget *mftreeviewafficheragents;
   GtkWidget *label463;
   GtkWidget *fixed110;
   GtkWidget *scrolledwindow4;
@@ -2689,6 +2693,7 @@ create_Administrateur (void)
   GtkWidget *hbox135;
   GtkWidget *image138;
   GtkWidget *label1036;
+  GtkWidget *AKButtonAnnuler;
   GtkWidget *label1146;
   GtkWidget *frame40;
   GtkWidget *alignment199;
@@ -3531,70 +3536,15 @@ create_Administrateur (void)
   gtk_widget_show (fixed65);
   gtk_container_add (GTK_CONTAINER (notebook16), fixed65);
 
-  frame38 = gtk_frame_new (NULL);
-  gtk_widget_show (frame38);
-  gtk_fixed_put (GTK_FIXED (fixed65), frame38, 8, 8);
-  gtk_widget_set_size_request (frame38, 1136, 112);
-  gtk_frame_set_shadow_type (GTK_FRAME (frame38), GTK_SHADOW_IN);
+  scrolledwindow6 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_widget_show (scrolledwindow6);
+  gtk_fixed_put (GTK_FIXED (fixed65), scrolledwindow6, 8, 136);
+  gtk_widget_set_size_request (scrolledwindow6, 1136, 848);
 
-  alignment189 = gtk_alignment_new (0.5, 0.5, 1, 1);
-  gtk_widget_show (alignment189);
-  gtk_container_add (GTK_CONTAINER (frame38), alignment189);
-  gtk_alignment_set_padding (GTK_ALIGNMENT (alignment189), 0, 0, 12, 0);
-
-  fixed119 = gtk_fixed_new ();
-  gtk_widget_show (fixed119);
-  gtk_container_add (GTK_CONTAINER (alignment189), fixed119);
-
-  mfentryajoutchercher = gtk_entry_new ();
-  gtk_widget_show (mfentryajoutchercher);
-  gtk_fixed_put (GTK_FIXED (fixed119), mfentryajoutchercher, 120, 16);
-  gtk_widget_set_size_request (mfentryajoutchercher, 160, 27);
-  gtk_entry_set_invisible_char (GTK_ENTRY (mfentryajoutchercher), 8226);
-
-  label534 = gtk_label_new (_("Chercher par:"));
-  gtk_widget_show (label534);
-  gtk_fixed_put (GTK_FIXED (fixed119), label534, 0, 16);
-  gtk_widget_set_size_request (label534, 128, 32);
-
-  mfcomboboxrecherche = gtk_combo_box_new_text ();
-  gtk_widget_show (mfcomboboxrecherche);
-  gtk_fixed_put (GTK_FIXED (fixed119), mfcomboboxrecherche, 296, 16);
-  gtk_widget_set_size_request (mfcomboboxrecherche, 205, 33);
-  gtk_combo_box_append_text (GTK_COMBO_BOX (mfcomboboxrecherche), _("CIN"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (mfcomboboxrecherche), _("Nom"));
-  gtk_combo_box_append_text (GTK_COMBO_BOX (mfcomboboxrecherche), _("Num\303\251ro du T\303\251l\303\250phone"));
-
-  mfbuttonchercherajout = gtk_button_new ();
-  gtk_widget_show (mfbuttonchercherajout);
-  gtk_fixed_put (GTK_FIXED (fixed119), mfbuttonchercherajout, 560, 16);
-  gtk_widget_set_size_request (mfbuttonchercherajout, 104, 29);
-
-  alignment80 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment80);
-  gtk_container_add (GTK_CONTAINER (mfbuttonchercherajout), alignment80);
-
-  hbox65 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox65);
-  gtk_container_add (GTK_CONTAINER (alignment80), hbox65);
-
-  image65 = gtk_image_new_from_stock ("gtk-find", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image65);
-  gtk_box_pack_start (GTK_BOX (hbox65), image65, FALSE, FALSE, 0);
-
-  label537 = gtk_label_new_with_mnemonic (_("Chercher"));
-  gtk_widget_show (label537);
-  gtk_box_pack_start (GTK_BOX (hbox65), label537, FALSE, FALSE, 0);
-
-  mflabelmessagerecherche = gtk_label_new (_("label1298"));
-  gtk_widget_show (mflabelmessagerecherche);
-  gtk_fixed_put (GTK_FIXED (fixed119), mflabelmessagerecherche, 96, 64);
-  gtk_widget_set_size_request (mflabelmessagerecherche, 424, 24);
-
-  label1101 = gtk_label_new (_("<b>Recherche</b>"));
-  gtk_widget_show (label1101);
-  gtk_frame_set_label_widget (GTK_FRAME (frame38), label1101);
-  gtk_label_set_use_markup (GTK_LABEL (label1101), TRUE);
+  mftreeviewafficheragents = gtk_tree_view_new ();
+  gtk_widget_show (mftreeviewafficheragents);
+  gtk_container_add (GTK_CONTAINER (scrolledwindow6), mftreeviewafficheragents);
+  gtk_widget_set_size_request (mftreeviewafficheragents, 1136, 824);
 
   frame37 = gtk_frame_new (NULL);
   gtk_widget_show (frame37);
@@ -3606,9 +3556,13 @@ create_Administrateur (void)
   gtk_container_add (GTK_CONTAINER (frame37), alignment186);
   gtk_alignment_set_padding (GTK_ALIGNMENT (alignment186), 0, 0, 12, 0);
 
+  eventbox4 = gtk_event_box_new ();
+  gtk_widget_show (eventbox4);
+  gtk_container_add (GTK_CONTAINER (alignment186), eventbox4);
+
   fixed118 = gtk_fixed_new ();
   gtk_widget_show (fixed118);
-  gtk_container_add (GTK_CONTAINER (alignment186), fixed118);
+  gtk_container_add (GTK_CONTAINER (eventbox4), fixed118);
   gtk_widget_set_size_request (fixed118, 1320, 456);
 
   mfentrynommodifier = gtk_entry_new ();
@@ -3718,11 +3672,6 @@ create_Administrateur (void)
   gtk_widget_show (label1088);
   gtk_fixed_put (GTK_FIXED (fixed118), label1088, 0, 16);
   gtk_widget_set_size_request (label1088, 32, 24);
-
-  mflabelerreurmodifier = gtk_label_new (_("label21"));
-  gtk_widget_show (mflabelerreurmodifier);
-  gtk_fixed_put (GTK_FIXED (fixed118), mflabelerreurmodifier, 0, 400);
-  gtk_widget_set_size_request (mflabelerreurmodifier, 656, 24);
 
   mfbuttonconfirmer = gtk_button_new ();
   gtk_widget_show (mfbuttonconfirmer);
@@ -3834,14 +3783,98 @@ create_Administrateur (void)
   gtk_widget_show (label1098);
   gtk_box_pack_start (GTK_BOX (hbox146), label1098, FALSE, FALSE, 0);
 
+  mflabelerreurmodifier = gtk_label_new ("");
+  gtk_widget_show (mflabelerreurmodifier);
+  gtk_fixed_put (GTK_FIXED (fixed118), mflabelerreurmodifier, 0, 400);
+  gtk_widget_set_size_request (mflabelerreurmodifier, 656, 24);
+
   label1099 = gtk_label_new (_("<b>Agent</b>"));
   gtk_widget_show (label1099);
   gtk_frame_set_label_widget (GTK_FRAME (frame37), label1099);
   gtk_label_set_use_markup (GTK_LABEL (label1099), TRUE);
 
+  frame38 = gtk_frame_new (NULL);
+  gtk_widget_show (frame38);
+  gtk_fixed_put (GTK_FIXED (fixed65), frame38, 8, 8);
+  gtk_widget_set_size_request (frame38, 1136, 112);
+  gtk_frame_set_shadow_type (GTK_FRAME (frame38), GTK_SHADOW_IN);
+
+  alignment189 = gtk_alignment_new (0.5, 0.5, 1, 1);
+  gtk_widget_show (alignment189);
+  gtk_container_add (GTK_CONTAINER (frame38), alignment189);
+  gtk_alignment_set_padding (GTK_ALIGNMENT (alignment189), 0, 0, 12, 0);
+
+  eventbox3 = gtk_event_box_new ();
+  gtk_widget_show (eventbox3);
+  gtk_container_add (GTK_CONTAINER (alignment189), eventbox3);
+
+  fixed119 = gtk_fixed_new ();
+  gtk_widget_show (fixed119);
+  gtk_container_add (GTK_CONTAINER (eventbox3), fixed119);
+
+  mfentryajoutchercher = gtk_entry_new ();
+  gtk_widget_show (mfentryajoutchercher);
+  gtk_fixed_put (GTK_FIXED (fixed119), mfentryajoutchercher, 120, 16);
+  gtk_widget_set_size_request (mfentryajoutchercher, 160, 27);
+  gtk_entry_set_invisible_char (GTK_ENTRY (mfentryajoutchercher), 8226);
+
+  label534 = gtk_label_new (_("Chercher par:"));
+  gtk_widget_show (label534);
+  gtk_fixed_put (GTK_FIXED (fixed119), label534, 0, 16);
+  gtk_widget_set_size_request (label534, 128, 32);
+
+  mfcomboboxrecherche = gtk_combo_box_new_text ();
+  gtk_widget_show (mfcomboboxrecherche);
+  gtk_fixed_put (GTK_FIXED (fixed119), mfcomboboxrecherche, 296, 16);
+  gtk_widget_set_size_request (mfcomboboxrecherche, 205, 33);
+  gtk_combo_box_append_text (GTK_COMBO_BOX (mfcomboboxrecherche), _("CIN"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (mfcomboboxrecherche), _("Nom"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (mfcomboboxrecherche), _("Num\303\251ro du T\303\251l\303\250phone"));
+
+  mfbuttonchercherajout = gtk_button_new ();
+  gtk_widget_show (mfbuttonchercherajout);
+  gtk_fixed_put (GTK_FIXED (fixed119), mfbuttonchercherajout, 560, 16);
+  gtk_widget_set_size_request (mfbuttonchercherajout, 104, 29);
+
+  alignment80 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment80);
+  gtk_container_add (GTK_CONTAINER (mfbuttonchercherajout), alignment80);
+
+  hbox65 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox65);
+  gtk_container_add (GTK_CONTAINER (alignment80), hbox65);
+
+  image65 = gtk_image_new_from_stock ("gtk-find", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image65);
+  gtk_box_pack_start (GTK_BOX (hbox65), image65, FALSE, FALSE, 0);
+
+  label537 = gtk_label_new_with_mnemonic (_("Chercher"));
+  gtk_widget_show (label537);
+  gtk_box_pack_start (GTK_BOX (hbox65), label537, FALSE, FALSE, 0);
+
+  mfbuttonlisteagent = gtk_button_new_with_mnemonic (_("ListeAgents"));
+  gtk_widget_show (mfbuttonlisteagent);
+  gtk_fixed_put (GTK_FIXED (fixed119), mfbuttonlisteagent, 728, 16);
+  gtk_widget_set_size_request (mfbuttonlisteagent, 120, 29);
+
+  mflabelmessagerecherche = gtk_label_new ("");
+  gtk_widget_show (mflabelmessagerecherche);
+  gtk_fixed_put (GTK_FIXED (fixed119), mflabelmessagerecherche, 96, 64);
+  gtk_widget_set_size_request (mflabelmessagerecherche, 424, 24);
+
+  label1101 = gtk_label_new (_("<b>Recherche</b>"));
+  gtk_widget_show (label1101);
+  gtk_frame_set_label_widget (GTK_FRAME (frame38), label1101);
+  gtk_label_set_use_markup (GTK_LABEL (label1101), TRUE);
+
+  eventbox5 = gtk_event_box_new ();
+  gtk_widget_show (eventbox5);
+  gtk_fixed_put (GTK_FIXED (fixed65), eventbox5, 1160, 480);
+  gtk_widget_set_size_request (eventbox5, 680, 504);
+
   frame15 = gtk_frame_new (NULL);
   gtk_widget_show (frame15);
-  gtk_fixed_put (GTK_FIXED (fixed65), frame15, 1160, 480);
+  gtk_container_add (GTK_CONTAINER (eventbox5), frame15);
   gtk_widget_set_size_request (frame15, 680, 504);
 
   alignment76 = gtk_alignment_new (0.5, 0.5, 1, 1);
@@ -3989,11 +4022,6 @@ create_Administrateur (void)
   mfradiobuttonfemmeajout_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (mfradiobuttonhommeajout));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (mfradiobuttonhommeajout), TRUE);
 
-  mflabelerrorajout = gtk_label_new (_("label21"));
-  gtk_widget_show (mflabelerrorajout);
-  gtk_fixed_put (GTK_FIXED (fixed67), mflabelerrorajout, 0, 448);
-  gtk_widget_set_size_request (mflabelerrorajout, 656, 24);
-
   mfcheckbuttonagentdesecurite = gtk_check_button_new_with_mnemonic (_("Agent de s\303\251curit\303\251 et de surveillance"));
   gtk_widget_show (mfcheckbuttonagentdesecurite);
   gtk_fixed_put (GTK_FIXED (fixed67), mfcheckbuttonagentdesecurite, 96, 272);
@@ -4019,20 +4047,15 @@ create_Administrateur (void)
   gtk_fixed_put (GTK_FIXED (fixed67), mfcheckbuttonagentparkingajout, 96, 352);
   gtk_widget_set_size_request (mfcheckbuttonagentparkingajout, 152, 24);
 
+  mflabelerrorajout = gtk_label_new ("");
+  gtk_widget_show (mflabelerrorajout);
+  gtk_fixed_put (GTK_FIXED (fixed67), mflabelerrorajout, 0, 448);
+  gtk_widget_set_size_request (mflabelerrorajout, 656, 24);
+
   label533 = gtk_label_new (_("<b>Nouveau Agent</b>"));
   gtk_widget_show (label533);
   gtk_frame_set_label_widget (GTK_FRAME (frame15), label533);
   gtk_label_set_use_markup (GTK_LABEL (label533), TRUE);
-
-  scrolledwindow6 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_show (scrolledwindow6);
-  gtk_fixed_put (GTK_FIXED (fixed65), scrolledwindow6, 8, 136);
-  gtk_widget_set_size_request (scrolledwindow6, 1136, 848);
-
-  mftreeviewafficheragents = gtk_tree_view_new ();
-  gtk_widget_show (mftreeviewafficheragents);
-  gtk_container_add (GTK_CONTAINER (scrolledwindow6), mftreeviewafficheragents);
-  gtk_widget_set_size_request (mftreeviewafficheragents, 1136, 824);
 
   label463 = gtk_label_new (_("Agents"));
   gtk_widget_show (label463);
@@ -4105,6 +4128,11 @@ create_Administrateur (void)
   label1036 = gtk_label_new_with_mnemonic (_("Chercher"));
   gtk_widget_show (label1036);
   gtk_box_pack_start (GTK_BOX (hbox135), label1036, FALSE, FALSE, 0);
+
+  AKButtonAnnuler = gtk_button_new_with_mnemonic (_("annuler"));
+  gtk_widget_show (AKButtonAnnuler);
+  gtk_fixed_put (GTK_FIXED (fixed124), AKButtonAnnuler, 560, 24);
+  gtk_widget_set_size_request (AKButtonAnnuler, 74, 29);
 
   label1146 = gtk_label_new (_("<b>Chercher</b>"));
   gtk_widget_show (label1146);
@@ -4706,8 +4734,8 @@ create_Administrateur (void)
   g_signal_connect ((gpointer) YBButtonAffecter, "clicked",
                     G_CALLBACK (on_YBButtonAffecter_clicked),
                     NULL);
-  g_signal_connect ((gpointer) mfbuttonchercherajout, "clicked",
-                    G_CALLBACK (on_mfbuttonchercherajout_clicked),
+  g_signal_connect ((gpointer) mftreeviewafficheragents, "row_activated",
+                    G_CALLBACK (on_mftreeviewafficheragents_row_activated),
                     NULL);
   g_signal_connect ((gpointer) mfbuttonconfirmer, "clicked",
                     G_CALLBACK (on_mfbuttonconfirmer_clicked),
@@ -4739,6 +4767,12 @@ create_Administrateur (void)
   g_signal_connect ((gpointer) mfbuttonmodifier, "clicked",
                     G_CALLBACK (on_mfbuttonmodifier_clicked),
                     NULL);
+  g_signal_connect ((gpointer) mfbuttonchercherajout, "clicked",
+                    G_CALLBACK (on_mfbuttonchercherajout_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) mfbuttonlisteagent, "clicked",
+                    G_CALLBACK (on_mfbuttonlisteagent_clicked),
+                    NULL);
   g_signal_connect ((gpointer) mfbuttonajouter, "clicked",
                     G_CALLBACK (on_mfbuttonajouter_clicked),
                     NULL);
@@ -4763,14 +4797,14 @@ create_Administrateur (void)
   g_signal_connect ((gpointer) mfcheckbuttonagentparkingajout, "toggled",
                     G_CALLBACK (on_mfcheckbuttonagentparkingajout_toggled),
                     NULL);
-  g_signal_connect ((gpointer) mftreeviewafficheragents, "row_activated",
-                    G_CALLBACK (on_mftreeviewafficheragents_row_activated),
-                    NULL);
   g_signal_connect ((gpointer) AKTreeviewService, "row_activated",
                     G_CALLBACK (on_AKTreeviewService_row_activated),
                     NULL);
   g_signal_connect ((gpointer) AKButtonChercher, "clicked",
                     G_CALLBACK (on_AKButtonChercher_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) AKButtonAnnuler, "clicked",
+                    G_CALLBACK (on_AKbuttonannuler_clicked),
                     NULL);
   g_signal_connect ((gpointer) AKServiceCheckbuttonJoursOrdinaire, "toggled",
                     G_CALLBACK (on_AKServiceCheckbuttonJoursOrdinaire_toggled),
@@ -4957,21 +4991,11 @@ create_Administrateur (void)
   GLADE_HOOKUP_OBJECT (Administrateur, label1122, "label1122");
   GLADE_HOOKUP_OBJECT (Administrateur, label462, "label462");
   GLADE_HOOKUP_OBJECT (Administrateur, fixed65, "fixed65");
-  GLADE_HOOKUP_OBJECT (Administrateur, frame38, "frame38");
-  GLADE_HOOKUP_OBJECT (Administrateur, alignment189, "alignment189");
-  GLADE_HOOKUP_OBJECT (Administrateur, fixed119, "fixed119");
-  GLADE_HOOKUP_OBJECT (Administrateur, mfentryajoutchercher, "mfentryajoutchercher");
-  GLADE_HOOKUP_OBJECT (Administrateur, label534, "label534");
-  GLADE_HOOKUP_OBJECT (Administrateur, mfcomboboxrecherche, "mfcomboboxrecherche");
-  GLADE_HOOKUP_OBJECT (Administrateur, mfbuttonchercherajout, "mfbuttonchercherajout");
-  GLADE_HOOKUP_OBJECT (Administrateur, alignment80, "alignment80");
-  GLADE_HOOKUP_OBJECT (Administrateur, hbox65, "hbox65");
-  GLADE_HOOKUP_OBJECT (Administrateur, image65, "image65");
-  GLADE_HOOKUP_OBJECT (Administrateur, label537, "label537");
-  GLADE_HOOKUP_OBJECT (Administrateur, mflabelmessagerecherche, "mflabelmessagerecherche");
-  GLADE_HOOKUP_OBJECT (Administrateur, label1101, "label1101");
+  GLADE_HOOKUP_OBJECT (Administrateur, scrolledwindow6, "scrolledwindow6");
+  GLADE_HOOKUP_OBJECT (Administrateur, mftreeviewafficheragents, "mftreeviewafficheragents");
   GLADE_HOOKUP_OBJECT (Administrateur, frame37, "frame37");
   GLADE_HOOKUP_OBJECT (Administrateur, alignment186, "alignment186");
+  GLADE_HOOKUP_OBJECT (Administrateur, eventbox4, "eventbox4");
   GLADE_HOOKUP_OBJECT (Administrateur, fixed118, "fixed118");
   GLADE_HOOKUP_OBJECT (Administrateur, mfentrynommodifier, "mfentrynommodifier");
   GLADE_HOOKUP_OBJECT (Administrateur, mfentryprenommodifier, "mfentryprenommodifier");
@@ -4991,7 +5015,6 @@ create_Administrateur (void)
   GLADE_HOOKUP_OBJECT (Administrateur, label1094, "label1094");
   GLADE_HOOKUP_OBJECT (Administrateur, label1089, "label1089");
   GLADE_HOOKUP_OBJECT (Administrateur, label1088, "label1088");
-  GLADE_HOOKUP_OBJECT (Administrateur, mflabelerreurmodifier, "mflabelerreurmodifier");
   GLADE_HOOKUP_OBJECT (Administrateur, mfbuttonconfirmer, "mfbuttonconfirmer");
   GLADE_HOOKUP_OBJECT (Administrateur, alignment188, "alignment188");
   GLADE_HOOKUP_OBJECT (Administrateur, hbox147, "hbox147");
@@ -5014,7 +5037,24 @@ create_Administrateur (void)
   GLADE_HOOKUP_OBJECT (Administrateur, hbox146, "hbox146");
   GLADE_HOOKUP_OBJECT (Administrateur, image149, "image149");
   GLADE_HOOKUP_OBJECT (Administrateur, label1098, "label1098");
+  GLADE_HOOKUP_OBJECT (Administrateur, mflabelerreurmodifier, "mflabelerreurmodifier");
   GLADE_HOOKUP_OBJECT (Administrateur, label1099, "label1099");
+  GLADE_HOOKUP_OBJECT (Administrateur, frame38, "frame38");
+  GLADE_HOOKUP_OBJECT (Administrateur, alignment189, "alignment189");
+  GLADE_HOOKUP_OBJECT (Administrateur, eventbox3, "eventbox3");
+  GLADE_HOOKUP_OBJECT (Administrateur, fixed119, "fixed119");
+  GLADE_HOOKUP_OBJECT (Administrateur, mfentryajoutchercher, "mfentryajoutchercher");
+  GLADE_HOOKUP_OBJECT (Administrateur, label534, "label534");
+  GLADE_HOOKUP_OBJECT (Administrateur, mfcomboboxrecherche, "mfcomboboxrecherche");
+  GLADE_HOOKUP_OBJECT (Administrateur, mfbuttonchercherajout, "mfbuttonchercherajout");
+  GLADE_HOOKUP_OBJECT (Administrateur, alignment80, "alignment80");
+  GLADE_HOOKUP_OBJECT (Administrateur, hbox65, "hbox65");
+  GLADE_HOOKUP_OBJECT (Administrateur, image65, "image65");
+  GLADE_HOOKUP_OBJECT (Administrateur, label537, "label537");
+  GLADE_HOOKUP_OBJECT (Administrateur, mfbuttonlisteagent, "mfbuttonlisteagent");
+  GLADE_HOOKUP_OBJECT (Administrateur, mflabelmessagerecherche, "mflabelmessagerecherche");
+  GLADE_HOOKUP_OBJECT (Administrateur, label1101, "label1101");
+  GLADE_HOOKUP_OBJECT (Administrateur, eventbox5, "eventbox5");
   GLADE_HOOKUP_OBJECT (Administrateur, frame15, "frame15");
   GLADE_HOOKUP_OBJECT (Administrateur, alignment76, "alignment76");
   GLADE_HOOKUP_OBJECT (Administrateur, fixed67, "fixed67");
@@ -5043,15 +5083,13 @@ create_Administrateur (void)
   GLADE_HOOKUP_OBJECT (Administrateur, label526, "label526");
   GLADE_HOOKUP_OBJECT (Administrateur, mfradiobuttonfemmeajout, "mfradiobuttonfemmeajout");
   GLADE_HOOKUP_OBJECT (Administrateur, mfradiobuttonhommeajout, "mfradiobuttonhommeajout");
-  GLADE_HOOKUP_OBJECT (Administrateur, mflabelerrorajout, "mflabelerrorajout");
   GLADE_HOOKUP_OBJECT (Administrateur, mfcheckbuttonagentdesecurite, "mfcheckbuttonagentdesecurite");
   GLADE_HOOKUP_OBJECT (Administrateur, mfcheckbuttonresponsableparkingajout, "mfcheckbuttonresponsableparkingajout");
   GLADE_HOOKUP_OBJECT (Administrateur, mfcheckbuttontechnicienmaintenanceajout, "mfcheckbuttontechnicienmaintenanceajout");
   GLADE_HOOKUP_OBJECT (Administrateur, mfcheckbuttonagententretienajout, "mfcheckbuttonagententretienajout");
   GLADE_HOOKUP_OBJECT (Administrateur, mfcheckbuttonagentparkingajout, "mfcheckbuttonagentparkingajout");
+  GLADE_HOOKUP_OBJECT (Administrateur, mflabelerrorajout, "mflabelerrorajout");
   GLADE_HOOKUP_OBJECT (Administrateur, label533, "label533");
-  GLADE_HOOKUP_OBJECT (Administrateur, scrolledwindow6, "scrolledwindow6");
-  GLADE_HOOKUP_OBJECT (Administrateur, mftreeviewafficheragents, "mftreeviewafficheragents");
   GLADE_HOOKUP_OBJECT (Administrateur, label463, "label463");
   GLADE_HOOKUP_OBJECT (Administrateur, fixed110, "fixed110");
   GLADE_HOOKUP_OBJECT (Administrateur, scrolledwindow4, "scrolledwindow4");
@@ -5066,6 +5104,7 @@ create_Administrateur (void)
   GLADE_HOOKUP_OBJECT (Administrateur, hbox135, "hbox135");
   GLADE_HOOKUP_OBJECT (Administrateur, image138, "image138");
   GLADE_HOOKUP_OBJECT (Administrateur, label1036, "label1036");
+  GLADE_HOOKUP_OBJECT (Administrateur, AKButtonAnnuler, "AKButtonAnnuler");
   GLADE_HOOKUP_OBJECT (Administrateur, label1146, "label1146");
   GLADE_HOOKUP_OBJECT (Administrateur, frame40, "frame40");
   GLADE_HOOKUP_OBJECT (Administrateur, alignment199, "alignment199");
