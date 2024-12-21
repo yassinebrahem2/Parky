@@ -377,6 +377,7 @@ create_Citoyen (void)
   GtkWidget *EA_checkbutton_service;
   GtkWidget *EA_comboboxentry_type;
   GtkWidget *label1113;
+  GtkWidget *EAlabelerreur;
   GtkWidget *label369;
 
   Citoyen = gtk_window_new (GTK_WINDOW_TOPLEVEL);
@@ -1978,6 +1979,11 @@ create_Citoyen (void)
   gtk_fixed_put (GTK_FIXED (fixed120), label1113, 528, 432);
   gtk_widget_set_size_request (label1113, 224, 32);
 
+  EAlabelerreur = gtk_label_new (_("label1298"));
+  gtk_widget_show (EAlabelerreur);
+  gtk_fixed_put (GTK_FIXED (fixed120), EAlabelerreur, 400, 880);
+  gtk_widget_set_size_request (EAlabelerreur, 856, 25);
+
   label369 = gtk_label_new (_("Avis et reclamation"));
   gtk_widget_show (label369);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (notebook13), gtk_notebook_get_nth_page (GTK_NOTEBOOK (notebook13), 2), label369);
@@ -2059,6 +2065,9 @@ create_Citoyen (void)
                     NULL);
   g_signal_connect ((gpointer) asradiobutton1m, "toggled",
                     G_CALLBACK (on_asradiobutton1a_toggled),
+                    NULL);
+  g_signal_connect ((gpointer) EA_treeview_avis, "row_activated",
+                    G_CALLBACK (on_EA_treeview_avis_row_activated),
                     NULL);
   g_signal_connect ((gpointer) EA_button_modifier, "clicked",
                     G_CALLBACK (on_EA_button_modifier_clicked),
@@ -2410,6 +2419,7 @@ create_Citoyen (void)
   GLADE_HOOKUP_OBJECT (Citoyen, EA_checkbutton_service, "EA_checkbutton_service");
   GLADE_HOOKUP_OBJECT (Citoyen, EA_comboboxentry_type, "EA_comboboxentry_type");
   GLADE_HOOKUP_OBJECT (Citoyen, label1113, "label1113");
+  GLADE_HOOKUP_OBJECT (Citoyen, EAlabelerreur, "EAlabelerreur");
   GLADE_HOOKUP_OBJECT (Citoyen, label369, "label369");
 
   return Citoyen;

@@ -51,6 +51,24 @@ GtkWidget *spinbuttonSearchPriceFrom;
 GtkWidget *spinbuttonSearchSpotsFrom;
 GtkWidget *spinbuttonSearchPriceTo;
 GtkWidget *spinbuttonSearchSpotsTo;
+
+GtkWidget *entryNom;
+GtkWidget *entryPrenom;
+GtkWidget *entryCin;
+GtkWidget *entryID_parking;
+GtkWidget *entryID_avis;
+GtkWidget *text_view_avis;
+GtkWidget *spinButtonJour;
+GtkWidget *spinButtonMois;
+GtkWidget *spinButtonAnnee;
+GtkWidget *spinButtonNote;
+GtkWidget *comboboxEntryType;
+
+GtkWidget *radiobutton_homme;
+GtkWidget *radiobutton_femme;
+GtkWidget *checkbutton_agent;
+GtkWidget *checkbutton_service;
+
 int entrySearchSetting = 0;
 int searchHasElectricCharger = -1;
 int checkboxSearchVehicules[4] = {1, 1, 1, 1};
@@ -72,14 +90,15 @@ Parking parking;
 Parking newParking;
 GtkTreeStore *store;
 Agent agent;
+avis av;
 
 
 
 
 int a,aa,mm;
 char num_carte[50],code[5];
-char file_directory_citoyen[300]="Data/citoyen.txt",
-file_directory_vehicule[300]="Data/vehicule.txt"
+char file_directory_citoyen[300]="citoyen.txt",
+file_directory_vehicule[300]="vehicule.txt"
 ,matricule20[300];
 citoyen c={0};
 vehicule v={0};
@@ -100,26 +119,6 @@ char *parkingReservationDisplayFileDirectory = "Cashe/parkingReservationDisplay.
 
 char *reservationFileDirectory = "Data/reservation.txt";
 char *reservationDisplayFileDirectory = "Cashe/displayReservation.txt";
-
-avis a;
-
-
-GtkWidget *entryNom;
-GtkWidget *entryPrenom;
-GtkWidget *entryCin;
-GtkWidget *entryID_parking;
-GtkWidget *entryID_avis;
-GtkWidget *text_view_avis;
-GtkWidget *spinButtonJour;
-GtkWidget *spinButtonMois;
-GtkWidget *spinButtonAnnee;
-GtkWidget *spinButtonNote;
-GtkWidget *comboboxEntryType;
-
-GtkWidget *radiobutton_homme;
-GtkWidget *radiobutton_femme;
-GtkWidget *checkbutton_agent;
-GtkWidget *checkbutton_service;
 
 void
 on_Citoyen_map                         (GtkWidget       *widget,
@@ -680,10 +679,7 @@ void updateReservationParkingTreeview(GtkWidget *object) {
 }
 
 
-void
-on_EA_button_modifier_clicked          (GtkButton       *button,
-                                        gpointer         user_data)
-{
+
 void on_EA_button_modifier_clicked(GtkWidget *object, gpointer user_data) {
      // Récupérer les widgets
     GtkWidget *entry_ID_avis = lookup_widget(object, "EA_entry_idavis");
@@ -734,7 +730,7 @@ on_EA_button_recherche_clicked(GtkButton       *button,
     GtkWidget *entryNom, *entryPrenom, *entryCin, *entryID_parking, *entryID_avis, *textViewAvis;
     GtkWidget *spinButtonJour, *spinButtonMois, *spinButtonAnnee, *spinButtonNote, *comboBoxTypeAvis;
     char id_recherche[20];
-    avis a;
+    avis av;
 
     // Récupérer les widgets depuis l'interface graphique (Glade)
     entryRecherche = lookup_widget(button, "EA_entry_recherche");
@@ -757,41 +753,41 @@ on_EA_button_recherche_clicked(GtkButton       *button,
     // Récupérer l'ID d'avis saisi par l'utilisateur
     strcpy(id_recherche, gtk_entry_get_text(GTK_ENTRY(entryRecherche)));
 
-    // Vérification si l'ID a été saisi
+    // Vérification si l'ID av été saisi
     if (strlen(id_recherche) == 0) {
         gtk_label_set_text(GTK_LABEL(labelErreur), "Veuillez entrer un ID d'avis !");
         return;
     }
 
     // Chercher l'avis dans le fichier
-    a = chercher_avis("avis.txt", id_recherche);
+    av = chercher_avis("avis.txt", id_recherche);
 
     // Si l'avis n'est pas trouvé
-    if (strcmp(a.ID_avis, "") == 0) {
+    if (strcmp(av.ID_avis, "") == 0) {
         gtk_label_set_text(GTK_LABEL(labelErreur), "Aucun avis trouvé avec cet ID !");
         return;
     }
 
     // Si l'avis est trouvé, mettre à jour les champs
     gtk_label_set_text(GTK_LABEL(labelErreur), "Avis trouvé !");
-    gtk_entry_set_text(GTK_ENTRY(entryNom), a.nom);
-    gtk_entry_set_text(GTK_ENTRY(entryPrenom), a.prenom);
-    gtk_entry_set_text(GTK_ENTRY(entryCin), a.CIN);
-    gtk_entry_set_text(GTK_ENTRY(entryID_parking), a.ID_Parking);
-    gtk_entry_set_text(GTK_ENTRY(entryID_avis), a.ID_avis);
+    gtk_entry_set_text(GTK_ENTRY(entryNom), av.nom);
+    gtk_entry_set_text(GTK_ENTRY(entryPrenom), av.prenom);
+    gtk_entry_set_text(GTK_ENTRY(entryCin), av.CIN);
+    gtk_entry_set_text(GTK_ENTRY(entryID_parking), av.ID_Parking);
+    gtk_entry_set_text(GTK_ENTRY(entryID_avis), av.ID_avis);
 
     // Remplir le TextView avec le texte de l'avis
     GtkTextBuffer *buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(textViewAvis));
-    gtk_text_buffer_set_text(buffer, a.text, -1);
+    gtk_text_buffer_set_text(buffer, av.text, -1);
 
     // Mettre à jour les spin buttons
-    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spinButtonJour), a.jour);
-    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spinButtonMois), a.mois);
-    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spinButtonAnnee), a.annee);
-    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spinButtonNote), a.note);
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spinButtonJour), av.jour);
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spinButtonMois), av.mois);
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spinButtonAnnee), av.annee);
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spinButtonNote), av.note);
 
     // Mettre à jour le combo box en fonction du type d'avis
-    gtk_combo_box_set_active(GTK_COMBO_BOX(comboBoxTypeAvis), a.type_avis == 1 ? 0 : 1);
+    gtk_combo_box_set_active(GTK_COMBO_BOX(comboBoxTypeAvis), av.type_avis == 1 ? 0 : 1);
 
     // Mettre à jour le TreeView avec les informations de l'avis (ID, ID de parking, note, texte)
     GtkListStore *store = gtk_list_store_new(4,  // ID d'avis, ID de parking, note, texte
@@ -800,10 +796,10 @@ on_EA_button_recherche_clicked(GtkButton       *button,
     GtkTreeIter iter;
     gtk_list_store_append(store, &iter);
     gtk_list_store_set(store, &iter,
-                       0, a.ID_avis,
-                       1, a.ID_Parking,
-                       2, a.note,
-                       3, a.text,
+                       0, av.ID_avis,
+                       1, av.ID_Parking,
+                       2, av.note,
+                       3, av.text,
                        -1);
 
     // Mettre le modèle du TreeView à jour
@@ -814,7 +810,7 @@ on_EA_button_recherche_clicked(GtkButton       *button,
     g_signal_connect(treeview, "row-activated", G_CALLBACK(on_treeview_avis_row_activated), user_data);
 }
 
-void on_treeview_avis_row_activated(GtkTreeView *treeview, GtkTreePath *path, GtkTreeViewColumn *column, gpointer user_data)
+void on_treeview_avis_row_activated(GtkWidget *object, GtkTreePath *path, GtkTreeViewColumn *column, gpointer user_data)
 {
     GtkTreeIter iter;
     GtkTreeModel *model;
@@ -1024,7 +1020,7 @@ void on_EA_button_ajouter_clicked(GtkWidget *object, gpointer user_data) {
     GtkWidget *entryNom, *entryPrenom, *entryCin, *entryID_parking, *entryID_avis;
     GtkWidget *spinButtonJour, *spinButtonMois, *spinButtonAnnee, *spinButtonNote;
     GtkWidget *comboboxEntryType, *text_view_avis, *treeview, *labelErreur;
-    avis a;
+    avis av;
 
     // Récupération des widgets
     entryNom = lookup_widget(object, "EA_entry_nom");
@@ -1043,16 +1039,16 @@ void on_EA_button_ajouter_clicked(GtkWidget *object, gpointer user_data) {
    
 
     // Récupération des autres champs
-    strcpy(a.nom, gtk_entry_get_text(GTK_ENTRY(entryNom)));
-    strcpy(a.prenom, gtk_entry_get_text(GTK_ENTRY(entryPrenom)));
-    strcpy(a.CIN, gtk_entry_get_text(GTK_ENTRY(entryCin)));
-    strcpy(a.ID_Parking, gtk_entry_get_text(GTK_ENTRY(entryID_parking)));
-    strcpy(a.ID_avis, gtk_entry_get_text(GTK_ENTRY(entryID_avis)));
+    strcpy(av.nom, gtk_entry_get_text(GTK_ENTRY(entryNom)));
+    strcpy(av.prenom, gtk_entry_get_text(GTK_ENTRY(entryPrenom)));
+    strcpy(av.CIN, gtk_entry_get_text(GTK_ENTRY(entryCin)));
+    strcpy(av.ID_Parking, gtk_entry_get_text(GTK_ENTRY(entryID_parking)));
+    strcpy(av.ID_avis, gtk_entry_get_text(GTK_ENTRY(entryID_avis)));
 
-    a.jour = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinButtonJour));
-    a.mois = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinButtonMois));
-    a.annee = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinButtonAnnee));
-    a.note = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinButtonNote));
+    av.jour = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinButtonJour));
+    av.mois = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinButtonMois));
+    av.annee = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinButtonAnnee));
+    av.note = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinButtonNote));
   // Vérification de l'initialisation de text_view_avis
     if (text_view_avis == NULL) {
         gtk_label_set_text(GTK_LABEL(labelErreur), "Erreur : Le widget text_view_avis est NULL !");
@@ -1095,27 +1091,27 @@ void on_EA_button_ajouter_clicked(GtkWidget *object, gpointer user_data) {
     }
 
     // Copie sécurisée du texte dans la structure
-    g_strlcpy(a.text, comment, sizeof(a.text));
+    g_strlcpy(av.text, comment, sizeof(av.text));
 
     // Libération de la mémoire allouée
     g_free(comment);
 
     // Récupération du type d'avis
     if (strcmp(gtk_combo_box_get_active_text(GTK_COMBO_BOX(comboboxEntryType)), "Reclamation") == 0) {
-        a.type_avis = 1;
+        av.type_avis = 1;
     } else {
-        a.type_avis = 0;
+        av.type_avis = 0;
     }
 
     // Vérification des champs obligatoires
-    if (strlen(a.nom) == 0 || strlen(a.prenom) == 0 || strlen(a.CIN) == 0 ||
-        strlen(a.ID_Parking) == 0 || strlen(a.ID_avis) == 0) {
+    if (strlen(av.nom) == 0 || strlen(av.prenom) == 0 || strlen(av.CIN) == 0 ||
+        strlen(av.ID_Parking) == 0 || strlen(av.ID_avis) == 0) {
         gtk_label_set_text(GTK_LABEL(labelErreur), "Veuillez remplir tous les champs obligatoires !");
         return;
     }
 
     // Ajout de l'avis dans le fichier
-    if (ajouter_avis("avis.txt", a)) {
+    if (ajouter_avis("avis.txt", av)) {
         gtk_label_set_text(GTK_LABEL(labelErreur), "Avis ajouté avec succès !");
     } else {
         gtk_label_set_text(GTK_LABEL(labelErreur), "Erreur lors de l'ajout de l'avis !");
@@ -1208,7 +1204,7 @@ void on_EA_treeview_avis_row_activated(GtkWidget *object,
 
 
 void
-on_EA_button_annuler_clicked           (GtkButton       *button,
+on_EA_button_annuler_clicked           (GtkWidget       *object,
                                         gpointer         user_data)
 {
 	 // Liste des widgets d'entrée de texte
@@ -1252,7 +1248,7 @@ void
 on_EA_checkbutton_agent_toggled        (GtkToggleButton *togglebutton,
                                         gpointer         user_data)
 {
-	a.service[0] = gtk_toggle_button_get_active(togglebutton);
+	av.service[0] = gtk_toggle_button_get_active(togglebutton);
 }
 
 
@@ -1261,7 +1257,7 @@ on_EA_radiobutton_homme_toggled        (GtkToggleButton *togglebutton,
                                         gpointer         user_data)
 {
 	if(gtk_toggle_button_get_active(togglebutton)) {
-		a.sexe = 0;
+		av.sexe = 0;
 	}
 }
 
@@ -1271,7 +1267,7 @@ on_EA_radiobutton_femme_toggled        (GtkToggleButton *togglebutton,
                                         gpointer         user_data)
 {
 	if(gtk_toggle_button_get_active(togglebutton)) {
-		a.sexe = 1;
+		av.sexe = 1;
 	}
 }
 
@@ -1280,11 +1276,8 @@ void
 on_EA_checkbutton_service_toggled      (GtkToggleButton *togglebutton,
                                         gpointer         user_data)
 {
-	a.service[1] = gtk_toggle_button_get_active(togglebutton);
+	av.service[1] = gtk_toggle_button_get_active(togglebutton);
 }
-
-
-
 
 
 void
@@ -3564,5 +3557,6 @@ void updateReservationClientTreeview(GtkWidget *object) {
     
     gtk_tree_view_set_model(GTK_TREE_VIEW(treeviewReservationClient), GTK_TREE_MODEL(storeReservationClient));
 }
+
 
 

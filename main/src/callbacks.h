@@ -106,7 +106,7 @@ on_EA_button_ajouter_clicked           (GtkWidget       *object,
                                         gpointer         user_data);
 
 void
-on_EA_button_annuler_clicked           (GtkButton       *button,
+on_EA_button_annuler_clicked           (GtkWidget       *object,
                                         gpointer         user_data);
 
 void
@@ -128,6 +128,8 @@ on_EA_checkbutton_service_toggled      (GtkToggleButton *togglebutton,
 void
 on_EA_checkbutton_service_toggled      (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
+
+void on_treeview_avis_row_activated(GtkWidget *object, GtkTreePath *path, GtkTreeViewColumn *column, gpointer user_data);
 
 void
 on_Administrateur_map                  (GtkWidget       *widget,
@@ -573,4 +575,10 @@ on_ab_button_login_oublie_clicked      (GtkButton       *button,
 void
 on_ab_button_vehicule_Supprimer_clicked
                                         (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_EA_treeview_avis_row_activated      (GtkWidget     *object,
+                                        GtkTreePath     *path,
+                                        GtkTreeViewColumn *column,
                                         gpointer         user_data);

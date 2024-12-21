@@ -5748,6 +5748,7 @@ Moto</property>
 	      <property name="fixed_height_mode">False</property>
 	      <property name="hover_selection">False</property>
 	      <property name="hover_expand">False</property>
+	      <signal name="row_activated" handler="on_EA_treeview_avis_row_activated" last_modification_time="Sat, 21 Dec 2024 04:54:48 GMT"/>
 	    </widget>
 	    <packing>
 	      <property name="x">256</property>
@@ -6308,6 +6309,32 @@ Reclamation</property>
 	    <packing>
 	      <property name="x">528</property>
 	      <property name="y">432</property>
+	    </packing>
+	  </child>
+
+	  <child>
+	    <widget class="GtkLabel" id="EAlabelerreur">
+	      <property name="width_request">856</property>
+	      <property name="height_request">25</property>
+	      <property name="visible">True</property>
+	      <property name="label" translatable="yes">label1298</property>
+	      <property name="use_underline">False</property>
+	      <property name="use_markup">False</property>
+	      <property name="justify">GTK_JUSTIFY_LEFT</property>
+	      <property name="wrap">False</property>
+	      <property name="selectable">False</property>
+	      <property name="xalign">0.5</property>
+	      <property name="yalign">0.5</property>
+	      <property name="xpad">0</property>
+	      <property name="ypad">0</property>
+	      <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
+	      <property name="width_chars">-1</property>
+	      <property name="single_line_mode">False</property>
+	      <property name="angle">0</property>
+	    </widget>
+	    <packing>
+	      <property name="x">400</property>
+	      <property name="y">880</property>
 	    </packing>
 	  </child>
 	</widget>
