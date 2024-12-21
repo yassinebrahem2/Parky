@@ -38,7 +38,23 @@ main (int argc, char *argv[])
    */
   windows_show_window(Login);
   Administrateur = create_Administrateur ();
+<<<<<<< HEAD
   gtk_widget_show (Administrateur);
+=======
+  //gtk_widget_show (Administrateur);
+  Login = create_Login ();
+  //gtk_widget_show (Login);
+  enregistrer = create_enregistrer ();
+  //gtk_widget_show (enregistrer);
+  Moto = create_Moto ();
+  //gtk_widget_show (Moto);
+  RS = create_RS ();
+  //gtk_widget_show (RS);
+  Tun = create_Tun ();
+  //gtk_widget_show (Tun);
+  mdp_oublie = create_mdp_oublie ();
+  //gtk_widget_show (mdp_oublie);
+>>>>>>> avis
 
   gtk_main ();
   return 0;

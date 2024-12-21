@@ -12,10 +12,14 @@ parky_SOURCES = \
 	support.c support.h \
 	interface.c interface.h \
 	callbacks.c callbacks.h \
+<<<<<<< HEAD
 	reservation.c reservation.h \
 	parking.c parking.h \
 	projet.c projet.h \
 	window.c window.h
+=======
+	avis.c avis.h
+>>>>>>> avis
 
 parky_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)
 
