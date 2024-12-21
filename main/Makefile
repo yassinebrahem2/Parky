@@ -200,12 +200,21 @@ distuninstallcheck_listfiles = find . -type f -print
 am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
+<<<<<<< HEAD
 ACLOCAL = ${SHELL} /home/vboxuser/Git/Parky/main/missing aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
 AUTOCONF = ${SHELL} /home/vboxuser/Git/Parky/main/missing autoconf
 AUTOHEADER = ${SHELL} /home/vboxuser/Git/Parky/main/missing autoheader
 AUTOMAKE = ${SHELL} /home/vboxuser/Git/Parky/main/missing automake-1.15
+=======
+ACLOCAL = ${SHELL} "/home/vboxuser/Downloads/FINAL PROJECTS/Client/missing" aclocal-1.15
+AMTAR = $${TAR-tar}
+AM_DEFAULT_VERBOSITY = 1
+AUTOCONF = ${SHELL} "/home/vboxuser/Downloads/FINAL PROJECTS/Client/missing" autoconf
+AUTOHEADER = ${SHELL} "/home/vboxuser/Downloads/FINAL PROJECTS/Client/missing" autoheader
+AUTOMAKE = ${SHELL} "/home/vboxuser/Downloads/FINAL PROJECTS/Client/missing" automake-1.15
+>>>>>>> client
 AWK = mawk
 CATALOGS = 
 CATOBJEXT = .gmo
@@ -240,7 +249,11 @@ LIBOBJS =
 LIBS = 
 LTLIBOBJS = 
 MAINT = 
+<<<<<<< HEAD
 MAKEINFO = ${SHELL} /home/vboxuser/Git/Parky/main/missing makeinfo
+=======
+MAKEINFO = ${SHELL} "/home/vboxuser/Downloads/FINAL PROJECTS/Client/missing" makeinfo
+>>>>>>> client
 MKDIR_P = /bin/mkdir -p
 MKINSTALLDIRS = ./mkinstalldirs
 MSGFMT = /usr/bin/msgfmt
@@ -269,10 +282,17 @@ STRIP =
 USE_NLS = yes
 VERSION = 0.1
 XGETTEXT = /usr/bin/xgettext
+<<<<<<< HEAD
 abs_builddir = /home/vboxuser/Git/Parky/main
 abs_srcdir = /home/vboxuser/Git/Parky/main
 abs_top_builddir = /home/vboxuser/Git/Parky/main
 abs_top_srcdir = /home/vboxuser/Git/Parky/main
+=======
+abs_builddir = /home/vboxuser/Downloads/FINAL PROJECTS/Client
+abs_srcdir = /home/vboxuser/Downloads/FINAL PROJECTS/Client
+abs_top_builddir = /home/vboxuser/Downloads/FINAL PROJECTS/Client
+abs_top_srcdir = /home/vboxuser/Downloads/FINAL PROJECTS/Client
+>>>>>>> client
 ac_ct_CC = gcc
 am__include = include
 am__leading_dot = .
@@ -291,7 +311,11 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
+<<<<<<< HEAD
 install_sh = ${SHELL} /home/vboxuser/Git/Parky/main/install-sh
+=======
+install_sh = ${SHELL} '/home/vboxuser/Downloads/FINAL PROJECTS/Client/install-sh'
+>>>>>>> client
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale

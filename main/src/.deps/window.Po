@@ -1,4 +1,4 @@
-main.o: main.c /usr/include/stdc-predef.h ../config.h \
+window.o: window.c /usr/include/stdc-predef.h window.h \
  /usr/include/gtk-2.0/gtk/gtk.h /usr/include/gtk-2.0/gdk/gdk.h \
  /usr/include/gtk-2.0/gdk/gdkapplaunchcontext.h \
  /usr/include/glib-2.0/gio/gio.h /usr/include/glib-2.0/gio/giotypes.h \
@@ -603,13 +603,11 @@ main.o: main.c /usr/include/stdc-predef.h ../config.h \
  /usr/include/gtk-2.0/gtk/gtkoldeditable.h \
  /usr/include/gtk-2.0/gtk/gtkoptionmenu.h \
  /usr/include/gtk-2.0/gtk/gtkpreview.h \
- /usr/include/gtk-2.0/gtk/gtktipsquery.h interface.h support.h \
- /usr/include/libintl.h /usr/include/locale.h \
- /usr/include/x86_64-linux-gnu/bits/locale.h window.h
+ /usr/include/gtk-2.0/gtk/gtktipsquery.h interface.h
 
 /usr/include/stdc-predef.h:
 
-../config.h:
+window.h:
 
 /usr/include/gtk-2.0/gtk/gtk.h:
 
@@ -1948,13 +1946,3 @@ main.o: main.c /usr/include/stdc-predef.h ../config.h \
 /usr/include/gtk-2.0/gtk/gtktipsquery.h:
 
 interface.h:
-
-support.h:
-
-/usr/include/libintl.h:
-
-/usr/include/locale.h:
-
-/usr/include/x86_64-linux-gnu/bits/locale.h:
-
-window.h:

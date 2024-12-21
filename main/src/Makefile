@@ -100,8 +100,13 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_parky_OBJECTS = main.$(OBJEXT) support.$(OBJEXT) \
+<<<<<<< HEAD
 	interface.$(OBJEXT) callbacks.$(OBJEXT) reservation.$(OBJEXT) \
 	parking.$(OBJEXT)
+=======
+	interface.$(OBJEXT) callbacks.$(OBJEXT) projet.$(OBJEXT) \
+	window.$(OBJEXT) reservation.$(OBJEXT)
+>>>>>>> client
 parky_OBJECTS = $(am_parky_OBJECTS)
 am__DEPENDENCIES_1 =
 parky_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -161,12 +166,21 @@ ETAGS = etags
 CTAGS = ctags
 am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/depcomp
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+<<<<<<< HEAD
 ACLOCAL = ${SHELL} /home/vboxuser/Git/Parky/main/missing aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
 AUTOCONF = ${SHELL} /home/vboxuser/Git/Parky/main/missing autoconf
 AUTOHEADER = ${SHELL} /home/vboxuser/Git/Parky/main/missing autoheader
 AUTOMAKE = ${SHELL} /home/vboxuser/Git/Parky/main/missing automake-1.15
+=======
+ACLOCAL = ${SHELL} "/home/vboxuser/Downloads/FINAL PROJECTS/Client/missing" aclocal-1.15
+AMTAR = $${TAR-tar}
+AM_DEFAULT_VERBOSITY = 1
+AUTOCONF = ${SHELL} "/home/vboxuser/Downloads/FINAL PROJECTS/Client/missing" autoconf
+AUTOHEADER = ${SHELL} "/home/vboxuser/Downloads/FINAL PROJECTS/Client/missing" autoheader
+AUTOMAKE = ${SHELL} "/home/vboxuser/Downloads/FINAL PROJECTS/Client/missing" automake-1.15
+>>>>>>> client
 AWK = mawk
 CATALOGS = 
 CATOBJEXT = .gmo
@@ -201,7 +215,11 @@ LIBOBJS =
 LIBS = 
 LTLIBOBJS = 
 MAINT = 
+<<<<<<< HEAD
 MAKEINFO = ${SHELL} /home/vboxuser/Git/Parky/main/missing makeinfo
+=======
+MAKEINFO = ${SHELL} "/home/vboxuser/Downloads/FINAL PROJECTS/Client/missing" makeinfo
+>>>>>>> client
 MKDIR_P = /bin/mkdir -p
 MKINSTALLDIRS = ./mkinstalldirs
 MSGFMT = /usr/bin/msgfmt
@@ -230,10 +248,17 @@ STRIP =
 USE_NLS = yes
 VERSION = 0.1
 XGETTEXT = /usr/bin/xgettext
+<<<<<<< HEAD
 abs_builddir = /home/vboxuser/Git/Parky/main/src
 abs_srcdir = /home/vboxuser/Git/Parky/main/src
 abs_top_builddir = /home/vboxuser/Git/Parky/main
 abs_top_srcdir = /home/vboxuser/Git/Parky/main
+=======
+abs_builddir = /home/vboxuser/Downloads/FINAL PROJECTS/Client/src
+abs_srcdir = /home/vboxuser/Downloads/FINAL PROJECTS/Client/src
+abs_top_builddir = /home/vboxuser/Downloads/FINAL PROJECTS/Client
+abs_top_srcdir = /home/vboxuser/Downloads/FINAL PROJECTS/Client
+>>>>>>> client
 ac_ct_CC = gcc
 am__include = include
 am__leading_dot = .
@@ -252,7 +277,11 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
+<<<<<<< HEAD
 install_sh = ${SHELL} /home/vboxuser/Git/Parky/main/install-sh
+=======
+install_sh = ${SHELL} '/home/vboxuser/Downloads/FINAL PROJECTS/Client/install-sh'
+>>>>>>> client
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -283,8 +312,14 @@ parky_SOURCES = \
 	support.c support.h \
 	interface.c interface.h \
 	callbacks.c callbacks.h \
+<<<<<<< HEAD
 	reservation.c reservation.h \
 	parking.c parking.h
+=======
+	projet.c projet.h \
+	window.c window.h \
+	reservation.c reservation.h
+>>>>>>> client
 
 parky_LDADD = -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype $(INTLLIBS)
 all: all-am
@@ -376,9 +411,14 @@ distclean-compile:
 include ./$(DEPDIR)/callbacks.Po
 include ./$(DEPDIR)/interface.Po
 include ./$(DEPDIR)/main.Po
+<<<<<<< HEAD
 include ./$(DEPDIR)/parking.Po
+=======
+include ./$(DEPDIR)/projet.Po
+>>>>>>> client
 include ./$(DEPDIR)/reservation.Po
 include ./$(DEPDIR)/support.Po
+include ./$(DEPDIR)/window.Po
 
 .c.o:
 	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

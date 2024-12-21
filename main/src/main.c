@@ -11,10 +11,11 @@
 
 #include "interface.h"
 #include "support.h"
+#include "window.h"
 
 int
 main (int argc, char *argv[])
-{
+{/*
   GtkWidget *Citoyen;
   GtkWidget *Administrateur;
   GtkWidget *Login;
@@ -22,7 +23,7 @@ main (int argc, char *argv[])
   GtkWidget *Moto;
   GtkWidget *RS;
   GtkWidget *Tun;
-  GtkWidget *mdp_oublie;
+  GtkWidget *mdp_oublie;*/
 
 #ifdef ENABLE_NLS
   bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
@@ -32,7 +33,7 @@ main (int argc, char *argv[])
 
   gtk_set_locale ();
   gtk_init (&argc, &argv);
-
+  windows_init();
   add_pixmap_directory (PACKAGE_DATA_DIR "/" PACKAGE "/pixmaps");
 
   /*
@@ -40,23 +41,23 @@ main (int argc, char *argv[])
    * (except popup menus), just so that you see something after building
    * the project. Delete any components that you don't want shown initially.
    */
-  Citoyen = create_Citoyen ();
-  gtk_widget_show (Citoyen);
-  Administrateur = create_Administrateur ();
-  gtk_widget_show (Administrateur);
-  Login = create_Login ();
-  gtk_widget_show (Login);
-  enregistrer = create_enregistrer ();
-  gtk_widget_show (enregistrer);
-  Moto = create_Moto ();
-  gtk_widget_show (Moto);
-  RS = create_RS ();
-  gtk_widget_show (RS);
-  Tun = create_Tun ();
-  gtk_widget_show (Tun);
-  mdp_oublie = create_mdp_oublie ();
-  gtk_widget_show (mdp_oublie);
-
+  //Citoyen = create_Citoyen ();
+  //gtk_widget_show (Citoyen);
+  //Administrateur = create_Administrateur ();
+  //gtk_widget_show (Administrateur);
+  //windows_show_window(Login);
+  //gtk_widget_show (Login);
+  //enregistrer = create_enregistrer ();
+  //gtk_widget_show (enregistrer);
+  //Moto = create_Moto ();
+  //gtk_widget_show (Moto);
+  //RS = create_RS ();
+  //gtk_widget_show (RS);
+  //Tun = create_Tun ();
+  //gtk_widget_show (Tun);
+  //mdp_oublie = create_mdp_oublie ();
+  //gtk_widget_show (mdp_oublie);
+windows_show_window(Login);
   gtk_main ();
   return 0;
 }
