@@ -107,8 +107,8 @@ int services[5] = {0, 0, 0, 0, 0};
 
 int a,aa,mm;
 char num_carte[50],code[5];
-char file_directory_citoyen[300]="citoyen.txt",
-file_directory_vehicule[300]="vehicule.txt"
+char file_directory_citoyen[300]="Data/citoyen.txt",
+file_directory_vehicule[300]="Data/vehicule.txt"
 ,matricule20[300];
 citoyen c={0};
 vehicule v={0};
