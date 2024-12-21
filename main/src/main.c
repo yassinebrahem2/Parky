@@ -43,19 +43,19 @@ main (int argc, char *argv[])
   Citoyen = create_Citoyen ();
   gtk_widget_show (Citoyen);
   Administrateur = create_Administrateur ();
-  gtk_widget_show (Administrateur);
+  //gtk_widget_show (Administrateur);
   Login = create_Login ();
-  gtk_widget_show (Login);
+  //gtk_widget_show (Login);
   enregistrer = create_enregistrer ();
-  gtk_widget_show (enregistrer);
+  //gtk_widget_show (enregistrer);
   Moto = create_Moto ();
-  gtk_widget_show (Moto);
+  //gtk_widget_show (Moto);
   RS = create_RS ();
-  gtk_widget_show (RS);
+  //gtk_widget_show (RS);
   Tun = create_Tun ();
-  gtk_widget_show (Tun);
+  //gtk_widget_show (Tun);
   mdp_oublie = create_mdp_oublie ();
-  gtk_widget_show (mdp_oublie);
+  //gtk_widget_show (mdp_oublie);
 
   gtk_main ();
   return 0;

@@ -100,7 +100,7 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_parky_OBJECTS = main.$(OBJEXT) support.$(OBJEXT) \
-	interface.$(OBJEXT) callbacks.$(OBJEXT)
+	interface.$(OBJEXT) callbacks.$(OBJEXT) avis.$(OBJEXT)
 parky_OBJECTS = $(am_parky_OBJECTS)
 am__DEPENDENCIES_1 =
 parky_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -281,7 +281,8 @@ parky_SOURCES = \
 	main.c \
 	support.c support.h \
 	interface.c interface.h \
-	callbacks.c callbacks.h
+	callbacks.c callbacks.h \
+	avis.c avis.h
 
 parky_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)
 all: all-am
@@ -370,6 +371,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/avis.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/callbacks.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/interface.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@

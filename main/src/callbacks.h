@@ -112,7 +112,7 @@ on_asradiobutton1a_toggled             (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
-on_EA_button_modifier_clicked          (GtkButton       *button,
+on_EA_button_modifier_clicked          (GtkWidget       *object,
                                         gpointer         user_data);
 
 void
@@ -120,7 +120,7 @@ on_EA_button_recherche_clicked         (GtkButton       *button,
                                         gpointer         user_data);
 
 void
-on_EA_button_supprimer_clicked         (GtkButton       *button,
+on_EA_button_supprimer_clicked         (GtkWidget       *object,
                                         gpointer         user_data);
 
 void
@@ -128,7 +128,7 @@ on_EA_button_actualiser_clicked        (GtkButton       *button,
                                         gpointer         user_data);
 
 void
-on_EA_button_ajouter_clicked           (GtkButton       *button,
+on_EA_button_ajouter_clicked           (GtkWidget       *object,
                                         gpointer         user_data);
 
 void
@@ -145,6 +145,10 @@ on_EA_radiobutton_homme_toggled        (GtkToggleButton *togglebutton,
 
 void
 on_EA_radiobutton_femme_toggled        (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_EA_checkbutton_service_toggled      (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
