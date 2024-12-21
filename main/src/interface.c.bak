@@ -228,11 +228,10 @@ create_Citoyen (void)
   GtkWidget *label1265;
   GtkWidget *asentryidpa;
   GtkWidget *label1266;
-  GtkWidget *radiobutton3;
-  GSList *radiobutton3_group = NULL;
+  GtkWidget *aslabelajouter;
   GtkWidget *asradiobutton2a;
   GSList *asradiobutton2a_group = NULL;
-  GtkWidget *aslabelajouter;
+  GtkWidget *radiobutton3;
   GtkWidget *label1267;
   GtkWidget *frame47;
   GtkWidget *alignment233;
@@ -310,7 +309,6 @@ create_Citoyen (void)
   GtkWidget *asradiobutton1m;
   GSList *asradiobutton1m_group = NULL;
   GtkWidget *asradiobutton2m;
-  GSList *asradiobutton2m_group = NULL;
   GtkWidget *label1295;
   GtkWidget *label1296;
   GtkWidget *aslabelmodifier;
@@ -1312,13 +1310,10 @@ create_Citoyen (void)
   gtk_fixed_put (GTK_FIXED (fixed137), label1266, 88, 120);
   gtk_widget_set_size_request (label1266, 109, 23);
 
-  radiobutton3 = gtk_radio_button_new_with_mnemonic (NULL, _("Carte de cr\303\251dit"));
-  gtk_widget_show (radiobutton3);
-  gtk_fixed_put (GTK_FIXED (fixed137), radiobutton3, 216, 448);
-  gtk_widget_set_size_request (radiobutton3, 133, 22);
-  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton3), radiobutton3_group);
-  radiobutton3_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton3));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (radiobutton3), TRUE);
+  aslabelajouter = gtk_label_new ("");
+  gtk_widget_show (aslabelajouter);
+  gtk_fixed_put (GTK_FIXED (fixed137), aslabelajouter, 432, 792);
+  gtk_widget_set_size_request (aslabelajouter, 274, 83);
 
   asradiobutton2a = gtk_radio_button_new_with_mnemonic (NULL, _("cash"));
   gtk_widget_show (asradiobutton2a);
@@ -1327,10 +1322,13 @@ create_Citoyen (void)
   gtk_radio_button_set_group (GTK_RADIO_BUTTON (asradiobutton2a), asradiobutton2a_group);
   asradiobutton2a_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (asradiobutton2a));
 
-  aslabelajouter = gtk_label_new ("");
-  gtk_widget_show (aslabelajouter);
-  gtk_fixed_put (GTK_FIXED (fixed137), aslabelajouter, 432, 792);
-  gtk_widget_set_size_request (aslabelajouter, 274, 83);
+  radiobutton3 = gtk_radio_button_new_with_mnemonic (NULL, _("Carte de cr\303\251dit"));
+  gtk_widget_show (radiobutton3);
+  gtk_fixed_put (GTK_FIXED (fixed137), radiobutton3, 216, 448);
+  gtk_widget_set_size_request (radiobutton3, 133, 22);
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (radiobutton3), asradiobutton2a_group);
+  asradiobutton2a_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (radiobutton3));
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (radiobutton3), TRUE);
 
   label1267 = gtk_label_new (_("<b>Ajouter une r\303\251servation :</b>"));
   gtk_widget_show (label1267);
@@ -1677,8 +1675,8 @@ create_Citoyen (void)
   gtk_widget_show (asradiobutton2m);
   gtk_fixed_put (GTK_FIXED (fixed141), asradiobutton2m, 336, 376);
   gtk_widget_set_size_request (asradiobutton2m, 116, 24);
-  gtk_radio_button_set_group (GTK_RADIO_BUTTON (asradiobutton2m), asradiobutton2m_group);
-  asradiobutton2m_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (asradiobutton2m));
+  gtk_radio_button_set_group (GTK_RADIO_BUTTON (asradiobutton2m), asradiobutton1m_group);
+  asradiobutton1m_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (asradiobutton2m));
 
   label1295 = gtk_label_new (_("<b></b>"));
   gtk_widget_show (label1295);
@@ -2286,9 +2284,9 @@ create_Citoyen (void)
   GLADE_HOOKUP_OBJECT (Citoyen, label1265, "label1265");
   GLADE_HOOKUP_OBJECT (Citoyen, asentryidpa, "asentryidpa");
   GLADE_HOOKUP_OBJECT (Citoyen, label1266, "label1266");
-  GLADE_HOOKUP_OBJECT (Citoyen, radiobutton3, "radiobutton3");
-  GLADE_HOOKUP_OBJECT (Citoyen, asradiobutton2a, "asradiobutton2a");
   GLADE_HOOKUP_OBJECT (Citoyen, aslabelajouter, "aslabelajouter");
+  GLADE_HOOKUP_OBJECT (Citoyen, asradiobutton2a, "asradiobutton2a");
+  GLADE_HOOKUP_OBJECT (Citoyen, radiobutton3, "radiobutton3");
   GLADE_HOOKUP_OBJECT (Citoyen, label1267, "label1267");
   GLADE_HOOKUP_OBJECT (Citoyen, frame47, "frame47");
   GLADE_HOOKUP_OBJECT (Citoyen, alignment233, "alignment233");
@@ -4522,7 +4520,7 @@ create_Administrateur (void)
 
   frame41 = gtk_frame_new (NULL);
   gtk_widget_show (frame41);
-  gtk_fixed_put (GTK_FIXED (fixed110), frame41, 1216, 344);
+  gtk_fixed_put (GTK_FIXED (fixed110), frame41, 1216, 336);
   gtk_widget_set_size_request (frame41, 624, 320);
 
   alignment203 = gtk_alignment_new (0.5, 0.5, 1, 1);
@@ -5213,11 +5211,6 @@ create_Login (void)
   GtkWidget *label1147;
   GtkWidget *label1150;
   GtkWidget *label1153;
-  GtkWidget *ab_button_login_s_inscrire;
-  GtkWidget *alignment207;
-  GtkWidget *hbox161;
-  GtkWidget *image165;
-  GtkWidget *label1148;
   GtkWidget *ab_button_login_oublie;
   GtkWidget *alignment209;
   GtkWidget *hbox163;
@@ -5229,6 +5222,11 @@ create_Login (void)
   GtkWidget *image166;
   GtkWidget *label1149;
   GtkWidget *label4;
+  GtkWidget *ab_button_login_s_inscrire;
+  GtkWidget *alignment207;
+  GtkWidget *hbox161;
+  GtkWidget *image165;
+  GtkWidget *label1148;
 
   Login = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_widget_set_size_request (Login, 550, 370);
@@ -5267,27 +5265,6 @@ create_Login (void)
   gtk_widget_show (label1153);
   gtk_fixed_put (GTK_FIXED (fixed125), label1153, 32, 176);
   gtk_widget_set_size_request (label1153, 120, 25);
-
-  ab_button_login_s_inscrire = gtk_button_new ();
-  gtk_widget_show (ab_button_login_s_inscrire);
-  gtk_fixed_put (GTK_FIXED (fixed125), ab_button_login_s_inscrire, 48, 264);
-  gtk_widget_set_size_request (ab_button_login_s_inscrire, 95, 30);
-
-  alignment207 = gtk_alignment_new (0.5, 0.5, 0, 0);
-  gtk_widget_show (alignment207);
-  gtk_container_add (GTK_CONTAINER (ab_button_login_s_inscrire), alignment207);
-
-  hbox161 = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (hbox161);
-  gtk_container_add (GTK_CONTAINER (alignment207), hbox161);
-
-  image165 = gtk_image_new_from_stock ("gtk-add", GTK_ICON_SIZE_BUTTON);
-  gtk_widget_show (image165);
-  gtk_box_pack_start (GTK_BOX (hbox161), image165, FALSE, FALSE, 0);
-
-  label1148 = gtk_label_new_with_mnemonic (_("S'inscrire"));
-  gtk_widget_show (label1148);
-  gtk_box_pack_start (GTK_BOX (hbox161), label1148, FALSE, FALSE, 0);
 
   ab_button_login_oublie = gtk_button_new ();
   gtk_widget_show (ab_button_login_oublie);
@@ -5336,14 +5313,35 @@ create_Login (void)
   gtk_fixed_put (GTK_FIXED (fixed125), label4, 8, 224);
   gtk_widget_set_size_request (label4, 536, 32);
 
-  g_signal_connect ((gpointer) ab_button_login_s_inscrire, "clicked",
-                    G_CALLBACK (on_ab_button_login_s_inscrire_clicked),
-                    NULL);
+  ab_button_login_s_inscrire = gtk_button_new ();
+  gtk_widget_show (ab_button_login_s_inscrire);
+  gtk_fixed_put (GTK_FIXED (fixed125), ab_button_login_s_inscrire, 48, 264);
+  gtk_widget_set_size_request (ab_button_login_s_inscrire, 95, 30);
+
+  alignment207 = gtk_alignment_new (0.5, 0.5, 0, 0);
+  gtk_widget_show (alignment207);
+  gtk_container_add (GTK_CONTAINER (ab_button_login_s_inscrire), alignment207);
+
+  hbox161 = gtk_hbox_new (FALSE, 2);
+  gtk_widget_show (hbox161);
+  gtk_container_add (GTK_CONTAINER (alignment207), hbox161);
+
+  image165 = gtk_image_new_from_stock ("gtk-add", GTK_ICON_SIZE_BUTTON);
+  gtk_widget_show (image165);
+  gtk_box_pack_start (GTK_BOX (hbox161), image165, FALSE, FALSE, 0);
+
+  label1148 = gtk_label_new_with_mnemonic (_("S'inscrire"));
+  gtk_widget_show (label1148);
+  gtk_box_pack_start (GTK_BOX (hbox161), label1148, FALSE, FALSE, 0);
+
   g_signal_connect ((gpointer) ab_button_login_oublie, "clicked",
                     G_CALLBACK (on_ab_button_login_oublie_clicked),
                     NULL);
   g_signal_connect ((gpointer) ab_button_login_connexion, "clicked",
                     G_CALLBACK (on_ab_button_login_connexion_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) ab_button_login_s_inscrire, "clicked",
+                    G_CALLBACK (on_ab_button_login_s_inscrire_clicked),
                     NULL);
 
   /* Store pointers to all widgets, for use by lookup_widget(). */
@@ -5354,11 +5352,6 @@ create_Login (void)
   GLADE_HOOKUP_OBJECT (Login, label1147, "label1147");
   GLADE_HOOKUP_OBJECT (Login, label1150, "label1150");
   GLADE_HOOKUP_OBJECT (Login, label1153, "label1153");
-  GLADE_HOOKUP_OBJECT (Login, ab_button_login_s_inscrire, "ab_button_login_s_inscrire");
-  GLADE_HOOKUP_OBJECT (Login, alignment207, "alignment207");
-  GLADE_HOOKUP_OBJECT (Login, hbox161, "hbox161");
-  GLADE_HOOKUP_OBJECT (Login, image165, "image165");
-  GLADE_HOOKUP_OBJECT (Login, label1148, "label1148");
   GLADE_HOOKUP_OBJECT (Login, ab_button_login_oublie, "ab_button_login_oublie");
   GLADE_HOOKUP_OBJECT (Login, alignment209, "alignment209");
   GLADE_HOOKUP_OBJECT (Login, hbox163, "hbox163");
@@ -5370,6 +5363,11 @@ create_Login (void)
   GLADE_HOOKUP_OBJECT (Login, image166, "image166");
   GLADE_HOOKUP_OBJECT (Login, label1149, "label1149");
   GLADE_HOOKUP_OBJECT (Login, label4, "label4");
+  GLADE_HOOKUP_OBJECT (Login, ab_button_login_s_inscrire, "ab_button_login_s_inscrire");
+  GLADE_HOOKUP_OBJECT (Login, alignment207, "alignment207");
+  GLADE_HOOKUP_OBJECT (Login, hbox161, "hbox161");
+  GLADE_HOOKUP_OBJECT (Login, image165, "image165");
+  GLADE_HOOKUP_OBJECT (Login, label1148, "label1148");
 
   return Login;
 }

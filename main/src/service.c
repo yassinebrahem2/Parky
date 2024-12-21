@@ -64,20 +64,7 @@ int scanService(FILE *serviceFile, Service *service) {
 	return value;
 }
 
-int scanReservation(FILE *reservationFile, Reservation *r) {
-return fscanf(reservationFile, "%s %s %s %d %d %d %d %d %d %d %s %d %d %d %s\n",
-                         r->idreservation, r->cin, r->parkingID, &r->jours, &r->mois, &r->annee,
-                         &r->heureh, &r->heuremin, &r->dureeh, &r->dureemin,
-                         r->mat, &r->methpai, &r->demspec[0], &r->demspec[1], r->type);
 
-}
-
-int printReservation(FILE *reservationFile, Reservation r) {
-return fprintf(reservationFile, "%s %s %s %d %d %d %d %d %d %d %s %d %d %d %s\n",
-                        r.idreservation, r.cin, r.parkingID, r.jours, r.mois, r.annee,
-                        r.heureh, r.heuremin, r.dureeh, r.dureemin,
-                        r.mat, r.methpai, r.demspec[0], r.demspec[1], r.type);
-}
 
 
 void afficher_service(GtkWidget *liste ,char* filename)

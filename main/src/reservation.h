@@ -2,8 +2,8 @@
 #define RESERVATION_H_INCLUDED
 #include <gtk/gtk.h>
 typedef struct {
-    char idreservation[8];
-    char cin[8];
+    char idreservation[9];
+    char cin[9];
     char parkingID[8];
     int jours, mois, annee;
     int heureh, heuremin;

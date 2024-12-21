@@ -268,18 +268,26 @@ for (int i = 0; i < 2; i++)
 }
 
 
-// Appel de la fonction ajouter_reservation pour sauvegarder les données
-resultat = ajouter_reservation(reservationFileDirectory, r);
-if (resultat == 1)
-    {
-        sprintf(message, "Ajout réussi");
-        gtk_label_set_text(GTK_LABEL(label_ajout), message);
-    }
-else
+if (strcmp(r.parkingID, "-1") != 0) {
+    
+    // Appel de la fonction ajouter_reservation pour sauvegarder les données
+    resultat = ajouter_reservation(reservationFileDirectory, r);
+    updateReservationDisplayFile(reservationFileDirectory, reservationDisplayFileDirectory);
+    updateReservationTreeview(GTK_WIDGET(button));
+    if (resultat == 1)
+        {
+            sprintf(message, "Ajout réussi");
+            gtk_label_set_text(GTK_LABEL(label_ajout), message);
+        }
+    else
+        {
+            gtk_label_set_text(GTK_LABEL(label_ajout), "Erreur : Impossible d'ajouter l'agent!");
+        }
+    
+} else
     {
         gtk_label_set_text(GTK_LABEL(label_ajout), "Erreur : Impossible d'ajouter l'agent!");
     }
-    updateReservationTreeview(GTK_WIDGET(button));
 }
 void
 on_asradiobutton1a_toggled             (GtkToggleButton *togglebutton,
@@ -588,7 +596,10 @@ on_astreeviewafficher_row_activated    (GtkTreeView     *treeview,
                                -1);
 
             strcpy(r.idreservation,idreservation);
+            printf("%s\n", r.idreservation);
             supp=supprimer_reservation(reservationFileDirectory,idreservation);
+            updateReservationDisplayFile(reservationFileDirectory, reservationDisplayFileDirectory);
+            updateReservationTreeview(GTK_WIDGET(treeview));
         }
     
 }
@@ -3391,14 +3402,6 @@ void transform_underscore_to_space(const char *text1) {
     }
 }
 void
-on_ab_button_login_s_inscrire_clicked  (GtkButton       *button,
-                                        gpointer         user_data)
-{
-windows_show_window(enregistrer);
-}
-
-
-void
 on_ab_button_login_connexion_clicked   (GtkWidget *objet_graphique,
                                         gpointer         user_data)
 {GtkWidget *cin , *mdp,*label;
@@ -3421,8 +3424,10 @@ FILE *f=fopen(file_directory_citoyen,"r");
 
     if (strcmp(loggedCIN,cin1)==0 && strcmp(MDP,mdp1)==0)
     {   
-        
-        windows_show_window(Citoyen);
+        if(strcmp(loggedCIN,"admin")==0 && strcmp(MDP,"admin")==0){
+        windows_show_window(Administrateur);}
+
+        else{windows_show_window(Citoyen);}
         x=1;
         break;
     }  
@@ -3443,6 +3448,12 @@ FILE *f=fopen(file_directory_citoyen,"r");
 
 }
 
+void
+on_ab_button_login_s_inscrire_clicked  (GtkButton       *button,
+                                        gpointer         user_data)
+{
+windows_show_window(enregistrer);
+}
 
 void
 on_ab_button_register1_enregistrer_clicked

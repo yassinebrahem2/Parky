@@ -16,7 +16,7 @@
 int
 main (int argc, char *argv[])
 {
-  GtkWidget *Administrateur;
+  //GtkWidget *Administrateur;
 
 
 #ifdef ENABLE_NLS
@@ -37,8 +37,8 @@ main (int argc, char *argv[])
    * the project. Delete any components that you don't want shown initially.
    */
   windows_show_window(Login);
-  Administrateur = create_Administrateur ();
-  gtk_widget_show (Administrateur);
+  //Administrateur = create_Administrateur ();
+  //gtk_widget_show (Administrateur);
 
   gtk_main ();
   return 0;
