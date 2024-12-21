@@ -1,11 +1,11 @@
-idd 77 add munic5 98.000000 1 1 0 0 1
-idd 46 adres munic4 32.000000 0 1 1 0 1
+idd 46 adres munic4 32.000000 1 1 1 1 1
+idd 46 adres munic4 32.000000 1 1 1 1 1
 TESTING 26 aads munic5 16.000000 0 1 0 0 1
 B 10 adres munic1 34.000000 1 1 1 1 1
 3C 10 adres munic1 100.000000 0 0 1 0 1
 123 10 adres munic1 30.000000 1 1 1 0 1
 32 10 adres munic1 3.000000 1 0 1 0 1
-77 10 adres munic1 10.000000 1 0 0 0 1
+77 10 adres munic1 10.000000 1 1 1 1 1
 1A5 10 adres munic1 1.000000 1 0 1 0 1
 2B2 10 adres munic1 20.000000 1 0 0 1 1
 3C3 10 adres munic1 1400.000000 1 1 1 0 1

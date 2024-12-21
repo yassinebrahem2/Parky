@@ -10,23 +10,11 @@
 #include "parking.h"
 #include "reservation.h"
 
-GtkWidget *treeviewParkingReservation;
-GtkWidget *treeviewReservation;
-int met=1;
-int dem_spec[2]={0,0};
-int agree=0;
-Parking parkingReservation;
-char loggedCIN[8] = "333";
-
-char *parkingFileDirectory = "Data/parking.txt";
-char *parkingReservationDisplayFileDirectory = "Cashe/parkingReservationDisplay.txt";
-
-char *reservationFileDirectory = "Data/reservation.txt";
-char *reservationDisplayFileDirectory = "Cashe/displayReservation.txt";#include "parking.h"
-
 
 GtkWidget *treeviewParking;
 GtkWidget *treeviewParkingAgents;
+GtkWidget *treeviewParkingReservation;
+GtkWidget *treeviewReservation;
 GtkTreeStore *storeAgent;
 
 GtkWidget *entryParkingID;
@@ -66,6 +54,14 @@ int checkboxSearchVehicules[4] = {1, 1, 1, 1};
 int parkingSortBy = 0;
 int parkingSortOption = 0;
 
+int met=1;
+int dem_spec[2]={0,0};
+int agree=0;
+Parking parkingReservation;
+char loggedCIN[8] = "333";
+
+char *reservationFileDirectory = "Data/reservation.txt";
+char *reservationDisplayFileDirectory = "Cashe/displayReservation.txt";
 
 GtkWidget *labelNewParkingNotification;
 GtkWidget *labelParkingNotification;
@@ -82,15 +78,16 @@ char *parkingFileDirectory = "Data/parking.txt";
 char *agentFileDirectory = "Data/agent.txt";
 char *parkingDisplayFileDirectory = "Cashe/parkingDisplay.txt";
 char *parkingAgentsDisplayFileDirectory = "Cashe/parkingAgentsDisplay.txt";
+char *parkingReservationDisplayFileDirectory = "Cashe/parkingReservationDisplay.txt";
 
 
 void
 on_Citoyen_map                         (GtkWidget       *widget,
                                         gpointer         user_data)
 {
-	initReservationParkingTreeview(widget);
+    initReservationParkingTreeview(widget);
     initReservationTreeview(widget);
-
+    
     GtkWidget *entry_cin = lookup_widget(GTK_WIDGET(widget), "asentrycina");
     gtk_entry_set_text(GTK_ENTRY(entry_cin), loggedCIN);
     GtkWidget *entry_idpa = lookup_widget(GTK_WIDGET(widget), "asentryidpa");
@@ -221,7 +218,6 @@ on_button1_clicked                     (GtkButton       *button,
 {
 
 }
-
 
 
 void
