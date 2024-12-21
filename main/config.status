@@ -437,11 +437,7 @@ Copyright (C) 2012 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-<<<<<<< HEAD
-ac_pwd='/home/vboxuser/Git/Parky/main'
-=======
-ac_pwd='/home/vboxuser/Downloads/FINAL PROJECTS/Client'
->>>>>>> client
+ac_pwd='/home/vboxuser/Desktop/TESTINGGGGG/Parky/main'
 srcdir='.'
 INSTALL='/usr/bin/install -c'
 MKDIR_P='/bin/mkdir -p'
@@ -690,21 +686,12 @@ S["mkdir_p"]="$(MKDIR_P)"
 S["MKDIR_P"]="/bin/mkdir -p"
 S["INSTALL_STRIP_PROGRAM"]="$(install_sh) -c -s"
 S["STRIP"]=""
-<<<<<<< HEAD
-S["install_sh"]="${SHELL} /home/vboxuser/Git/Parky/main/install-sh"
-S["MAKEINFO"]="${SHELL} /home/vboxuser/Git/Parky/main/missing makeinfo"
-S["AUTOHEADER"]="${SHELL} /home/vboxuser/Git/Parky/main/missing autoheader"
-S["AUTOMAKE"]="${SHELL} /home/vboxuser/Git/Parky/main/missing automake-1.15"
-S["AUTOCONF"]="${SHELL} /home/vboxuser/Git/Parky/main/missing autoconf"
-S["ACLOCAL"]="${SHELL} /home/vboxuser/Git/Parky/main/missing aclocal-1.15"
-=======
-S["install_sh"]="${SHELL} '/home/vboxuser/Downloads/FINAL PROJECTS/Client/install-sh'"
-S["MAKEINFO"]="${SHELL} \"/home/vboxuser/Downloads/FINAL PROJECTS/Client/missing\" makeinfo"
-S["AUTOHEADER"]="${SHELL} \"/home/vboxuser/Downloads/FINAL PROJECTS/Client/missing\" autoheader"
-S["AUTOMAKE"]="${SHELL} \"/home/vboxuser/Downloads/FINAL PROJECTS/Client/missing\" automake-1.15"
-S["AUTOCONF"]="${SHELL} \"/home/vboxuser/Downloads/FINAL PROJECTS/Client/missing\" autoconf"
-S["ACLOCAL"]="${SHELL} \"/home/vboxuser/Downloads/FINAL PROJECTS/Client/missing\" aclocal-1.15"
->>>>>>> client
+S["install_sh"]="${SHELL} /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/install-sh"
+S["MAKEINFO"]="${SHELL} /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/missing makeinfo"
+S["AUTOHEADER"]="${SHELL} /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/missing autoheader"
+S["AUTOMAKE"]="${SHELL} /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/missing automake-1.15"
+S["AUTOCONF"]="${SHELL} /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/missing autoconf"
+S["ACLOCAL"]="${SHELL} /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/missing aclocal-1.15"
 S["VERSION"]="0.1"
 S["PACKAGE"]="parky"
 S["CYGPATH_W"]="echo"

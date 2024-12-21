@@ -166,21 +166,12 @@ ETAGS = etags
 CTAGS = ctags
 am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/depcomp
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-<<<<<<< HEAD
-ACLOCAL = ${SHELL} /home/vboxuser/Git/Parky/main/missing aclocal-1.15
+ACLOCAL = ${SHELL} /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/missing aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
-AUTOCONF = ${SHELL} /home/vboxuser/Git/Parky/main/missing autoconf
-AUTOHEADER = ${SHELL} /home/vboxuser/Git/Parky/main/missing autoheader
-AUTOMAKE = ${SHELL} /home/vboxuser/Git/Parky/main/missing automake-1.15
-=======
-ACLOCAL = ${SHELL} "/home/vboxuser/Downloads/FINAL PROJECTS/Client/missing" aclocal-1.15
-AMTAR = $${TAR-tar}
-AM_DEFAULT_VERBOSITY = 1
-AUTOCONF = ${SHELL} "/home/vboxuser/Downloads/FINAL PROJECTS/Client/missing" autoconf
-AUTOHEADER = ${SHELL} "/home/vboxuser/Downloads/FINAL PROJECTS/Client/missing" autoheader
-AUTOMAKE = ${SHELL} "/home/vboxuser/Downloads/FINAL PROJECTS/Client/missing" automake-1.15
->>>>>>> client
+AUTOCONF = ${SHELL} /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/missing autoconf
+AUTOHEADER = ${SHELL} /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/missing autoheader
+AUTOMAKE = ${SHELL} /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/missing automake-1.15
 AWK = mawk
 CATALOGS = 
 CATOBJEXT = .gmo
@@ -215,11 +206,7 @@ LIBOBJS =
 LIBS = 
 LTLIBOBJS = 
 MAINT = 
-<<<<<<< HEAD
-MAKEINFO = ${SHELL} /home/vboxuser/Git/Parky/main/missing makeinfo
-=======
-MAKEINFO = ${SHELL} "/home/vboxuser/Downloads/FINAL PROJECTS/Client/missing" makeinfo
->>>>>>> client
+MAKEINFO = ${SHELL} /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/missing makeinfo
 MKDIR_P = /bin/mkdir -p
 MKINSTALLDIRS = ./mkinstalldirs
 MSGFMT = /usr/bin/msgfmt
@@ -248,17 +235,10 @@ STRIP =
 USE_NLS = yes
 VERSION = 0.1
 XGETTEXT = /usr/bin/xgettext
-<<<<<<< HEAD
-abs_builddir = /home/vboxuser/Git/Parky/main/src
-abs_srcdir = /home/vboxuser/Git/Parky/main/src
-abs_top_builddir = /home/vboxuser/Git/Parky/main
-abs_top_srcdir = /home/vboxuser/Git/Parky/main
-=======
-abs_builddir = /home/vboxuser/Downloads/FINAL PROJECTS/Client/src
-abs_srcdir = /home/vboxuser/Downloads/FINAL PROJECTS/Client/src
-abs_top_builddir = /home/vboxuser/Downloads/FINAL PROJECTS/Client
-abs_top_srcdir = /home/vboxuser/Downloads/FINAL PROJECTS/Client
->>>>>>> client
+abs_builddir = /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/src
+abs_srcdir = /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/src
+abs_top_builddir = /home/vboxuser/Desktop/TESTINGGGGG/Parky/main
+abs_top_srcdir = /home/vboxuser/Desktop/TESTINGGGGG/Parky/main
 ac_ct_CC = gcc
 am__include = include
 am__leading_dot = .
@@ -277,11 +257,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-<<<<<<< HEAD
-install_sh = ${SHELL} /home/vboxuser/Git/Parky/main/install-sh
-=======
-install_sh = ${SHELL} '/home/vboxuser/Downloads/FINAL PROJECTS/Client/install-sh'
->>>>>>> client
+install_sh = ${SHELL} /home/vboxuser/Desktop/TESTINGGGGG/Parky/main/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
