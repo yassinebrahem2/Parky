@@ -100,7 +100,7 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_parky_OBJECTS = main.$(OBJEXT) support.$(OBJEXT) \
-	interface.$(OBJEXT) callbacks.$(OBJEXT)
+	interface.$(OBJEXT) callbacks.$(OBJEXT) service.$(OBJEXT)
 parky_OBJECTS = $(am_parky_OBJECTS)
 am__DEPENDENCIES_1 =
 parky_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -160,12 +160,12 @@ ETAGS = etags
 CTAGS = ctags
 am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/depcomp
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/parky/missing" aclocal-1.15
+ACLOCAL = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/service/missing" aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
-AUTOCONF = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/parky/missing" autoconf
-AUTOHEADER = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/parky/missing" autoheader
-AUTOMAKE = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/parky/missing" automake-1.15
+AUTOCONF = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/service/missing" autoconf
+AUTOHEADER = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/service/missing" autoheader
+AUTOMAKE = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/service/missing" automake-1.15
 AWK = mawk
 CATALOGS = 
 CATOBJEXT = .gmo
@@ -200,7 +200,7 @@ LIBOBJS =
 LIBS = 
 LTLIBOBJS = 
 MAINT = 
-MAKEINFO = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/parky/missing" makeinfo
+MAKEINFO = ${SHELL} "/home/vboxuser/Documents/FINAL PROJECTS/service/missing" makeinfo
 MKDIR_P = /bin/mkdir -p
 MKINSTALLDIRS = ./mkinstalldirs
 MSGFMT = /usr/bin/msgfmt
@@ -229,10 +229,10 @@ STRIP =
 USE_NLS = yes
 VERSION = 0.1
 XGETTEXT = /usr/bin/xgettext
-abs_builddir = /home/vboxuser/Documents/FINAL PROJECTS/parky/src
-abs_srcdir = /home/vboxuser/Documents/FINAL PROJECTS/parky/src
-abs_top_builddir = /home/vboxuser/Documents/FINAL PROJECTS/parky
-abs_top_srcdir = /home/vboxuser/Documents/FINAL PROJECTS/parky
+abs_builddir = /home/vboxuser/Documents/FINAL PROJECTS/service/src
+abs_srcdir = /home/vboxuser/Documents/FINAL PROJECTS/service/src
+abs_top_builddir = /home/vboxuser/Documents/FINAL PROJECTS/service
+abs_top_srcdir = /home/vboxuser/Documents/FINAL PROJECTS/service
 ac_ct_CC = gcc
 am__include = include
 am__leading_dot = .
@@ -251,7 +251,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} '/home/vboxuser/Documents/FINAL PROJECTS/parky/install-sh'
+install_sh = ${SHELL} '/home/vboxuser/Documents/FINAL PROJECTS/service/install-sh'
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -281,7 +281,8 @@ parky_SOURCES = \
 	main.c \
 	support.c support.h \
 	interface.c interface.h \
-	callbacks.c callbacks.h
+	callbacks.c callbacks.h \
+	service.c service.h
 
 parky_LDADD = -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype $(INTLLIBS)
 all: all-am
@@ -373,6 +374,7 @@ distclean-compile:
 include ./$(DEPDIR)/callbacks.Po
 include ./$(DEPDIR)/interface.Po
 include ./$(DEPDIR)/main.Po
+include ./$(DEPDIR)/service.Po
 include ./$(DEPDIR)/support.Po
 
 .c.o:

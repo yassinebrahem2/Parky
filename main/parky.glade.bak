@@ -9067,6 +9067,24 @@ Numéro du Télèphone</property>
 			  <property name="y">64</property>
 			</packing>
 		      </child>
+
+		      <child>
+			<widget class="GtkButton" id="mflistedesagents">
+			  <property name="width_request">136</property>
+			  <property name="height_request">32</property>
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">liste agents</property>
+			  <property name="use_underline">True</property>
+			  <property name="relief">GTK_RELIEF_NORMAL</property>
+			  <property name="focus_on_click">True</property>
+			  <signal name="clicked" handler="on_mflistedesagents_clicked" last_modification_time="Sat, 21 Dec 2024 00:36:21 GMT"/>
+			</widget>
+			<packing>
+			  <property name="x">800</property>
+			  <property name="y">16</property>
+			</packing>
+		      </child>
 		    </widget>
 		  </child>
 		</widget>
@@ -10983,6 +11001,24 @@ Service de navette</property>
 			</widget>
 			<packing>
 			  <property name="x">360</property>
+			  <property name="y">24</property>
+			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkButton" id="AKButtonAnnuler">
+			  <property name="width_request">74</property>
+			  <property name="height_request">29</property>
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">Annuler</property>
+			  <property name="use_underline">True</property>
+			  <property name="relief">GTK_RELIEF_NORMAL</property>
+			  <property name="focus_on_click">True</property>
+			  <signal name="clicked" handler="on_AKButtonAnnuler_clicked" last_modification_time="Sat, 21 Dec 2024 00:36:15 GMT"/>
+			</widget>
+			<packing>
+			  <property name="x">552</property>
 			  <property name="y">24</property>
 			</packing>
 		      </child>

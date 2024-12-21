@@ -2574,6 +2574,7 @@ create_Administrateur (void)
   GtkWidget *image65;
   GtkWidget *label537;
   GtkWidget *mflabelmessagerecherche;
+  GtkWidget *mflistedesagents;
   GtkWidget *label1101;
   GtkWidget *frame37;
   GtkWidget *alignment186;
@@ -2679,6 +2680,7 @@ create_Administrateur (void)
   GtkWidget *hbox135;
   GtkWidget *image138;
   GtkWidget *label1036;
+  GtkWidget *AKButtonAnnuler;
   GtkWidget *label1146;
   GtkWidget *frame40;
   GtkWidget *alignment199;
@@ -3581,6 +3583,11 @@ create_Administrateur (void)
   gtk_fixed_put (GTK_FIXED (fixed119), mflabelmessagerecherche, 96, 64);
   gtk_widget_set_size_request (mflabelmessagerecherche, 424, 24);
 
+  mflistedesagents = gtk_button_new_with_mnemonic (_("liste agents"));
+  gtk_widget_show (mflistedesagents);
+  gtk_fixed_put (GTK_FIXED (fixed119), mflistedesagents, 800, 16);
+  gtk_widget_set_size_request (mflistedesagents, 136, 32);
+
   label1101 = gtk_label_new (_("<b>Recherche</b>"));
   gtk_widget_show (label1101);
   gtk_frame_set_label_widget (GTK_FRAME (frame38), label1101);
@@ -4095,6 +4102,11 @@ create_Administrateur (void)
   label1036 = gtk_label_new_with_mnemonic (_("Chercher"));
   gtk_widget_show (label1036);
   gtk_box_pack_start (GTK_BOX (hbox135), label1036, FALSE, FALSE, 0);
+
+  AKButtonAnnuler = gtk_button_new_with_mnemonic (_("Annuler"));
+  gtk_widget_show (AKButtonAnnuler);
+  gtk_fixed_put (GTK_FIXED (fixed124), AKButtonAnnuler, 552, 24);
+  gtk_widget_set_size_request (AKButtonAnnuler, 74, 29);
 
   label1146 = gtk_label_new (_("<b>Chercher</b>"));
   gtk_widget_show (label1146);
@@ -4959,6 +4971,7 @@ create_Administrateur (void)
   GLADE_HOOKUP_OBJECT (Administrateur, image65, "image65");
   GLADE_HOOKUP_OBJECT (Administrateur, label537, "label537");
   GLADE_HOOKUP_OBJECT (Administrateur, mflabelmessagerecherche, "mflabelmessagerecherche");
+  GLADE_HOOKUP_OBJECT (Administrateur, mflistedesagents, "mflistedesagents");
   GLADE_HOOKUP_OBJECT (Administrateur, label1101, "label1101");
   GLADE_HOOKUP_OBJECT (Administrateur, frame37, "frame37");
   GLADE_HOOKUP_OBJECT (Administrateur, alignment186, "alignment186");
@@ -5056,6 +5069,7 @@ create_Administrateur (void)
   GLADE_HOOKUP_OBJECT (Administrateur, hbox135, "hbox135");
   GLADE_HOOKUP_OBJECT (Administrateur, image138, "image138");
   GLADE_HOOKUP_OBJECT (Administrateur, label1036, "label1036");
+  GLADE_HOOKUP_OBJECT (Administrateur, AKButtonAnnuler, "AKButtonAnnuler");
   GLADE_HOOKUP_OBJECT (Administrateur, label1146, "label1146");
   GLADE_HOOKUP_OBJECT (Administrateur, frame40, "frame40");
   GLADE_HOOKUP_OBJECT (Administrateur, alignment199, "alignment199");
