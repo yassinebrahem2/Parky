@@ -72,6 +72,14 @@ on_asbuttonajouter_clicked             (GtkButton       *button,
                                         gpointer         user_data);
 
 void
+on_asradiobutton1a_toggled             (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
+on_asradiobutton2a_toggled             (GtkToggleButton *togglebutton,
+                                        gpointer         user_data);
+
+void
 on_ascheckbutton1a_toggled             (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
@@ -84,22 +92,6 @@ on_ascheckbutton3a_toggled             (GtkToggleButton *togglebutton,
                                         gpointer         user_data);
 
 void
-on_astreeviewafficher_row_activated    (GtkTreeView     *treeview,
-                                        GtkTreePath     *path,
-                                        GtkTreeViewColumn *column,
-                                        gpointer         user_data);
-
-void
-on_asbuttonafficher_clicked            (GtkButton       *button,
-                                        gpointer         user_data);
-
-void
-on_astreeviewparking_row_activated     (GtkTreeView     *treeview,
-                                        GtkTreePath     *path,
-                                        GtkTreeViewColumn *column,
-                                        gpointer         user_data);
-
-void
 on_asbuttonmodifier1_clicked           (GtkButton       *button,
                                         gpointer         user_data);
 
@@ -108,7 +100,23 @@ on_asbuttonmodifier2_clicked           (GtkButton       *button,
                                         gpointer         user_data);
 
 void
-on_asradiobutton1a_toggled             (GtkToggleButton *togglebutton,
+on_asbuttonafficher_clicked            (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_astreeviewafficher_row_activated    (GtkTreeView     *treeview,
+                                        GtkTreePath     *path,
+                                        GtkTreeViewColumn *column,
+                                        gpointer         user_data);
+
+void
+on_astreeviewparking_row_activated     (GtkWidget     *object,
+                                        GtkTreePath     *path,
+                                        GtkTreeViewColumn *column,
+                                        gpointer         user_data);
+
+void
+on_asbuttonparking_clicked             (GtkButton       *button,
                                         gpointer         user_data);
 
 void
