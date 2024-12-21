@@ -100,7 +100,8 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_parky_OBJECTS = main.$(OBJEXT) support.$(OBJEXT) \
-	interface.$(OBJEXT) callbacks.$(OBJEXT)
+	interface.$(OBJEXT) callbacks.$(OBJEXT) projet.$(OBJEXT) \
+	window.$(OBJEXT) reservation.$(OBJEXT)
 parky_OBJECTS = $(am_parky_OBJECTS)
 am__DEPENDENCIES_1 =
 parky_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -281,7 +282,10 @@ parky_SOURCES = \
 	main.c \
 	support.c support.h \
 	interface.c interface.h \
-	callbacks.c callbacks.h
+	callbacks.c callbacks.h \
+	projet.c projet.h \
+	window.c window.h \
+	reservation.c reservation.h
 
 parky_LDADD = @PACKAGE_LIBS@ $(INTLLIBS)
 all: all-am
@@ -373,7 +377,10 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/callbacks.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/interface.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/projet.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/reservation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/support.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/window.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
