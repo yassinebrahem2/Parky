@@ -381,9 +381,7 @@ void
 on_mfbuttonchercherajout_clicked       (GtkWidget       *object,
                                         gpointer         user_data);
 
-void
-on_mflistedesagents__clicked           (GtkWidget       *object,
-                                        gpointer         user_data);
+
 
 void
 on_mfbuttonappliquerreservation_clicked
@@ -547,4 +545,12 @@ on_ab_button_oublier_ok_clicked        (GtkButton       *button,
 
 void
 on_ab_button_oublier_annuler_clicked   (GtkButton       *button,
+                                        gpointer         user_data);
+
+void
+on_mfbuttonlisteagent_clicked          (GtkWidget       *object,
+                                        gpointer         user_data);
+
+void
+on_AKbuttonannuler_clicked             (GtkButton       *button,
                                         gpointer         user_data);

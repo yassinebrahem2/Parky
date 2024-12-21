@@ -45,7 +45,7 @@ int ajouter_agent(char *filename, Agent a);
 int modifier_agent(char *filename, char *cin, Agent nouv);
 int supprimer_agent(char *filename, char *cin);
 int chercher_agent(char *filename, const char *valeur, int critere, Agent *agents_trouves, int *compteur);
-void afficher_agents(GtkTreeView *treeview);
+void afficher_agents(GtkTreeView *treeview, char *agentFile);
 
 #endif // AGENT_H
 

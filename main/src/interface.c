@@ -2574,6 +2574,7 @@ create_Administrateur (void)
   GtkWidget *image65;
   GtkWidget *label537;
   GtkWidget *mflabelmessagerecherche;
+  GtkWidget *mfbuttonlisteagent;
   GtkWidget *label1101;
   GtkWidget *frame37;
   GtkWidget *alignment186;
@@ -2679,6 +2680,7 @@ create_Administrateur (void)
   GtkWidget *hbox135;
   GtkWidget *image138;
   GtkWidget *label1036;
+  GtkWidget *AKButtonAnnuler;
   GtkWidget *label1146;
   GtkWidget *frame40;
   GtkWidget *alignment199;
@@ -3581,6 +3583,11 @@ create_Administrateur (void)
   gtk_fixed_put (GTK_FIXED (fixed119), mflabelmessagerecherche, 96, 64);
   gtk_widget_set_size_request (mflabelmessagerecherche, 424, 24);
 
+  mfbuttonlisteagent = gtk_button_new_with_mnemonic (_("ListeAgents"));
+  gtk_widget_show (mfbuttonlisteagent);
+  gtk_fixed_put (GTK_FIXED (fixed119), mfbuttonlisteagent, 728, 16);
+  gtk_widget_set_size_request (mfbuttonlisteagent, 120, 29);
+
   label1101 = gtk_label_new (_("<b>Recherche</b>"));
   gtk_widget_show (label1101);
   gtk_frame_set_label_widget (GTK_FRAME (frame38), label1101);
@@ -4095,6 +4102,11 @@ create_Administrateur (void)
   label1036 = gtk_label_new_with_mnemonic (_("Chercher"));
   gtk_widget_show (label1036);
   gtk_box_pack_start (GTK_BOX (hbox135), label1036, FALSE, FALSE, 0);
+
+  AKButtonAnnuler = gtk_button_new_with_mnemonic (_("annuler"));
+  gtk_widget_show (AKButtonAnnuler);
+  gtk_fixed_put (GTK_FIXED (fixed124), AKButtonAnnuler, 560, 24);
+  gtk_widget_set_size_request (AKButtonAnnuler, 74, 29);
 
   label1146 = gtk_label_new (_("<b>Chercher</b>"));
   gtk_widget_show (label1146);
@@ -4699,6 +4711,9 @@ create_Administrateur (void)
   g_signal_connect ((gpointer) mfbuttonchercherajout, "clicked",
                     G_CALLBACK (on_mfbuttonchercherajout_clicked),
                     NULL);
+  g_signal_connect ((gpointer) mfbuttonlisteagent, "clicked",
+                    G_CALLBACK (on_mfbuttonlisteagent_clicked),
+                    NULL);
   g_signal_connect ((gpointer) mfbuttonconfirmer, "clicked",
                     G_CALLBACK (on_mfbuttonconfirmer_clicked),
                     NULL);
@@ -4761,6 +4776,9 @@ create_Administrateur (void)
                     NULL);
   g_signal_connect ((gpointer) AKButtonChercher, "clicked",
                     G_CALLBACK (on_AKButtonChercher_clicked),
+                    NULL);
+  g_signal_connect ((gpointer) AKButtonAnnuler, "clicked",
+                    G_CALLBACK (on_AKbuttonannuler_clicked),
                     NULL);
   g_signal_connect ((gpointer) AKServiceCheckbuttonJoursOrdinaire, "toggled",
                     G_CALLBACK (on_AKServiceCheckbuttonJoursOrdinaire_toggled),
@@ -4959,6 +4977,7 @@ create_Administrateur (void)
   GLADE_HOOKUP_OBJECT (Administrateur, image65, "image65");
   GLADE_HOOKUP_OBJECT (Administrateur, label537, "label537");
   GLADE_HOOKUP_OBJECT (Administrateur, mflabelmessagerecherche, "mflabelmessagerecherche");
+  GLADE_HOOKUP_OBJECT (Administrateur, mfbuttonlisteagent, "mfbuttonlisteagent");
   GLADE_HOOKUP_OBJECT (Administrateur, label1101, "label1101");
   GLADE_HOOKUP_OBJECT (Administrateur, frame37, "frame37");
   GLADE_HOOKUP_OBJECT (Administrateur, alignment186, "alignment186");
@@ -5056,6 +5075,7 @@ create_Administrateur (void)
   GLADE_HOOKUP_OBJECT (Administrateur, hbox135, "hbox135");
   GLADE_HOOKUP_OBJECT (Administrateur, image138, "image138");
   GLADE_HOOKUP_OBJECT (Administrateur, label1036, "label1036");
+  GLADE_HOOKUP_OBJECT (Administrateur, AKButtonAnnuler, "AKButtonAnnuler");
   GLADE_HOOKUP_OBJECT (Administrateur, label1146, "label1146");
   GLADE_HOOKUP_OBJECT (Administrateur, frame40, "frame40");
   GLADE_HOOKUP_OBJECT (Administrateur, alignment199, "alignment199");

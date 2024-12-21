@@ -227,7 +227,7 @@ int chercher_agent(char *filename, const char *valeur, int critere, Agent *agent
 
    
 // Fonction pour afficher la liste des agents dans un GtkTreeView
-void afficher_agents(GtkTreeView *treeview) {
+void afficher_agents(GtkTreeView *treeview, char *agentFile) {
     GtkListStore *list_store;  // Modèle de données pour le GtkTreeView
     GtkTreeIter iter;  // Itérateur pour ajouter des éléments dans le modèle
     FILE *f;  // Pointeur vers le fichier contenant les données des agents
@@ -296,7 +296,7 @@ void afficher_agents(GtkTreeView *treeview) {
     gtk_list_store_clear(list_store);
 
     // Ouvrir le fichier "agent.txt" pour lire les données des agents
-    f = fopen("agent.txt", "r");
+    f = fopen(agentFile, "r");
     if (f != NULL) {
         // Lire chaque ligne du fichier et ajouter les agents au modèle
         while (fscanf(f, "%s %s %s %d %d %d %s %s %d %d %d %d %d %d %s %s\n",
@@ -305,23 +305,19 @@ void afficher_agents(GtkTreeView *treeview) {
                       &a.services[0], &a.services[1], &a.services[2], &a.services[3], &a.services[4],
                       a.id_parking, a.numtel) != EOF) {
             char sexe_str[10];
-            char services_str[100] = "";  // Initialize the buffer
- // Initialise une chaîne vide
+            char services_str[100];
             char date_naissance_str[20];
 
-            // Conversion du sexe en texte
-            strcpy(sexe_str, (a.sexe == 1) ? "Homme" : "Femme");
-
-            // Formater les services sélectionnés
-            int i = 0;
-            if (a.services[0]) { strcat(services_str, "Agent sécurité"); i++; }
-            if (a.services[1]) { if (i > 0) strcat(services_str, ", "); strcat(services_str, "Technicien"); i++; }
-            if (a.services[2]) { if (i > 0) strcat(services_str, ", "); strcat(services_str, "Agent Parking"); i++; }
-            if (a.services[3]) { if (i > 0) strcat(services_str, ", "); strcat(services_str, "Responsable parking"); i++; }
-            if (a.services[4]) { if (i > 0) strcat(services_str, ", "); strcat(services_str, "Agent entretien"); i++; }
-
-            // Formater la date de naissance
-            sprintf(date_naissance_str, "%02d/%02d/%04d", a.date_naissance.jour, a.date_naissance.mois, a.date_naissance.annee);
+            // Conversion des données pour les afficher dans un format lisible
+            strcpy(sexe_str, (a.sexe == 1) ? "Homme" : "Femme");  // Conversion du sexe en texte
+            sprintf(services_str, "%s%s%s%s%s",
+                    a.services[0] ? "Sécurité " : "",
+                    a.services[1] ? "Maintenance " : "",
+                    a.services[2] ? "Parking " : "",
+                    a.services[3] ? "Responsable " : "",
+                    a.services[4] ? "Entretien " : "");
+            sprintf(date_naissance_str, "%02d/%02d/%04d",
+                    a.date_naissance.jour, a.date_naissance.mois, a.date_naissance.annee);
 
             // Ajouter l'agent au GtkListStore
             gtk_list_store_append(list_store, &iter);
@@ -335,8 +331,8 @@ void afficher_agents(GtkTreeView *treeview) {
                                6, a.adresse,
                                7, sexe_str,
                                8, services_str,
-                               9, "-1",
-                               -1);  // Fin de la liste de colonnes
+                               9, "-1",  // Placeholder pour l'ID de parking
+                               -1);
         }
         fclose(f);  // Fermer le fichier après la lecture
     }

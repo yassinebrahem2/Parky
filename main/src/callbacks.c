@@ -329,7 +329,7 @@ on_Administrateur_map                  (GtkWidget       *widget,
     gtk_tree_view_set_model(treeview, NULL);  // Enlever le modèle précédent
 
     // Appeler la fonction pour afficher les agents dans le GtkTreeView
-    afficher_agents(treeview);
+    afficher_agents(treeview, agentFileDirectory);
 
     initAdminReservationTreeview(widget);
 }
@@ -917,7 +917,7 @@ void on_mfbuttonajouter_clicked(GtkWidget *object, gpointer user_data) {
 
         // Afficher les agents dans le TreeView
         treeview = lookup_widget(gtk_widget_get_toplevel(object), "mftreeviewafficheragents");
-        afficher_agents(treeview);
+        afficher_agents(treeview, agentFileDirectory);
 
         // Vider les champs après un ajout réussi
         gtk_entry_set_text(GTK_ENTRY(entry_cin), "");
@@ -946,8 +946,6 @@ void on_mfbuttonajouter_clicked(GtkWidget *object, gpointer user_data) {
         gtk_label_set_text(GTK_LABEL(label_error), "Erreur : Échec de l'ajout de l'agent.");
     }
 }
-
-
 
 
 
@@ -1118,10 +1116,10 @@ void on_mfbuttonchercherajout_clicked(GtkWidget *object, gpointer user_data) {
     char critere_texte[20];
 
     // Récupération des widgets
-    combobox_criteres = lookup_widget(object, "mfcomboboxrecherche");  // À adapter selon votre ID
-    entry_valeur = lookup_widget(object, "mfentryajoutchercher");    // ID du champ de texte pour la valeur
-    label_error = lookup_widget(object, "mflabelmessagerecherche");  // ID du label d'erreur
-    treeview_agents = lookup_widget(object, "mftreeviewafficheragents"); // ID de votre treeview
+    combobox_criteres = lookup_widget(object, "mfcomboboxrecherche");
+    entry_valeur = lookup_widget(object, "mfentryajoutchercher");
+    label_error = lookup_widget(object, "mflabelmessagerecherche");
+    treeview_agents = lookup_widget(object, "mftreeviewafficheragents");
 
     // Récupérer l'index du critère sélectionné dans le combobox
     critere = gtk_combo_box_get_active(GTK_COMBO_BOX(combobox_criteres));
@@ -1129,7 +1127,7 @@ void on_mfbuttonchercherajout_clicked(GtkWidget *object, gpointer user_data) {
     // Vérification si un critère a été sélectionné
     if (critere == -1) {
         gtk_label_set_text(GTK_LABEL(label_error), "Erreur : aucun critère sélectionné.");
-        return; // Quitte la fonction si aucun critère n'est sélectionné
+        return;
     }
 
     // Récupérer la valeur entrée par l'utilisateur dans le champ de texte
@@ -1138,7 +1136,7 @@ void on_mfbuttonchercherajout_clicked(GtkWidget *object, gpointer user_data) {
     // Vérification si le champ de texte est vide
     if (valeur == NULL || strlen(valeur) == 0) {
         gtk_label_set_text(GTK_LABEL(label_error), "Erreur : veuillez entrer une valeur à rechercher.");
-        return; // Quitte la fonction si la valeur est vide
+        return;
     }
 
     // Affichage du critère sélectionné pour debug
@@ -1161,31 +1159,49 @@ void on_mfbuttonchercherajout_clicked(GtkWidget *object, gpointer user_data) {
     g_print("Valeur à rechercher : %s\n", valeur);
 
     // Tableau pour stocker les agents trouvés
-    Agent agents_trouves[100];
+    Agent agent_trouves[100];
     int compteur = 0;
 
     // Appel à la fonction de recherche avec le critère et la valeur
-    if (chercher_agent(agentFileDirectory, valeur, critere + 1, agents_trouves, &compteur)) {
+    if (chercher_agent(agentFileDirectory, valeur, critere + 1, agent_trouves, &compteur)) {
         gtk_label_set_text(GTK_LABEL(label_error), "Agents trouvés et affichés.");
 
         // Création du GtkTreeStore et ajout des agents trouvés
-        GtkTreeStore *store = gtk_tree_store_new(10, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT, G_TYPE_INT, G_TYPE_STRING,G_TYPE_STRING);
+        GtkTreeStore *store = gtk_tree_store_new(10, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
         GtkTreeIter iter;
         int i;
-        // Ajouter les agents trouvés dans le GtkTreeStore
-        for ( i = 0; i < compteur; i++) {
+        gchar date_naissance_str[20];
+        
+        // Créer la chaîne de date
+        for (i = 0; i < compteur; i++) {
+            // Formater la date
+            sprintf(date_naissance_str, "%02d/%02d/%d", agent_trouves[i].date_naissance.jour, agent_trouves[i].date_naissance.mois, agent_trouves[i].date_naissance.annee);
+
+            gchar services_str[256] = "";
+            for (int j = 0; j < 5; j++) {
+                if (agent_trouves[i].services[j]) {
+                    if (strlen(services_str) > 0) strcat(services_str, ", ");
+                    strcat(services_str, (j == 0) ? "Agent sécurité" :
+                                        (j == 1) ? "Technicien" :
+                                        (j == 2) ? "Agent parking" :
+                                        (j == 3) ? "Responsable parking" :
+                                                   "Agent entretien");
+                }
+            }
+
+            // Ajouter les agents trouvés dans le GtkTreeStore
             gtk_tree_store_append(store, &iter, NULL); // Ajouter une ligne
             gtk_tree_store_set(store, &iter,
-                               0, agents_trouves[i].cin,
-                               1, agents_trouves[i].nom,
-                               2, agents_trouves[i].prenom,
-                               3, agents_trouves[i].date_naissance.jour,
-                               4, agents_trouves[i].salaire,
-                               5, agents_trouves[i].adresse,
-                               6, agents_trouves[i].sexe,
-                               7, agents_trouves[i].services[0], // exemple de service, vous pouvez ajouter plus de services si nécessaire
-                               8, agents_trouves[i].numtel,
-			       9, "-1",
+                               0, agent_trouves[i].cin,
+                               1, agent_trouves[i].nom,
+                               2, agent_trouves[i].prenom,
+                               3, agent_trouves[i].numtel,
+                               4, date_naissance_str,
+                               5, agent_trouves[i].salaire,
+                               6, agent_trouves[i].adresse,
+                               7, (agent_trouves[i].sexe == 1 ? "Homme" : "Femme"),
+                               8, services_str,
+                               9, "-1", // Remplacer par la donnée appropriée si nécessaire
                                -1);
         }
 
@@ -1196,9 +1212,7 @@ void on_mfbuttonchercherajout_clicked(GtkWidget *object, gpointer user_data) {
     }
 }
 
-void on_mflistedesagents__clicked(GtkWidget *object, gpointer user_data) {
-    
-}
+
 
 
 void on_mfbuttonappliquerreservation_clicked(GtkWidget *object, gpointer user_data) {
@@ -1594,6 +1608,29 @@ on_ab_button_oublier_ok_clicked        (GtkButton       *button,
 
 void
 on_ab_button_oublier_annuler_clicked   (GtkButton       *button,
+                                        gpointer         user_data)
+{
+
+}
+
+
+void
+on_mfbuttonlisteagent_clicked          (GtkWidget       *object,
+                                        gpointer         user_data)
+{
+	// Récupérer le GtkTreeView à partir de l'interface
+    GtkTreeView *treeview = GTK_TREE_VIEW(lookup_widget(gtk_widget_get_toplevel(object), "mftreeviewafficheragents"));
+    
+    // Réinitialiser l'affichage du GtkTreeView
+    gtk_tree_view_set_model(treeview, NULL);  // Enlever le modèle précédent
+
+    // Appeler la fonction pour afficher les agents dans le GtkTreeView
+    afficher_agents(treeview, agentFileDirectory);
+}
+
+
+void
+on_AKbuttonannuler_clicked             (GtkButton       *button,
                                         gpointer         user_data)
 {
 
