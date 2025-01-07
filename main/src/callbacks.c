@@ -185,6 +185,9 @@ char *reservationFileDirectory = "Data/reservation.txt";
 char *reservationDisplayFileDirectory = "Cashe/displayReservation.txt";
 char *reservationServiceDisplayFileDirectory = "Cashe/displayReservationService.txt";
 
+
+
+
 void
 on_Citoyen_map                         (GtkWidget       *widget,
                                         gpointer         user_data)

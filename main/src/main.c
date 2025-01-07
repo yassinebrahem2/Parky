@@ -13,6 +13,9 @@
 #include "support.h"
 #include "window.h"
 
+
+
+
 int
 main (int argc, char *argv[])
 {
@@ -39,7 +42,6 @@ main (int argc, char *argv[])
   windows_show_window(Login);
   //Administrateur = create_Administrateur ();
   //gtk_widget_show (Administrateur);
-
   gtk_main ();
   return 0;
 }
